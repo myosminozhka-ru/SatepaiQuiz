@@ -11,12 +11,7 @@ const MainContent = class MainContent {
         document.querySelector(`[data-screen="${target}"]`).classList.add('isActive')
         document.querySelector(`[data-screen="${target}"]`).classList.remove('isSlided')
     }
-    init() {
-        if (event.target.dataset.target) {
-            console.log(event.target.dataset)
-            this.chooseScreen(event.target.dataset.target);
-        }
-    }
+    init() {}
 }
 
 export default MainContent;

@@ -3,20 +3,14 @@ body, *, ::after, ::before {
 }
 html,
 body {
-    height: 100%;
     margin: 0;
     padding: 0;
-}
-body {
-    overflow-x: hidden;
 }
 .wrapper {
     display: flex;
     flex-direction: column;
-    height: 100%;
-    background: #F5F5F5;
 }
-.content {
+.steps {
     flex: 1 0 auto;
 }
 .footer {
@@ -36,6 +30,32 @@ body {
 img {
     max-width: 100%;
     height: auto;
+}
+
+
+
+
+
+
+
+.steps {
+    position: relative;
+    &__in {
+        overflow: hidden;
+    }
+    .content__in {
+        top: 0;
+        left: 0;
+        transition: all .3s ease-out;
+        transform: translateX(100%);
+        position: absolute;
+        &.isActive {
+            transform: translateX(0);
+        }
+        &.isSlided {
+            transform: translateX(-100%);
+        }
+    }
 }
 .section_bl {
     margin-top: 60px;

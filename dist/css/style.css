@@ -735,23 +735,16 @@ body,
 
 html,
 body {
-  height: 100%;
   margin: 0;
   padding: 0;
-}
-
-body {
-  overflow-x: hidden;
 }
 
 .wrapper {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  background: #F5F5F5;
 }
 
-.content {
+.steps {
   flex: 1 0 auto;
 }
 
@@ -775,6 +768,30 @@ body {
 img {
   max-width: 100%;
   height: auto;
+}
+
+.steps {
+  position: relative;
+}
+
+.steps__in {
+  overflow: hidden;
+}
+
+.steps .content__in {
+  top: 0;
+  left: 0;
+  transition: all 0.3s ease-out;
+  transform: translateX(100%);
+  position: absolute;
+}
+
+.steps .content__in.isActive {
+  transform: translateX(0);
+}
+
+.steps .content__in.isSlided {
+  transform: translateX(-100%);
 }
 
 .section_bl {
