@@ -22,13 +22,13 @@ $(document).ready(function () {
     var slideEl = $('.review').find('.review__block');
     var slideBt = $('.review').find('.review__btn');
     slideBt.click(function () {
-        slideBt.removeClass('isActive');
-        slideBt.removeClass('isActive');
+        $(this).parent().find('.review__btn').removeClass('isActive');
         $(this).addClass('isActive');
-        slideEl.hide();
-        slideEl.removeClass('isActive');
-        $('.' + this.id).show();
-        $('.' + this.id).addClass('isActive');
+        $(this).parents('.review').find('.review__block').hide();
+        $(this).parents('.review').find('.review__block').removeClass('isActive');
+        console.log(this.id)
+        $(this).parents('.review').find($('.' + this.id)).show();
+        $(this).parents('.review').find($('.' + this.id)).addClass('isActive');
     });
     $('.review__tabs ul li:nth-child(2)').one('click', function () {
         setTimeout(function() {
@@ -67,9 +67,33 @@ $(function () {
 window.app = new Vue({
     el: '#app',
     data: () => ({
+        isMounted: false,
+        sizes: {
+            tablet: 1024,
+            mobile: 768,
+            window: window.innerWidth
+        },
         mainContent: new MainContent()
     }),
     mounted() {
         this.mainContent.init();
+    },
+    beforeCreate() {        
+        window.addEventListener('resize', () => {
+            this.sizes.window = window.innerWidth;
+        });
+    },
+    beforeMount() {
+        this.isMounted = true;
+    },
+    computed: {
+        isMobile: function () {
+            return this.sizes.window < this.sizes.mobile;
+        },
+        isTablet: function () {
+            return this.sizes.window < this.sizes.tablet && this.sizes.window > this.sizes.mobile;
+        }
+    },
+    methods: {
     }
 });

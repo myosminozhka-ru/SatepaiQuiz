@@ -24,7 +24,7 @@ body {
     margin-left: auto;
     margin-right: auto;
 }
-.clear{
+.clear {
     clear: both;
 }
 img {
@@ -39,21 +39,26 @@ img {
 
 
 .steps {
-    position: relative;
     &__in {
         overflow: hidden;
+        position: relative;
     }
     .content__in {
-        top: 0;
-        left: 0;
-        transition: all .3s ease-out;
-        transform: translateX(100%);
+        transition: all 1s ease-out;
         position: absolute;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateX(150%);
         &.isActive {
             transform: translateX(0);
+            position: relative;
+            opacity: 1;
+            visibility: visible;
         }
         &.isSlided {
-            transform: translateX(-100%);
+            transform: translateX(-150%);
+            opacity: 0;
+            visibility: hidden;
         }
     }
 }
@@ -489,6 +494,13 @@ img {
         }
     }
 }
+.step_1 {
+    .navig__back {
+        opacity: 0;
+        pointer-events: none;
+        visibility: hidden;
+    }
+}
 .step_2 {
     .section_bl {
         &__form {
@@ -729,6 +741,49 @@ img {
             font-weight: 400;
             font-size: 16px;
             color: #606060;
+        }
+        &__link {
+            display: inline-block;
+            text-decoration: none;
+            max-width: 360px;
+            width: 100%;
+            background: #343434;
+            font-family: 'TTNorms', serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 18px;
+            padding: 17px;
+            text-align: center;
+            color: #FFFFFF;
+        }
+    }
+    .content__button {
+        text-align: left;
+    }
+    .navig {
+        &__item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+        &__l {
+            font-family: 'TTNorms', serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 20px;
+            color: #606060;
+        }
+        &__r {
+            font-family: 'Forum', serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 40px;
+            text-transform: uppercase;
+            color: #000000;
+            span {
+                font-size: 20px;
+            }
         }
     }
 }
