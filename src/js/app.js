@@ -16,7 +16,6 @@ $(function () {
         this.className += " isActive";
       });
     };
-
 });
 $(document).ready(function () {
     var slideEl = $('.review__block');
@@ -40,8 +39,28 @@ $(document).ready(function () {
                 infinite: false
               });
         }, 100);
-    })
+    });
 });
+$(function () {
+    $('.review__close').on('click', function () {
+        $(this).toggleClass('isActive');
+        $('.review__tabs').toggleClass('isActive');
+        $('.review__btn').toggleClass('isOpened');
+    });
+    $(document).on('click', function(e){
+        if( $(e.target).closest('.review__close').length)
+        return
+        
+        $(this).removeClass('isActive');
+        $('.review__tabs').removeClass('isActive');
+        $('.review__btn').removeClass('isOpened');
+    });
+
+    $('.section_bl__title').on('click', function () {
+        $(this).toggleClass('isActive');
+        $(this).parents('.section_bl__l-side').find('.section_bl__form').toggleClass('isHide');
+    })
+})
 
 window.app = new Vue({
     el: '#app',
