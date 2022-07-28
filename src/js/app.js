@@ -59,6 +59,7 @@ $(function () {
     $('.section_bl__title').on('click', function () {
         $(this).toggleClass('isActive');
         $(this).parents('.section_bl__l-side').find('.section_bl__form').toggleClass('isHide');
+        $(this).parents('.section_bl__l-side').find('.section_bl__list').toggleClass('isHide');
     })
 })
 

@@ -666,15 +666,15 @@ template {
 @font-face {
   font-family: "TTNorms";
   font-display: swap;
-  src: url("../fonts/TTNorms-Bold.woff2") format("woff2"), url("../fonts/TTNorms-Bold.woff") format("woff"), url("../fonts/TTNorms-Bold.ttf") format("ttf");
-  font-weight: 700;
+  src: url("../fonts/TTNorms-ExtraBold.woff2") format("woff2"), url("../fonts/TTNorms-ExtraBold.woff") format("woff"), url("../fonts/TTNorms-ExtraBold.ttf") format("ttf");
+  font-weight: 800;
 }
 
 @font-face {
   font-family: "TTNorms";
   font-display: swap;
-  src: url("../fonts/TTNorms-ExtraBold.woff2") format("woff2"), url("../fonts/TTNorms-ExtraBold.woff") format("woff"), url("../fonts/TTNorms-ExtraBold.ttf") format("ttf");
-  font-weight: 800;
+  src: url("../fonts/TTNorms-ExtraLight.woff2") format("woff2"), url("../fonts/TTNorms-ExtraLight.woff") format("woff"), url("../fonts/TTNorms-ExtraLight.ttf") format("ttf");
+  font-weight: 200;
 }
 
 @font-face {
@@ -687,8 +687,8 @@ template {
 @font-face {
   font-family: "TTNorms";
   font-display: swap;
-  src: url("../fonts/TTNorms-ExtraLight.woff2") format("woff2"), url("../fonts/TTNorms-ExtraLight.woff") format("woff"), url("../fonts/TTNorms-ExtraLight.ttf") format("ttf");
-  font-weight: 200;
+  src: url("../fonts/TTNorms-Heavy.woff2") format("woff2"), url("../fonts/TTNorms-Heavy.woff") format("woff"), url("../fonts/TTNorms-Heavy.ttf") format("ttf");
+  font-weight: 800;
 }
 
 @font-face {
@@ -708,8 +708,8 @@ template {
 @font-face {
   font-family: "TTNorms";
   font-display: swap;
-  src: url("../fonts/TTNorms-Heavy.woff2") format("woff2"), url("../fonts/TTNorms-Heavy.woff") format("woff"), url("../fonts/TTNorms-Heavy.ttf") format("ttf");
-  font-weight: 800;
+  src: url("../fonts/TTNorms-Bold.woff2") format("woff2"), url("../fonts/TTNorms-Bold.woff") format("woff"), url("../fonts/TTNorms-Bold.ttf") format("ttf");
+  font-weight: 700;
 }
 
 @font-face {
@@ -1336,7 +1336,107 @@ img {
   color: #C4C4C4;
 }
 
+.step_8 .section_bl .custom-radio {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.step_8 .section_bl .custom-radio + label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  cursor: pointer;
+}
+
+.step_8 .section_bl .custom-radio + label:before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 1px solid #C4C4C4;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% 50%;
+}
+
+.step_8 .section_bl .custom-radio:checked + label::before {
+  border-color: #C2D2EC;
+  background-image: url("data:image/svg+xml,%3Csvg width='8' height='8' viewBox='0 0 8 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.4 3.42H7.8V4.38H4.4V7.78H3.42V4.38H0V3.42H3.42V0H4.4V3.42Z' fill='black'/%3E%3C/svg%3E%0A");
+}
+
+.step_8 .section_bl__form .radio {
+  text-align: center;
+  width: 12.5%;
+  margin-bottom: 40px;
+  font-family: "TTNorms", serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 160%;
+  color: #606060;
+}
+
+.step_8 .section_bl__form .radio label {
+  margin-top: 5px;
+}
+
+.step_10 .section_bl__list {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.step_10 .section_bl__opt {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  border-bottom: 1px solid #C2D2EC;
+}
+
+.step_10 .section_bl__opt:first-child {
+  border-top: 1px solid #C2D2EC;
+}
+
+.step_10 .section_bl__t {
+  font-family: "Forum", serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.step_10 .section_bl__b {
+  font-family: "TTNorms", serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: #606060;
+}
+
+@media all and (max-width: 1200px) {
+  .step_8 .section_bl__form {
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 20px;
+  }
+}
+
 @media all and (max-width: 1023px) {
+  .step_10 .section_bl__list {
+    margin-bottom: 30px;
+  }
+
+  .step_10 .section_bl__list.isHide {
+    display: none;
+  }
+
   .section_bl {
     flex-direction: column;
     margin-top: 30px;
@@ -1649,6 +1749,12 @@ img {
     height: 130px;
     margin-bottom: 25px;
   }
+
+  .step_10 .section_bl__opt {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5px;
+  }
 }
 
 @media all and (max-width: 620px) {
@@ -1669,6 +1775,32 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+}
+
+@media all and (max-width: 580px) {
+  .step_8 .section_bl .custom-radio + label {
+    flex-direction: row;
+  }
+
+  .step_8 .section_bl .custom-radio + label:before {
+    margin-right: 10px;
+  }
+
+  .step_8 .section_bl__form {
+    padding-left: 38px;
+    padding-right: 38px;
+  }
+
+  .step_8 .section_bl__form .radio {
+    width: 33.3%;
+    font-size: 8px;
+    margin-bottom: 3px;
+    line-height: normal;
+  }
+
+  .step_8 .section_bl__form .radio label {
+    margin-top: 0;
   }
 }
 
