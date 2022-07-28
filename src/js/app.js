@@ -5,6 +5,7 @@ import Vue from 'vue/dist/vue.js';
 import $ from 'jquery';
 import 'slick-carousel';
 
+import MainContent from '../blocks/modules/content/content.js';
 
 $(function () {
     var header = document.getElementById("quiz1");
@@ -18,8 +19,8 @@ $(function () {
     };
 });
 $(document).ready(function () {
-    var slideEl = $('.review__block');
-    var slideBt = $('.review__btn');
+    var slideEl = $('.review').find('.review__block');
+    var slideBt = $('.review').find('.review__btn');
     slideBt.click(function () {
         slideBt.removeClass('isActive');
         slideBt.removeClass('isActive');
@@ -29,7 +30,7 @@ $(document).ready(function () {
         $('.' + this.id).show();
         $('.' + this.id).addClass('isActive');
     });
-    $('#review__block-2').one('click', function () {
+    $('.review__tabs ul li:nth-child(2)').one('click', function () {
         setTimeout(function() {
             $('.sl_js').slick({
                 slidesToShow: 1,
@@ -71,8 +72,12 @@ window.app = new Vue({
             tablet: 1024,
             mobile: 768,
             window: window.innerWidth
-        }
+        },
+        mainContent: new MainContent()
     }),
+    mounted() {
+        this.mainContent.init();
+    },
     beforeCreate() {        
         window.addEventListener('resize', () => {
             this.sizes.window = window.innerWidth;
@@ -89,4 +94,6 @@ window.app = new Vue({
             return this.sizes.window < this.sizes.tablet && this.sizes.window > this.sizes.mobile;
         }
     },
+    methods: {
+    }
 });
