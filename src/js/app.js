@@ -7,18 +7,23 @@ import 'slick-carousel';
 
 import MainContent from '../blocks/modules/content/content.js';
 
-$(function () {
-    var header = document.getElementById("quiz1");
-    var btns = header.getElementsByClassName("section_bl__label");
-    for (var i = 0; i < btns.length; i++) {
-      btns[i].addEventListener("click", function() {
-        var current = document.getElementsByClassName("isActive");
-        current[0].className = current[0].className.replace(" isActive", "");
-        this.className += " isActive";
-      });
-    };
-});
+// $(function () {
+//     var header = document.getElementById("quiz1");
+//     var btns = header.getElementsByClassName("section_bl__label");
+//     for (var i = 0; i < btns.length; i++) {
+//       btns[i].addEventListener("click", function() {
+//         var current = document.getElementsByClassName("isActive");
+//         current[0].className = current[0].className.replace(" isActive", "");
+//         this.className += " isActive";
+//       });
+//     };
+// });
 $(document).ready(function () {
+    $('.section_bl__label').on('click', function() {
+        $('.section_bl__label').removeClass('isActive');
+        $(this).addClass('isActive');
+    })
+
     var slideEl = $('.review').find('.review__block');
     var slideBt = $('.review').find('.review__btn');
     slideBt.click(function () {
