@@ -80,7 +80,7 @@ window.app = new Vue({
             window: window.innerWidth
         },
         mainContent: new MainContent(),
-        data: [],
+        data: [{QUESTIONS: []}, {QUESTIONS: []}, {QUESTIONS: []}, {QUESTIONS: []}, {QUESTIONS: []}, {QUESTIONS: []}, {QUESTIONS: []}, {QUESTIONS: []}],
         selected: {
           STONE_CUT: null,
           STONE_STYLE: null,
@@ -118,10 +118,33 @@ window.app = new Vue({
     methods: {
       async getData() {
         this.data = await this.mainContent.getData();
+        this.setDefaultValues()
       },
       setDefaultValues() {
         this.data.forEach(i => {
-
+          switch(i.NAME) {
+            case "ВЫБОР ОГРАНКИ КАМНЯ":
+              this.selected.STONE_CUT = i.QUESTIONS[0].ID
+              break;
+            case "ВЫБОР СТИЛЯ":
+              this.selected.STONE_STYLE = i.QUESTIONS[0].ID
+              break;
+            case "ВНАЛИЧИЕ ПОДНОЖКИ":
+              this.selected.STONE_FOOTBOARD = i.QUESTIONS[0].ID
+              break;
+            case "НАЛИЧИЕ БРИЛЛИАНТОВ НА ШИНКЕ":
+              this.selected.DIAMONDS_ON_SHINKO = i.QUESTIONS[0].ID
+              break;
+            case "ВЫБЕРИТЕ МАТЕРИАЛ":
+              this.selected.MATERIAL = i.QUESTIONS[0].ID
+              break;
+            case "ЦВЕТ ЛАПОК НА КАМНЕ":
+              this.selected.COLOR_OF_PAWS = i.QUESTIONS[0].ID
+              break;
+            case "РАЗМЕР КОЛЬЦА":
+              this.selected.SIZE = i.QUESTIONS[0].ID
+              break;
+          }
         })
       },
     }
