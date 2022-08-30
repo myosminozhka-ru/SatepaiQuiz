@@ -71,16 +71,32 @@ $(function () {
 
 window.app = new Vue({
     el: '#app',
-    data: () => ({
+    data() {
+      return {
         isMounted: false,
         sizes: {
             tablet: 1024,
             mobile: 768,
             window: window.innerWidth
         },
-        mainContent: new MainContent()
-    }),
+        mainContent: new MainContent(),
+        data: [],
+        selected: {
+          STONE_CUT: null,
+          STONE_STYLE: null,
+          OWN_STONE_STYLE: null,
+          STONE_FOOTBOARD: null,
+          DIAMONDS_ON_SHINKO: null,
+          MATERIAL: null,
+          COLOR_OF_PAWS: null,
+          TEXT: null,
+          SIZE: null,
+        },
+        url: "http://satepais.fvds.ru",
+      }
+    },
     mounted() {
+        this.getData()
         this.mainContent.init();
     },
     beforeCreate() {        
@@ -100,5 +116,13 @@ window.app = new Vue({
         }
     },
     methods: {
+      async getData() {
+        this.data = await this.mainContent.getData();
+      },
+      setDefaultValues() {
+        this.data.forEach(i => {
+
+        })
+      },
     }
 });

@@ -12,6 +12,18 @@ const MainContent = class MainContent {
         document.querySelector(`[data-screen="${target}"]`).classList.remove('isSlided')
     }
     init() {}
+    getData() {
+      // http://satepais.fvds.ru/local/ajax/json.php
+      // http://localhost:3000/json.json
+      return fetch('http://satepais.fvds.ru/local/ajax/json.php')
+      .then((response) => {
+          return response.json()
+      })
+      .then((data) => {
+          console.log(data);
+          return data;
+      });
+    }
 }
 
 export default MainContent;

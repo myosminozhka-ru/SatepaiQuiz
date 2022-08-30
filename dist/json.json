@@ -1,0 +1,1084 @@
+{
+  "data": [
+    {
+      "IBLOCK_ID": "32",
+      "ID": "87",
+      "NAME": "ВЫБОР ОГРАНКИ КАМНЯ",
+      "DEPTH_LEVEL": "1",
+      "IBLOCK_SECTION_ID": null,
+      "CODE": "",
+      "PICTURE": null,
+      "DETAIL_PICTURE": null,
+      "LEFT_MARGIN": "1",
+      "UF_URL": null,
+      "UF_CHECKBOXS": null,
+      "UF_PHOTO_ABOUT": null,
+      "QUESTIONS": [
+        {
+          "ID": "1269",
+          "IBLOCK_ID": "32",
+          "NAME": "RADIANT",
+          "CODE": "",
+          "PREVIEW_PICTURE": null,
+          "IBLOCK_SECTION_ID": "87",
+          "DETAIL_PICTURE": null,
+          "SORT": "100",
+          "PREVIEW_TEXT": "",
+          "DETAIL_TEXT": "",
+          "PROPERIES": {
+            "FOTO": {
+              "NAME": "Фото",
+              "CODE": "FOTO",
+              "PROPERTY_TYPE": "F",
+              "VALUE": {
+                "ID": "3615",
+                "TIMESTAMP_X": {},
+                "MODULE_ID": "iblock",
+                "HEIGHT": "0",
+                "WIDTH": "0",
+                "FILE_SIZE": "36301",
+                "CONTENT_TYPE": "image\/svg+xml",
+                "SUBDIR": "iblock\/895\/qdxour9vdgtyamdqis3qqwc3siikxd6x",
+                "FILE_NAME": "krist1.svg",
+                "ORIGINAL_NAME": "krist1.svg",
+                "DESCRIPTION": "",
+                "HANDLER_ID": null,
+                "EXTERNAL_ID": "9b8d7a66d21526673415c1a20d8ffedf",
+                "~src": false,
+                "SRC": "\/upload\/iblock\/895\/qdxour9vdgtyamdqis3qqwc3siikxd6x\/krist1.svg"
+              },
+              "DESCRIPTION": null,
+              "VALUE_ENUM": null,
+              "SRC": "\/upload\/iblock\/895\/qdxour9vdgtyamdqis3qqwc3siikxd6x\/krist1.svg"
+            }
+          }
+        },
+        {
+          "ID": "1270",
+          "IBLOCK_ID": "32",
+          "NAME": "EMERALD",
+          "CODE": "",
+          "PREVIEW_PICTURE": null,
+          "IBLOCK_SECTION_ID": "87",
+          "DETAIL_PICTURE": null,
+          "SORT": "200",
+          "PREVIEW_TEXT": "",
+          "DETAIL_TEXT": "",
+          "PROPERIES": {
+            "FOTO": {
+              "NAME": "Фото",
+              "CODE": "FOTO",
+              "PROPERTY_TYPE": "F",
+              "VALUE": {
+                "ID": "3616",
+                "TIMESTAMP_X": {},
+                "MODULE_ID": "iblock",
+                "HEIGHT": "0",
+                "WIDTH": "0",
+                "FILE_SIZE": "27286",
+                "CONTENT_TYPE": "image\/svg+xml",
+                "SUBDIR": "iblock\/6de\/i9tl5oscghxe9n8m66epf78u95dhiaom",
+                "FILE_NAME": "krist2.svg",
+                "ORIGINAL_NAME": "krist2.svg",
+                "DESCRIPTION": "",
+                "HANDLER_ID": null,
+                "EXTERNAL_ID": "d7518718d3128c3814487ec24690b971",
+                "~src": false,
+                "SRC": "\/upload\/iblock\/6de\/i9tl5oscghxe9n8m66epf78u95dhiaom\/krist2.svg"
+              },
+              "DESCRIPTION": "",
+              "VALUE_ENUM": null,
+              "SRC": "\/upload\/iblock\/6de\/i9tl5oscghxe9n8m66epf78u95dhiaom\/krist2.svg"
+            }
+          }
+        },
+        {
+          "ID": "1271",
+          "IBLOCK_ID": "32",
+          "NAME": "MARQUISE",
+          "CODE": "",
+          "PREVIEW_PICTURE": null,
+          "IBLOCK_SECTION_ID": "87",
+          "DETAIL_PICTURE": null,
+          "SORT": "300",
+          "PREVIEW_TEXT": "",
+          "DETAIL_TEXT": "",
+          "PROPERIES": {
+            "FOTO": {
+              "NAME": "Фото",
+              "CODE": "FOTO",
+              "PROPERTY_TYPE": "F",
+              "VALUE": {
+                "ID": "3617",
+                "TIMESTAMP_X": {},
+                "MODULE_ID": "iblock",
+                "HEIGHT": "0",
+                "WIDTH": "0",
+                "FILE_SIZE": "13720",
+                "CONTENT_TYPE": "image\/svg+xml",
+                "SUBDIR": "iblock\/4e1\/pvd6ikyqoxvf422b142lq58etx3uwxd9",
+                "FILE_NAME": "krist3.svg",
+                "ORIGINAL_NAME": "krist3.svg",
+                "DESCRIPTION": "",
+                "HANDLER_ID": null,
+                "EXTERNAL_ID": "030cccceb212ce4cc2476483bc69ed03",
+                "~src": false,
+                "SRC": "\/upload\/iblock\/4e1\/pvd6ikyqoxvf422b142lq58etx3uwxd9\/krist3.svg"
+              },
+              "DESCRIPTION": "",
+              "VALUE_ENUM": null,
+              "SRC": "\/upload\/iblock\/4e1\/pvd6ikyqoxvf422b142lq58etx3uwxd9\/krist3.svg"
+            }
+          }
+        },
+        {
+          "ID": "1272",
+          "IBLOCK_ID": "32",
+          "NAME": "OVAL",
+          "CODE": "",
+          "PREVIEW_PICTURE": null,
+          "IBLOCK_SECTION_ID": "87",
+          "DETAIL_PICTURE": null,
+          "SORT": "400",
+          "PREVIEW_TEXT": "",
+          "DETAIL_TEXT": "",
+          "PROPERIES": {
+            "FOTO": {
+              "NAME": "Фото",
+              "CODE": "FOTO",
+              "PROPERTY_TYPE": "F",
+              "VALUE": {
+                "ID": "3618",
+                "TIMESTAMP_X": {},
+                "MODULE_ID": "iblock",
+                "HEIGHT": "0",
+                "WIDTH": "0",
+                "FILE_SIZE": "24410",
+                "CONTENT_TYPE": "image\/svg+xml",
+                "SUBDIR": "iblock\/799\/pfr7iujumlrsm5xp5anw9w6xnaxl44jr",
+                "FILE_NAME": "krist4.svg",
+                "ORIGINAL_NAME": "krist4.svg",
+                "DESCRIPTION": "",
+                "HANDLER_ID": null,
+                "EXTERNAL_ID": "f41cbf45af8234a4f1971840145653ce",
+                "~src": false,
+                "SRC": "\/upload\/iblock\/799\/pfr7iujumlrsm5xp5anw9w6xnaxl44jr\/krist4.svg"
+              },
+              "DESCRIPTION": "",
+              "VALUE_ENUM": null,
+              "SRC": "\/upload\/iblock\/799\/pfr7iujumlrsm5xp5anw9w6xnaxl44jr\/krist4.svg"
+            }
+          }
+        },
+        {
+          "ID": "1273",
+          "IBLOCK_ID": "32",
+          "NAME": "PEAR",
+          "CODE": "",
+          "PREVIEW_PICTURE": null,
+          "IBLOCK_SECTION_ID": "87",
+          "DETAIL_PICTURE": null,
+          "SORT": "500",
+          "PREVIEW_TEXT": "",
+          "DETAIL_TEXT": "",
+          "PROPERIES": {
+            "FOTO": {
+              "NAME": "Фото",
+              "CODE": "FOTO",
+              "PROPERTY_TYPE": "F",
+              "VALUE": {
+                "ID": "3619",
+                "TIMESTAMP_X": {},
+                "MODULE_ID": "iblock",
+                "HEIGHT": "0",
+                "WIDTH": "0",
+                "FILE_SIZE": "20390",
+                "CONTENT_TYPE": "image\/svg+xml",
+                "SUBDIR": "iblock\/0cb\/s5mgxrry0mdhqkozrfb2dridmnnx6hoj",
+                "FILE_NAME": "krist5.svg",
+                "ORIGINAL_NAME": "krist5.svg",
+                "DESCRIPTION": "",
+                "HANDLER_ID": null,
+                "EXTERNAL_ID": "2e73aa8287f905789ae5afd08fa84d70",
+                "~src": false,
+                "SRC": "\/upload\/iblock\/0cb\/s5mgxrry0mdhqkozrfb2dridmnnx6hoj\/krist5.svg"
+              },
+              "DESCRIPTION": "",
+              "VALUE_ENUM": null,
+              "SRC": "\/upload\/iblock\/0cb\/s5mgxrry0mdhqkozrfb2dridmnnx6hoj\/krist5.svg"
+            }
+          }
+        },
+        {
+          "ID": "1274",
+          "IBLOCK_ID": "32",
+          "NAME": "HEART",
+          "CODE": "",
+          "PREVIEW_PICTURE": null,
+          "IBLOCK_SECTION_ID": "87",
+          "DETAIL_PICTURE": null,
+          "SORT": "600",
+          "PREVIEW_TEXT": "",
+          "DETAIL_TEXT": "",
+          "PROPERIES": {
+            "PRICE": {
+              "NAME": "Наценка",
+              "CODE": "PRICE",
+              "PROPERTY_TYPE": "N",
+              "VALUE": "123",
+              "DESCRIPTION": "",
+              "VALUE_ENUM": null
+            },
+            "CURENCY": {
+              "NAME": "Валюта",
+              "CODE": "CURENCY",
+              "PROPERTY_TYPE": "L",
+              "VALUE": "EUR",
+              "DESCRIPTION": null,
+              "VALUE_ENUM": "EUR"
+            },
+            "FOTO": {
+              "NAME": "Фото",
+              "CODE": "FOTO",
+              "PROPERTY_TYPE": "F",
+              "VALUE": {
+                "ID": "3620",
+                "TIMESTAMP_X": {},
+                "MODULE_ID": "iblock",
+                "HEIGHT": "0",
+                "WIDTH": "0",
+                "FILE_SIZE": "30399",
+                "CONTENT_TYPE": "image\/svg+xml",
+                "SUBDIR": "iblock\/667\/0ytcu10muir85ef5zlalpuh8iz9pubv8",
+                "FILE_NAME": "krist6.svg",
+                "ORIGINAL_NAME": "krist6.svg",
+                "DESCRIPTION": "",
+                "HANDLER_ID": null,
+                "EXTERNAL_ID": "6528b72a82f8efd88fcff4d7658d762a",
+                "~src": false,
+                "SRC": "\/upload\/iblock\/667\/0ytcu10muir85ef5zlalpuh8iz9pubv8\/krist6.svg"
+              },
+              "DESCRIPTION": "",
+              "VALUE_ENUM": null,
+              "SRC": "\/upload\/iblock\/667\/0ytcu10muir85ef5zlalpuh8iz9pubv8\/krist6.svg"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "IBLOCK_ID": "32",
+      "ID": "88",
+      "NAME": "ВЫБОР СТИЛЯ",
+      "DEPTH_LEVEL": "1",
+      "IBLOCK_SECTION_ID": null,
+      "CODE": "",
+      "PICTURE": null,
+      "DETAIL_PICTURE": null,
+      "LEFT_MARGIN": "3",
+      "UF_URL": null,
+      "UF_CHECKBOXS": null,
+      "UF_PHOTO_ABOUT": null,
+      "QUESTIONS": [
+        {
+          "ID": "1275",
+          "IBLOCK_ID": "32",
+          "NAME": "СОЛИТЕР",
+          "CODE": "",
+          "PREVIEW_PICTURE": null,
+          "IBLOCK_SECTION_ID": "88",
+          "DETAIL_PICTURE": null,
+          "SORT": "100",
+          "PREVIEW_TEXT": "",
+          "DETAIL_TEXT": "",
+          "PROPERIES": {
+            "FOTO": {
+              "NAME": "Фото",
+              "CODE": "FOTO",
+              "PROPERTY_TYPE": "F",
+              "VALUE": {
+                "ID": "3621",
+                "TIMESTAMP_X": {},
+                "MODULE_ID": "iblock",
+                "HEIGHT": "0",
+                "WIDTH": "0",
+                "FILE_SIZE": "36301",
+                "CONTENT_TYPE": "image\/svg+xml",
+                "SUBDIR": "iblock\/895\/qdxour9vdgtyamdqis3qqwc3siikxd6x",
+                "FILE_NAME": "krist1.svg",
+                "ORIGINAL_NAME": "krist1 (1).svg",
+                "DESCRIPTION": "",
+                "HANDLER_ID": null,
+                "EXTERNAL_ID": "8b1f17277334f3b47c6401104d9bb2a8",
+                "~src": false,
+                "SRC": "\/upload\/iblock\/895\/qdxour9vdgtyamdqis3qqwc3siikxd6x\/krist1.svg"
+              },
+              "DESCRIPTION": "",
+              "VALUE_ENUM": null,
+              "SRC": "\/upload\/iblock\/895\/qdxour9vdgtyamdqis3qqwc3siikxd6x\/krist1.svg"
+            }
+          }
+        },
+        {
+          "ID": "1276",
+          "IBLOCK_ID": "32",
+          "NAME": "В ПАВЕ БРИЛЛАНТОВ ПО КРУГУ КАМНЯ",
+          "CODE": "",
+          "PREVIEW_PICTURE": null,
+          "IBLOCK_SECTION_ID": "88",
+          "DETAIL_PICTURE": null,
+          "SORT": "200",
+          "PREVIEW_TEXT": "",
+          "DETAIL_TEXT": "",
+          "PROPERIES": {
+            "FOTO": {
+              "NAME": "Фото",
+              "CODE": "FOTO",
+              "PROPERTY_TYPE": "F",
+              "VALUE": {
+                "ID": "3622",
+                "TIMESTAMP_X": {},
+                "MODULE_ID": "iblock",
+                "HEIGHT": "0",
+                "WIDTH": "0",
+                "FILE_SIZE": "27286",
+                "CONTENT_TYPE": "image\/svg+xml",
+                "SUBDIR": "iblock\/6de\/i9tl5oscghxe9n8m66epf78u95dhiaom",
+                "FILE_NAME": "krist2.svg",
+                "ORIGINAL_NAME": "krist2 (1).svg",
+                "DESCRIPTION": "",
+                "HANDLER_ID": null,
+                "EXTERNAL_ID": "1703255e1db778d9b7c4ccea2f674ac7",
+                "~src": false,
+                "SRC": "\/upload\/iblock\/6de\/i9tl5oscghxe9n8m66epf78u95dhiaom\/krist2.svg"
+              },
+              "DESCRIPTION": "",
+              "VALUE_ENUM": null,
+              "SRC": "\/upload\/iblock\/6de\/i9tl5oscghxe9n8m66epf78u95dhiaom\/krist2.svg"
+            }
+          }
+        },
+        {
+          "ID": "1277",
+          "IBLOCK_ID": "32",
+          "NAME": "ТРИ БРИЛЛИАНТА",
+          "CODE": "",
+          "PREVIEW_PICTURE": null,
+          "IBLOCK_SECTION_ID": "88",
+          "DETAIL_PICTURE": null,
+          "SORT": "300",
+          "PREVIEW_TEXT": "",
+          "DETAIL_TEXT": "",
+          "PROPERIES": {
+            "FOTO": {
+              "NAME": "Фото",
+              "CODE": "FOTO",
+              "PROPERTY_TYPE": "F",
+              "VALUE": {
+                "ID": "3623",
+                "TIMESTAMP_X": {},
+                "MODULE_ID": "iblock",
+                "HEIGHT": "0",
+                "WIDTH": "0",
+                "FILE_SIZE": "13720",
+                "CONTENT_TYPE": "image\/svg+xml",
+                "SUBDIR": "iblock\/4e1\/pvd6ikyqoxvf422b142lq58etx3uwxd9",
+                "FILE_NAME": "krist3.svg",
+                "ORIGINAL_NAME": "krist3 (1).svg",
+                "DESCRIPTION": "",
+                "HANDLER_ID": null,
+                "EXTERNAL_ID": "441a680e14bcff7fcac1ca4ba4275758",
+                "~src": false,
+                "SRC": "\/upload\/iblock\/4e1\/pvd6ikyqoxvf422b142lq58etx3uwxd9\/krist3.svg"
+              },
+              "DESCRIPTION": "",
+              "VALUE_ENUM": null,
+              "SRC": "\/upload\/iblock\/4e1\/pvd6ikyqoxvf422b142lq58etx3uwxd9\/krist3.svg"
+            }
+          }
+        },
+        {
+          "ID": "1289",
+          "IBLOCK_ID": "32",
+          "NAME": "ОТПРАВИТЬ СВОЙ ДИЗАЙН",
+          "CODE": "",
+          "PREVIEW_PICTURE": null,
+          "IBLOCK_SECTION_ID": "88",
+          "DETAIL_PICTURE": null,
+          "SORT": "400",
+          "PREVIEW_TEXT": "",
+          "DETAIL_TEXT": "",
+          "PROPERIES": {
+            "OWN_CHOSE": {
+              "NAME": "Свой вариант",
+              "CODE": "OWN_CHOSE",
+              "PROPERTY_TYPE": "L",
+              "VALUE": "Y",
+              "DESCRIPTION": null,
+              "VALUE_ENUM": "Y"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "IBLOCK_ID": "32",
+      "ID": "89",
+      "NAME": "ВНАЛИЧИЕ ПОДНОЖКИ",
+      "DEPTH_LEVEL": "1",
+      "IBLOCK_SECTION_ID": null,
+      "CODE": "",
+      "PICTURE": null,
+      "DETAIL_PICTURE": null,
+      "LEFT_MARGIN": "5",
+      "UF_URL": null,
+      "UF_CHECKBOXS": null,
+      "UF_PHOTO_ABOUT": null,
+      "QUESTIONS": [
+        {
+          "ID": "1278",
+          "IBLOCK_ID": "32",
+          "NAME": "НА ПОДНОЖКЕ",
+          "CODE": "",
+          "PREVIEW_PICTURE": null,
+          "IBLOCK_SECTION_ID": "89",
+          "DETAIL_PICTURE": null,
+          "SORT": "500",
+          "PREVIEW_TEXT": "",
+          "DETAIL_TEXT": "",
+          "PROPERIES": {
+            "FOTO": {
+              "NAME": "Фото",
+              "CODE": "FOTO",
+              "PROPERTY_TYPE": "F",
+              "VALUE": {
+                "ID": "3624",
+                "TIMESTAMP_X": {},
+                "MODULE_ID": "iblock",
+                "HEIGHT": "0",
+                "WIDTH": "0",
+                "FILE_SIZE": "36301",
+                "CONTENT_TYPE": "image\/svg+xml",
+                "SUBDIR": "iblock\/895\/qdxour9vdgtyamdqis3qqwc3siikxd6x",
+                "FILE_NAME": "krist1.svg",
+                "ORIGINAL_NAME": "krist1 (2).svg",
+                "DESCRIPTION": "",
+                "HANDLER_ID": null,
+                "EXTERNAL_ID": "7e9e797adad0ecfbb408095242f3d100",
+                "~src": false,
+                "SRC": "\/upload\/iblock\/895\/qdxour9vdgtyamdqis3qqwc3siikxd6x\/krist1.svg"
+              },
+              "DESCRIPTION": "",
+              "VALUE_ENUM": null,
+              "SRC": "\/upload\/iblock\/895\/qdxour9vdgtyamdqis3qqwc3siikxd6x\/krist1.svg"
+            }
+          }
+        },
+        {
+          "ID": "1279",
+          "IBLOCK_ID": "32",
+          "NAME": "БЕЗ ПОДНОЖКИ",
+          "CODE": "",
+          "PREVIEW_PICTURE": null,
+          "IBLOCK_SECTION_ID": "89",
+          "DETAIL_PICTURE": null,
+          "SORT": "500",
+          "PREVIEW_TEXT": "",
+          "DETAIL_TEXT": "",
+          "PROPERIES": {
+            "FOTO": {
+              "NAME": "Фото",
+              "CODE": "FOTO",
+              "PROPERTY_TYPE": "F",
+              "VALUE": {
+                "ID": "3625",
+                "TIMESTAMP_X": {},
+                "MODULE_ID": "iblock",
+                "HEIGHT": "0",
+                "WIDTH": "0",
+                "FILE_SIZE": "27286",
+                "CONTENT_TYPE": "image\/svg+xml",
+                "SUBDIR": "iblock\/6de\/i9tl5oscghxe9n8m66epf78u95dhiaom",
+                "FILE_NAME": "krist2.svg",
+                "ORIGINAL_NAME": "krist2 (2).svg",
+                "DESCRIPTION": "",
+                "HANDLER_ID": null,
+                "EXTERNAL_ID": "93fa3cb71322195f85b15e3b7061ee92",
+                "~src": false,
+                "SRC": "\/upload\/iblock\/6de\/i9tl5oscghxe9n8m66epf78u95dhiaom\/krist2.svg"
+              },
+              "DESCRIPTION": "",
+              "VALUE_ENUM": null,
+              "SRC": "\/upload\/iblock\/6de\/i9tl5oscghxe9n8m66epf78u95dhiaom\/krist2.svg"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "IBLOCK_ID": "32",
+      "ID": "90",
+      "NAME": "НАЛИЧИЕ БРИЛЛИАНТОВ НА ШИНКЕ",
+      "DEPTH_LEVEL": "1",
+      "IBLOCK_SECTION_ID": null,
+      "CODE": "",
+      "PICTURE": null,
+      "DETAIL_PICTURE": null,
+      "LEFT_MARGIN": "7",
+      "UF_URL": null,
+      "UF_CHECKBOXS": null,
+      "UF_PHOTO_ABOUT": null,
+      "QUESTIONS": [
+        {
+          "ID": "1280",
+          "IBLOCK_ID": "32",
+          "NAME": "БЕЗ БРИЛЛИАНТОВ",
+          "CODE": "",
+          "PREVIEW_PICTURE": null,
+          "IBLOCK_SECTION_ID": "90",
+          "DETAIL_PICTURE": null,
+          "SORT": "500",
+          "PREVIEW_TEXT": "",
+          "DETAIL_TEXT": "",
+          "PROPERIES": {
+            "PRICE": {
+              "NAME": "Наценка",
+              "CODE": "PRICE",
+              "PROPERTY_TYPE": "N",
+              "VALUE": "250",
+              "DESCRIPTION": "",
+              "VALUE_ENUM": null
+            },
+            "CURENCY": {
+              "NAME": "Валюта",
+              "CODE": "CURENCY",
+              "PROPERTY_TYPE": "L",
+              "VALUE": "USD",
+              "DESCRIPTION": null,
+              "VALUE_ENUM": "USD"
+            },
+            "FOTO": {
+              "NAME": "Фото",
+              "CODE": "FOTO",
+              "PROPERTY_TYPE": "F",
+              "VALUE": {
+                "ID": "3626",
+                "TIMESTAMP_X": {},
+                "MODULE_ID": "iblock",
+                "HEIGHT": "0",
+                "WIDTH": "0",
+                "FILE_SIZE": "36301",
+                "CONTENT_TYPE": "image\/svg+xml",
+                "SUBDIR": "iblock\/895\/qdxour9vdgtyamdqis3qqwc3siikxd6x",
+                "FILE_NAME": "krist1.svg",
+                "ORIGINAL_NAME": "krist1 (3).svg",
+                "DESCRIPTION": "",
+                "HANDLER_ID": null,
+                "EXTERNAL_ID": "d06ecfe555d7adfdce9c3dd202315279",
+                "~src": false,
+                "SRC": "\/upload\/iblock\/895\/qdxour9vdgtyamdqis3qqwc3siikxd6x\/krist1.svg"
+              },
+              "DESCRIPTION": null,
+              "VALUE_ENUM": null,
+              "SRC": "\/upload\/iblock\/895\/qdxour9vdgtyamdqis3qqwc3siikxd6x\/krist1.svg"
+            }
+          }
+        },
+        {
+          "ID": "1281",
+          "IBLOCK_ID": "32",
+          "NAME": "ОДИН РЯД БРИЛЛИАНТОВ",
+          "CODE": "",
+          "PREVIEW_PICTURE": null,
+          "IBLOCK_SECTION_ID": "90",
+          "DETAIL_PICTURE": null,
+          "SORT": "500",
+          "PREVIEW_TEXT": "",
+          "DETAIL_TEXT": "",
+          "PROPERIES": {
+            "PRICE": {
+              "NAME": "Наценка",
+              "CODE": "PRICE",
+              "PROPERTY_TYPE": "N",
+              "VALUE": "500",
+              "DESCRIPTION": "",
+              "VALUE_ENUM": null
+            },
+            "CURENCY": {
+              "NAME": "Валюта",
+              "CODE": "CURENCY",
+              "PROPERTY_TYPE": "L",
+              "VALUE": "USD",
+              "DESCRIPTION": null,
+              "VALUE_ENUM": "USD"
+            },
+            "FOTO": {
+              "NAME": "Фото",
+              "CODE": "FOTO",
+              "PROPERTY_TYPE": "F",
+              "VALUE": {
+                "ID": "3627",
+                "TIMESTAMP_X": {},
+                "MODULE_ID": "iblock",
+                "HEIGHT": "0",
+                "WIDTH": "0",
+                "FILE_SIZE": "27286",
+                "CONTENT_TYPE": "image\/svg+xml",
+                "SUBDIR": "iblock\/6de\/i9tl5oscghxe9n8m66epf78u95dhiaom",
+                "FILE_NAME": "krist2.svg",
+                "ORIGINAL_NAME": "krist2 (3).svg",
+                "DESCRIPTION": "",
+                "HANDLER_ID": null,
+                "EXTERNAL_ID": "e73e995601aebdd71e42712c023e60e5",
+                "~src": false,
+                "SRC": "\/upload\/iblock\/6de\/i9tl5oscghxe9n8m66epf78u95dhiaom\/krist2.svg"
+              },
+              "DESCRIPTION": "",
+              "VALUE_ENUM": null,
+              "SRC": "\/upload\/iblock\/6de\/i9tl5oscghxe9n8m66epf78u95dhiaom\/krist2.svg"
+            }
+          }
+        },
+        {
+          "ID": "1282",
+          "IBLOCK_ID": "32",
+          "NAME": "ТРИ РЯДА БРИЛЛИАНТОВ",
+          "CODE": "",
+          "PREVIEW_PICTURE": null,
+          "IBLOCK_SECTION_ID": "90",
+          "DETAIL_PICTURE": null,
+          "SORT": "500",
+          "PREVIEW_TEXT": "",
+          "DETAIL_TEXT": "",
+          "PROPERIES": {
+            "PRICE": {
+              "NAME": "Наценка",
+              "CODE": "PRICE",
+              "PROPERTY_TYPE": "N",
+              "VALUE": "1600",
+              "DESCRIPTION": "",
+              "VALUE_ENUM": null
+            },
+            "CURENCY": {
+              "NAME": "Валюта",
+              "CODE": "CURENCY",
+              "PROPERTY_TYPE": "L",
+              "VALUE": "USD",
+              "DESCRIPTION": null,
+              "VALUE_ENUM": "USD"
+            },
+            "FOTO": {
+              "NAME": "Фото",
+              "CODE": "FOTO",
+              "PROPERTY_TYPE": "F",
+              "VALUE": {
+                "ID": "3628",
+                "TIMESTAMP_X": {},
+                "MODULE_ID": "iblock",
+                "HEIGHT": "0",
+                "WIDTH": "0",
+                "FILE_SIZE": "13720",
+                "CONTENT_TYPE": "image\/svg+xml",
+                "SUBDIR": "iblock\/4e1\/pvd6ikyqoxvf422b142lq58etx3uwxd9",
+                "FILE_NAME": "krist3.svg",
+                "ORIGINAL_NAME": "krist3 (2).svg",
+                "DESCRIPTION": "",
+                "HANDLER_ID": null,
+                "EXTERNAL_ID": "37f2df78ea7a69cd5ed786de8b3c0d40",
+                "~src": false,
+                "SRC": "\/upload\/iblock\/4e1\/pvd6ikyqoxvf422b142lq58etx3uwxd9\/krist3.svg"
+              },
+              "DESCRIPTION": "",
+              "VALUE_ENUM": null,
+              "SRC": "\/upload\/iblock\/4e1\/pvd6ikyqoxvf422b142lq58etx3uwxd9\/krist3.svg"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "IBLOCK_ID": "32",
+      "ID": "91",
+      "NAME": "ВЫБЕРИТЕ МАТЕРИАЛ",
+      "DEPTH_LEVEL": "1",
+      "IBLOCK_SECTION_ID": null,
+      "CODE": "",
+      "PICTURE": null,
+      "DETAIL_PICTURE": null,
+      "LEFT_MARGIN": "9",
+      "UF_URL": null,
+      "UF_CHECKBOXS": null,
+      "UF_PHOTO_ABOUT": null,
+      "QUESTIONS": [
+        {
+          "ID": "1283",
+          "IBLOCK_ID": "32",
+          "NAME": "БЕЛОЕ ЗОЛОТО",
+          "CODE": "",
+          "PREVIEW_PICTURE": null,
+          "IBLOCK_SECTION_ID": "91",
+          "DETAIL_PICTURE": null,
+          "SORT": "100",
+          "PREVIEW_TEXT": "",
+          "DETAIL_TEXT": "",
+          "PROPERIES": {
+            "FOTO": {
+              "NAME": "Фото",
+              "CODE": "FOTO",
+              "PROPERTY_TYPE": "F",
+              "VALUE": {
+                "ID": "3629",
+                "TIMESTAMP_X": {},
+                "MODULE_ID": "iblock",
+                "HEIGHT": "0",
+                "WIDTH": "0",
+                "FILE_SIZE": "347960",
+                "CONTENT_TYPE": "image\/svg+xml",
+                "SUBDIR": "iblock\/802\/jtoujaeheeci713tdxwd3bsz2li7dxs2",
+                "FILE_NAME": "gold1.svg",
+                "ORIGINAL_NAME": "gold1.svg",
+                "DESCRIPTION": "",
+                "HANDLER_ID": null,
+                "EXTERNAL_ID": "b575c1a0cc168d728e9df15a64ee4ff3",
+                "~src": false,
+                "SRC": "\/upload\/iblock\/802\/jtoujaeheeci713tdxwd3bsz2li7dxs2\/gold1.svg"
+              },
+              "DESCRIPTION": null,
+              "VALUE_ENUM": null,
+              "SRC": "\/upload\/iblock\/802\/jtoujaeheeci713tdxwd3bsz2li7dxs2\/gold1.svg"
+            }
+          }
+        },
+        {
+          "ID": "1284",
+          "IBLOCK_ID": "32",
+          "NAME": "ЖЕЛТОЕ ЗОЛОТО",
+          "CODE": "",
+          "PREVIEW_PICTURE": null,
+          "IBLOCK_SECTION_ID": "91",
+          "DETAIL_PICTURE": null,
+          "SORT": "200",
+          "PREVIEW_TEXT": "",
+          "DETAIL_TEXT": "",
+          "PROPERIES": {
+            "FOTO": {
+              "NAME": "Фото",
+              "CODE": "FOTO",
+              "PROPERTY_TYPE": "F",
+              "VALUE": {
+                "ID": "3630",
+                "TIMESTAMP_X": {},
+                "MODULE_ID": "iblock",
+                "HEIGHT": "0",
+                "WIDTH": "0",
+                "FILE_SIZE": "501680",
+                "CONTENT_TYPE": "image\/svg+xml",
+                "SUBDIR": "iblock\/690\/0eocbwobckbv8e00omtu26olbqsml2ke",
+                "FILE_NAME": "gold2.svg",
+                "ORIGINAL_NAME": "gold2.svg",
+                "DESCRIPTION": "",
+                "HANDLER_ID": null,
+                "EXTERNAL_ID": "3468d4da2dfbec73b73b7a6dfc00b8aa",
+                "~src": false,
+                "SRC": "\/upload\/iblock\/690\/0eocbwobckbv8e00omtu26olbqsml2ke\/gold2.svg"
+              },
+              "DESCRIPTION": "",
+              "VALUE_ENUM": null,
+              "SRC": "\/upload\/iblock\/690\/0eocbwobckbv8e00omtu26olbqsml2ke\/gold2.svg"
+            }
+          }
+        },
+        {
+          "ID": "1285",
+          "IBLOCK_ID": "32",
+          "NAME": "РОЗОВОЕ ЗОЛОТО",
+          "CODE": "",
+          "PREVIEW_PICTURE": null,
+          "IBLOCK_SECTION_ID": "91",
+          "DETAIL_PICTURE": null,
+          "SORT": "500",
+          "PREVIEW_TEXT": "",
+          "DETAIL_TEXT": "",
+          "PROPERIES": {
+            "FOTO": {
+              "NAME": "Фото",
+              "CODE": "FOTO",
+              "PROPERTY_TYPE": "F",
+              "VALUE": {
+                "ID": "3631",
+                "TIMESTAMP_X": {},
+                "MODULE_ID": "iblock",
+                "HEIGHT": "0",
+                "WIDTH": "0",
+                "FILE_SIZE": "509624",
+                "CONTENT_TYPE": "image\/svg+xml",
+                "SUBDIR": "iblock\/2f5\/5t7qmiqvhtz6tpkj8gpeesn558dcm06z",
+                "FILE_NAME": "gold3.svg",
+                "ORIGINAL_NAME": "gold3.svg",
+                "DESCRIPTION": "",
+                "HANDLER_ID": null,
+                "EXTERNAL_ID": "d77bd8eaf5c592fc55c05c840e85f627",
+                "~src": false,
+                "SRC": "\/upload\/iblock\/2f5\/5t7qmiqvhtz6tpkj8gpeesn558dcm06z\/gold3.svg"
+              },
+              "DESCRIPTION": "",
+              "VALUE_ENUM": null,
+              "SRC": "\/upload\/iblock\/2f5\/5t7qmiqvhtz6tpkj8gpeesn558dcm06z\/gold3.svg"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "IBLOCK_ID": "32",
+      "ID": "92",
+      "NAME": "ЦВЕТ ЛАПОК НА КАМНЕ",
+      "DEPTH_LEVEL": "1",
+      "IBLOCK_SECTION_ID": null,
+      "CODE": "",
+      "PICTURE": null,
+      "DETAIL_PICTURE": null,
+      "LEFT_MARGIN": "11",
+      "UF_URL": null,
+      "UF_CHECKBOXS": null,
+      "UF_PHOTO_ABOUT": null,
+      "QUESTIONS": [
+        {
+          "ID": "1288",
+          "IBLOCK_ID": "32",
+          "NAME": "БЕЛОЕ ЗОЛОТО",
+          "CODE": "",
+          "PREVIEW_PICTURE": null,
+          "IBLOCK_SECTION_ID": "92",
+          "DETAIL_PICTURE": null,
+          "SORT": "100",
+          "PREVIEW_TEXT": "",
+          "DETAIL_TEXT": "",
+          "PROPERIES": {
+            "FOTO": {
+              "NAME": "Фото",
+              "CODE": "FOTO",
+              "PROPERTY_TYPE": "F",
+              "VALUE": {
+                "ID": "3634",
+                "TIMESTAMP_X": {},
+                "MODULE_ID": "iblock",
+                "HEIGHT": "0",
+                "WIDTH": "0",
+                "FILE_SIZE": "347960",
+                "CONTENT_TYPE": "image\/svg+xml",
+                "SUBDIR": "iblock\/802\/jtoujaeheeci713tdxwd3bsz2li7dxs2",
+                "FILE_NAME": "gold1.svg",
+                "ORIGINAL_NAME": "gold1.svg",
+                "DESCRIPTION": "",
+                "HANDLER_ID": null,
+                "EXTERNAL_ID": "b575c1a0cc168d728e9df15a64ee4ff3",
+                "~src": false,
+                "SRC": "\/upload\/iblock\/802\/jtoujaeheeci713tdxwd3bsz2li7dxs2\/gold1.svg"
+              },
+              "DESCRIPTION": null,
+              "VALUE_ENUM": null,
+              "SRC": "\/upload\/iblock\/802\/jtoujaeheeci713tdxwd3bsz2li7dxs2\/gold1.svg"
+            }
+          }
+        },
+        {
+          "ID": "1287",
+          "IBLOCK_ID": "32",
+          "NAME": "ЖЕЛТОЕ ЗОЛОТО",
+          "CODE": "",
+          "PREVIEW_PICTURE": null,
+          "IBLOCK_SECTION_ID": "92",
+          "DETAIL_PICTURE": null,
+          "SORT": "200",
+          "PREVIEW_TEXT": "",
+          "DETAIL_TEXT": "",
+          "PROPERIES": {
+            "FOTO": {
+              "NAME": "Фото",
+              "CODE": "FOTO",
+              "PROPERTY_TYPE": "F",
+              "VALUE": {
+                "ID": "3633",
+                "TIMESTAMP_X": {},
+                "MODULE_ID": "iblock",
+                "HEIGHT": "0",
+                "WIDTH": "0",
+                "FILE_SIZE": "501680",
+                "CONTENT_TYPE": "image\/svg+xml",
+                "SUBDIR": "iblock\/690\/0eocbwobckbv8e00omtu26olbqsml2ke",
+                "FILE_NAME": "gold2.svg",
+                "ORIGINAL_NAME": "gold2.svg",
+                "DESCRIPTION": "",
+                "HANDLER_ID": null,
+                "EXTERNAL_ID": "3468d4da2dfbec73b73b7a6dfc00b8aa",
+                "~src": false,
+                "SRC": "\/upload\/iblock\/690\/0eocbwobckbv8e00omtu26olbqsml2ke\/gold2.svg"
+              },
+              "DESCRIPTION": null,
+              "VALUE_ENUM": null,
+              "SRC": "\/upload\/iblock\/690\/0eocbwobckbv8e00omtu26olbqsml2ke\/gold2.svg"
+            }
+          }
+        },
+        {
+          "ID": "1286",
+          "IBLOCK_ID": "32",
+          "NAME": "РОЗОВОЕ ЗОЛОТО",
+          "CODE": "",
+          "PREVIEW_PICTURE": null,
+          "IBLOCK_SECTION_ID": "92",
+          "DETAIL_PICTURE": null,
+          "SORT": "500",
+          "PREVIEW_TEXT": "",
+          "DETAIL_TEXT": "",
+          "PROPERIES": {
+            "FOTO": {
+              "NAME": "Фото",
+              "CODE": "FOTO",
+              "PROPERTY_TYPE": "F",
+              "VALUE": {
+                "ID": "3632",
+                "TIMESTAMP_X": {},
+                "MODULE_ID": "iblock",
+                "HEIGHT": "0",
+                "WIDTH": "0",
+                "FILE_SIZE": "509624",
+                "CONTENT_TYPE": "image\/svg+xml",
+                "SUBDIR": "iblock\/2f5\/5t7qmiqvhtz6tpkj8gpeesn558dcm06z",
+                "FILE_NAME": "gold3.svg",
+                "ORIGINAL_NAME": "gold3.svg",
+                "DESCRIPTION": "",
+                "HANDLER_ID": null,
+                "EXTERNAL_ID": "d77bd8eaf5c592fc55c05c840e85f627",
+                "~src": false,
+                "SRC": "\/upload\/iblock\/2f5\/5t7qmiqvhtz6tpkj8gpeesn558dcm06z\/gold3.svg"
+              },
+              "DESCRIPTION": null,
+              "VALUE_ENUM": null,
+              "SRC": "\/upload\/iblock\/2f5\/5t7qmiqvhtz6tpkj8gpeesn558dcm06z\/gold3.svg"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "IBLOCK_ID": "32",
+      "ID": "93",
+      "NAME": "НАДПИСЬ НА КОЛЬЦЕ",
+      "DEPTH_LEVEL": "1",
+      "IBLOCK_SECTION_ID": null,
+      "CODE": "",
+      "PICTURE": null,
+      "DETAIL_PICTURE": null,
+      "LEFT_MARGIN": "13",
+      "UF_URL": null,
+      "UF_CHECKBOXS": null,
+      "UF_PHOTO_ABOUT": null,
+      "QUESTIONS": [
+        {
+          "ID": "1290",
+          "IBLOCK_ID": "32",
+          "NAME": "Напишите что будет на кольце",
+          "CODE": "",
+          "PREVIEW_PICTURE": null,
+          "IBLOCK_SECTION_ID": "93",
+          "DETAIL_PICTURE": null,
+          "SORT": "500",
+          "PREVIEW_TEXT": "",
+          "DETAIL_TEXT": "",
+          "PROPERIES": {
+            "TEXTAREA": {
+              "NAME": "Textarea",
+              "CODE": "TEXTAREA",
+              "PROPERTY_TYPE": "L",
+              "VALUE": "Y",
+              "DESCRIPTION": null,
+              "VALUE_ENUM": "Y"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "IBLOCK_ID": "32",
+      "ID": "94",
+      "NAME": "РАЗМЕР КОЛЬЦА",
+      "DEPTH_LEVEL": "1",
+      "IBLOCK_SECTION_ID": null,
+      "CODE": "",
+      "PICTURE": null,
+      "DETAIL_PICTURE": null,
+      "LEFT_MARGIN": "15",
+      "UF_URL": null,
+      "UF_CHECKBOXS": "1",
+      "UF_PHOTO_ABOUT": null,
+      "QUESTIONS": [
+        {
+          "ID": "1291",
+          "IBLOCK_ID": "32",
+          "NAME": "18",
+          "CODE": "",
+          "PREVIEW_PICTURE": null,
+          "IBLOCK_SECTION_ID": "94",
+          "DETAIL_PICTURE": null,
+          "SORT": "500",
+          "PREVIEW_TEXT": "",
+          "DETAIL_TEXT": ""
+        },
+        {
+          "ID": "1292",
+          "IBLOCK_ID": "32",
+          "NAME": "20",
+          "CODE": "",
+          "PREVIEW_PICTURE": null,
+          "IBLOCK_SECTION_ID": "94",
+          "DETAIL_PICTURE": null,
+          "SORT": "500",
+          "PREVIEW_TEXT": "",
+          "DETAIL_TEXT": ""
+        },
+        {
+          "ID": "1293",
+          "IBLOCK_ID": "32",
+          "NAME": "30",
+          "CODE": "",
+          "PREVIEW_PICTURE": null,
+          "IBLOCK_SECTION_ID": "94",
+          "DETAIL_PICTURE": null,
+          "SORT": "500",
+          "PREVIEW_TEXT": "",
+          "DETAIL_TEXT": ""
+        }
+      ]
+    },
+    {
+      "IBLOCK_ID": "32",
+      "ID": "95",
+      "NAME": "ВЫБОР КАМНЯ",
+      "DEPTH_LEVEL": "1",
+      "IBLOCK_SECTION_ID": null,
+      "CODE": "",
+      "PICTURE": null,
+      "DETAIL_PICTURE": null,
+      "LEFT_MARGIN": "17",
+      "UF_URL": "\/local\/ajax\/stones.php",
+      "UF_CHECKBOXS": "0",
+      "UF_PHOTO_ABOUT": null
+    },
+    {
+      "IBLOCK_ID": "32",
+      "ID": "96",
+      "NAME": "ВАШЕ ИЗДЕЛИЕ",
+      "DEPTH_LEVEL": "1",
+      "IBLOCK_SECTION_ID": null,
+      "CODE": "",
+      "PICTURE": null,
+      "DETAIL_PICTURE": null,
+      "LEFT_MARGIN": "19",
+      "UF_URL": "\/local\/ajax\/addstones.php",
+      "UF_CHECKBOXS": "0",
+      "UF_PHOTO_ABOUT": null
+    }
+  ]
+}

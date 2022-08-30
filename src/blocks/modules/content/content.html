@@ -10,47 +10,25 @@
                             <div class="section_bl__title">Выбор огранки камня</div>
                         </div>
                         <form action="" class="section_bl__form" id="quiz1">
-                            <label for="step1_1" class="section_bl__label isActive">
-                                <input type="radio" name="step1" id="step1_1" value="Radiant" class="section_bl__radio" checked>
+                            <label 
+                                v-for="(question, index) in data[0].QUESTIONS" 
+                                v-bind:key="question.ID" 
+                                v-bind:for="question.ID" 
+                                class="section_bl__label" 
+                                v-bind:class="{isActive: selected.STONE_CUT ? selected.STONE_CUT === question.ID : index === 0}">
+                                <input 
+                                    type="radio" 
+                                    v-bind:name="data[0].ID" 
+                                    v-bind:id="question.ID" 
+                                    v-bind:value="question.ID" 
+                                    class="section_bl__radio" 
+                                    @change="selected.STONE_CUT = question.ID"
+                                    v-bind:checked="selected.STONE_CUT ? selected.STONE_CUT === question.ID : index === 0"
+                                >
                                 <div class="section_bl__img">
-                                    <img src="./img/krist1.svg" alt="Radiant">
+                                    <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
                                 </div>
-                                <span>Radiant</span>
-                            </label>
-                            <label for="step1_2" class="section_bl__label">
-                                <input type="radio" name="step1" id="step1_2" value="Emerald" class="section_bl__radio">
-                                <div class="section_bl__img">
-                                    <img src="./img/krist2.svg" alt="Emerald">
-                                </div>
-                                <span>Emerald</span>
-                            </label>
-                            <label for="step1_3" class="section_bl__label">
-                                <input type="radio" name="step1" id="step1_3" value="Marquise" class="section_bl__radio">
-                                <div class="section_bl__img">
-                                    <img src="./img/krist3.svg" alt="Marquise">
-                                </div>
-                                <span>Marquise</span>
-                            </label>
-                            <label for="step1_4" class="section_bl__label">
-                                <input type="radio" name="step1" id="step1_4" value="oval" class="section_bl__radio">
-                                <div class="section_bl__img">
-                                    <img src="./img/krist4.svg" alt="oval">
-                                </div>
-                                <span>oval</span>
-                            </label>
-                            <label for="step1_5" class="section_bl__label">
-                                <input type="radio" name="step1" id="step1_5" value="Pear" class="section_bl__radio">
-                                <div class="section_bl__img">
-                                    <img src="./img/krist5.svg" alt="Pear">
-                                </div>
-                                <span>Pear</span>
-                            </label>
-                            <label for="step1_6" class="section_bl__label">
-                                <input type="radio" name="step1" id="step1_6" value="Heart" class="section_bl__radio">
-                                <div class="section_bl__img">
-                                    <img src="./img/krist6.svg" alt="Heart">
-                                </div>
-                                <span>Heart</span>
+                                <span>{{ question.NAME }}</span>
                             </label>
                         </form>
                     </div>
@@ -117,33 +95,50 @@
                             <div class="section_bl__title">Выбор Стиля</div>
                         </div>
                         <form action="" class="section_bl__form" id="quiz2">
-                            <label for="step2_1" class="section_bl__label isActive">
-                                <input type="radio" name="step2" id="step2_1" value="солитер" class="section_bl__radio" checked>
+                            <template>
+                              
+                            </template>
+                            <label 
+                                v-for="(question, index) in data[1].QUESTIONS" 
+                                v-bind:key="question.ID" 
+                                v-if="!question.PROPERIES.OWN_CHOSE"
+                                v-bind:for="question.ID" 
+                                class="section_bl__label" 
+                                v-bind:class="{isActive: selected.STONE_STYLE ? selected.STONE_STYLE === question.ID : index === 0}">
+                                <input 
+                                    type="radio" 
+                                    v-bind:name="data[1].ID" 
+                                    v-bind:id="question.ID" 
+                                    v-bind:value="question.ID" 
+                                    class="section_bl__radio" 
+                                    @change="selected.STONE_STYLE = question.ID"
+                                    v-bind:checked="selected.STONE_STYLE ? selected.STONE_STYLE === question.ID : index === 0"
+                                >
                                 <div class="section_bl__img">
-                                    <img src="./img/krist1.svg" alt="солитер">
+                                    <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
                                 </div>
-                                <span>солитер</span>
-                            </label>
-                            <label for="step2_2" class="section_bl__label">
-                                <input type="radio" name="step2" id="step2_2" value="в паве бриллантов по кругу камня" class="section_bl__radio">
-                                <div class="section_bl__img">
-                                    <img src="./img/krist2.svg" alt="в паве бриллантов по кругу камня">
-                                </div>
-                                <span>в паве бриллантов по кругу камня</span>
-                            </label>
-                            <label for="step2_3" class="section_bl__label">
-                                <input type="radio" name="step2" id="step2_3" value="три бриллианта" class="section_bl__radio">
-                                <div class="section_bl__img">
-                                    <img src="./img/krist3.svg" alt="три бриллианта">
-                                </div>
-                                <span>три бриллианта</span>
+                                <span>{{ question.NAME }}</span>
                             </label>
                             <label for="step2_4" class="section_bl__label">
-                                <input type="radio" name="step2" id="step2_4" value="ОТправить Свой дизайн" class="section_bl__radio">
+                                <input 
+                                    type="file" 
+                                    name="step2" 
+                                    id="step2_4" 
+                                    class="section_bl__radio"
+                                    @change="(e) => {
+                                      if (e.target.value) {
+                                        selected.STONE_STYLE = null
+                                        selected.OWN_STONE_STYLE = true
+                                      } else {
+                                        selected.OWN_STONE_STYLE = null
+                                      }
+                                    }"
+                                >
                                 <div class="section_bl__img">
                                     <img src="./img/krist7.svg" alt="ОТправить Свой дизайн">
                                 </div>
-                                <span>ОТправить Свой дизайн</span>
+                                <span>{{ selected.OWN_STONE_STYLE ? "Загружен" : "Отправить Свой дизайн" }}</span>
+                                <span>{{ selected.OWN_STONE_STYLE ? "Удалить" : "" }}</span>
                             </label>
                         </form>
                     </div>
@@ -207,22 +202,28 @@
                         <h1 class="section_bl__h1">Создай мечту</h1>
                         <div class="section_bl__step">
                             <div class="section_bl__numb"><span>03</span></div>
-                            <div class="section_bl__title">ВНаличие подножки</div>
+                            <div class="section_bl__title">Наличие подножки</div>
                         </div>
                         <form action="" class="section_bl__form" id="quiz3">
-                            <label for="step3_1" class="section_bl__label isActive">
-                                <input type="radio" name="step3" id="step3_1" value="солитер" class="section_bl__radio" checked>
+                            <label 
+                                v-for="(question, index) in data[2].QUESTIONS" 
+                                v-bind:key="question.ID" 
+                                v-bind:for="question.ID" 
+                                class="section_bl__label" 
+                                v-bind:class="{isActive: selected.STONE_FOOTBOARD ? selected.STONE_FOOTBOARD === question.ID : index === 0}">
+                                <input 
+                                    type="radio" 
+                                    v-bind:name="data[2].ID" 
+                                    v-bind:id="question.ID" 
+                                    v-bind:value="question.ID" 
+                                    class="section_bl__radio" 
+                                    @change="selected.STONE_FOOTBOARD = question.ID"
+                                    v-bind:checked="selected.STONE_FOOTBOARD ? selected.STONE_FOOTBOARD === question.ID : index === 0"
+                                >
                                 <div class="section_bl__img">
-                                    <img src="./img/krist1.svg" alt="солитер">
+                                    <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
                                 </div>
-                                <span>На подножке</span>
-                            </label>
-                            <label for="step3_2" class="section_bl__label">
-                                <input type="radio" name="step3" id="step3_2" value="в паве бриллантов по кругу камня" class="section_bl__radio">
-                                <div class="section_bl__img">
-                                    <img src="./img/krist2.svg" alt="в паве бриллантов по кругу камня">
-                                </div>
-                                <span>без подножки</span>
+                                <span>{{ question.NAME }}</span>
                             </label>
                         </form>
                     </div>
@@ -289,29 +290,26 @@
                             <div class="section_bl__title">Наличие бриллиантов на шинке</div>
                         </div>
                         <form action="" class="section_bl__form" id="quiz4">
-                            <label for="step4_1" class="section_bl__label isActive">
-                                <input type="radio" name="step4" id="step4_1" value="солитер" class="section_bl__radio" checked>
+                            <label 
+                                v-for="(question, index) in data[3].QUESTIONS" 
+                                v-bind:key="question.ID" 
+                                v-bind:for="question.ID" 
+                                class="section_bl__label" 
+                                v-bind:class="{isActive: selected.DIAMONDS_ON_SHINKO ? selected.DIAMONDS_ON_SHINKO === question.ID : index === 0}">
+                                <input 
+                                    type="radio" 
+                                    v-bind:name="data[3].ID" 
+                                    v-bind:id="question.ID" 
+                                    v-bind:value="question.ID" 
+                                    class="section_bl__radio" 
+                                    @change="selected.DIAMONDS_ON_SHINKO = question.ID"
+                                    v-bind:checked="selected.DIAMONDS_ON_SHINKO ? selected.DIAMONDS_ON_SHINKO === question.ID : index === 0"
+                                >
                                 <div class="section_bl__img">
-                                    <img src="./img/krist1.svg" alt="солитер">
+                                    <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
                                 </div>
-                                <span>Без бриллиантов </span>
-                                <div class="section_bl__prc">+ 250$</div>
-                            </label>
-                            <label for="step4_2" class="section_bl__label">
-                                <input type="radio" name="step3" id="step4_2" value="в паве бриллантов по кругу камня" class="section_bl__radio">
-                                <div class="section_bl__img">
-                                    <img src="./img/krist2.svg" alt="в паве бриллантов по кругу камня">
-                                </div>
-                                <span>Один ряд бриллиантов </span>
-                                <div class="section_bl__prc">+ 500$</div>
-                            </label>
-                            <label for="step4_3" class="section_bl__label">
-                                <input type="radio" name="step3" id="step4_3" value="в паве бриллантов по кругу камня" class="section_bl__radio">
-                                <div class="section_bl__img">
-                                    <img src="./img/krist3.svg" alt="в паве бриллантов по кругу камня">
-                                </div>
-                                <span>Три ряда бриллиантов </span>
-                                <div class="section_bl__prc">+ 1500$</div>
+                                <span>{{ question.NAME }}</span>
+                                <div class="section_bl__prc">+ {{ question.PROPERIES.PRICE.VALUE }}{{ question.PROPERIES.CURENCY.VALUE === "USD" ? "$" : "" }}</div>
                             </label>
                         </form>
                     </div>
@@ -378,26 +376,25 @@
                             <div class="section_bl__title">Выберите материал</div>
                         </div>
                         <form action="" class="section_bl__form" id="quiz5">
-                            <label for="step5_1" class="section_bl__label isActive">
-                                <input type="radio" name="step5" id="step5_1" value="солитер" class="section_bl__radio" checked>
+                            <label 
+                                v-for="(question, index) in data[4].QUESTIONS" 
+                                v-bind:key="question.ID" 
+                                v-bind:for="question.ID" 
+                                class="section_bl__label" 
+                                v-bind:class="{isActive: selected.MATERIAL ? selected.MATERIAL === question.ID : index === 0}">
+                                <input 
+                                    type="radio" 
+                                    v-bind:name="data[4].ID" 
+                                    v-bind:id="question.ID" 
+                                    v-bind:value="question.ID" 
+                                    class="section_bl__radio" 
+                                    @change="selected.MATERIAL = question.ID"
+                                    v-bind:checked="selected.MATERIAL ? selected.MATERIAL === question.ID : index === 0"
+                                >
                                 <div class="section_bl__img">
-                                    <img src="./img/gold1.svg" alt="солитер">
+                                    <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
                                 </div>
-                                <span>Белое золото</span>
-                            </label>
-                            <label for="step5_2" class="section_bl__label">
-                                <input type="radio" name="step3" id="step5_2" value="в паве бриллантов по кругу камня" class="section_bl__radio">
-                                <div class="section_bl__img">
-                                    <img src="./img/gold2.svg" alt="в паве бриллантов по кругу камня">
-                                </div>
-                                <span>Желтое золото</span>
-                            </label>
-                            <label for="step5_3" class="section_bl__label">
-                                <input type="radio" name="step3" id="step5_3" value="в паве бриллантов по кругу камня" class="section_bl__radio">
-                                <div class="section_bl__img">
-                                    <img src="./img/gold3.svg" alt="в паве бриллантов по кругу камня">
-                                </div>
-                                <span>Розовое золото</span>
+                                <span>{{ question.NAME }}</span>
                             </label>
                         </form>
                     </div>
@@ -464,26 +461,25 @@
                             <div class="section_bl__title">Цвет лапок на камне</div>
                         </div>
                         <form action="" class="section_bl__form" id="quiz6">
-                            <label for="step6_1" class="section_bl__label isActive">
-                                <input type="radio" name="step6" id="step6_1" value="солитер" class="section_bl__radio" checked>
+                            <label 
+                                v-for="(question, index) in data[5].QUESTIONS" 
+                                v-bind:key="question.ID" 
+                                v-bind:for="question.ID" 
+                                class="section_bl__label" 
+                                v-bind:class="{isActive: selected.COLOR_OF_PAWS ? selected.COLOR_OF_PAWS === question.ID : index === 0}">
+                                <input 
+                                    type="radio" 
+                                    v-bind:name="data[5].ID" 
+                                    v-bind:id="question.ID" 
+                                    v-bind:value="question.ID" 
+                                    class="section_bl__radio" 
+                                    @change="selected.COLOR_OF_PAWS = question.ID"
+                                    v-bind:checked="selected.COLOR_OF_PAWS ? selected.COLOR_OF_PAWS === question.ID : index === 0"
+                                >
                                 <div class="section_bl__img">
-                                    <img src="./img/gold1.svg" alt="солитер">
+                                    <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
                                 </div>
-                                <span>Белое золото</span>
-                            </label>
-                            <label for="step6_2" class="section_bl__label">
-                                <input type="radio" name="step3" id="step6_2" value="в паве бриллантов по кругу камня" class="section_bl__radio">
-                                <div class="section_bl__img">
-                                    <img src="./img/gold2.svg" alt="в паве бриллантов по кругу камня">
-                                </div>
-                                <span>Желтое золото</span>
-                            </label>
-                            <label for="step6_3" class="section_bl__label">
-                                <input type="radio" name="step3" id="step6_3" value="в паве бриллантов по кругу камня" class="section_bl__radio">
-                                <div class="section_bl__img">
-                                    <img src="./img/gold3.svg" alt="в паве бриллантов по кругу камня">
-                                </div>
-                                <span>Розовое золото</span>
+                                <span>{{ question.NAME }}</span>
                             </label>
                         </form>
                     </div>
@@ -550,7 +546,7 @@
                             <div class="section_bl__title">Надпись на кольце</div>
                         </div>
                         <form action="" class="section_bl__form" id="quiz6">
-                            <textarea placeholder="Напишите что будет на кольце"></textarea>
+                            <textarea v-model="selected.TEXT" placeholder="Напишите что будет на кольце"></textarea>
                         </form>
                     </div>
                     <div class="section_bl__r-side">
@@ -616,69 +612,23 @@
                             <div class="section_bl__title">Размер кольца</div>
                         </div>
                         <form action="" class="section_bl__form" id="quiz1">
-                            <div class="radio">
-                                <input class="custom-radio" type="radio" id="step8_1" name="step8" value="18.00">
-                                <label for="step8_1">18.00</label>
-                            </div>
-                            <div class="radio">
-                                <input class="custom-radio" type="radio" id="step8_2" name="step8" value="20.00">
-                                <label for="step8_2">20.00</label>
-                            </div>
-                            <div class="radio">
-                                <input class="custom-radio" type="radio" id="step8_3" name="step8" value="30.00">
-                                <label for="step8_3">30.00</label>
-                            </div>
-                            <div class="radio">
-                                <input class="custom-radio" type="radio" id="step8_4" name="step8" value="32.00">
-                                <label for="step8_4">32.00</label>
-                            </div>
-                            <div class="radio">
-                                <input class="custom-radio" type="radio" id="step8_5" name="step8" value="34.00">
-                                <label for="step8_5">34.00</label>
-                            </div>
-                            <div class="radio">
-                                <input class="custom-radio" type="radio" id="step8_6" name="step8" value="35.00">
-                                <label for="step8_6">35.00</label>
-                            </div>
-                            <div class="radio">
-                                <input class="custom-radio" type="radio" id="step8_7" name="step8" value="36.00">
-                                <label for="step8_7">36.00</label>
-                            </div>
-                            <div class="radio">
-                                <input class="custom-radio" type="radio" id="step8_8" name="step8" value="36.50">
-                                <label for="step8_8">36.50</label>
-                            </div>
-                            <div class="radio">
-                                <input class="custom-radio" type="radio" id="step8_9" name="step8" value="18.00">
-                                <label for="step8_9">18.00</label>
-                            </div>
-                            <div class="radio">
-                                <input class="custom-radio" type="radio" id="step8_10" name="step8" value="20.00">
-                                <label for="step8_10">20.00</label>
-                            </div>
-                            <div class="radio">
-                                <input class="custom-radio" type="radio" id="step8_11" name="step8" value="30.00">
-                                <label for="step8_11">30.00</label>
-                            </div>
-                            <div class="radio">
-                                <input class="custom-radio" type="radio" id="step8_12" name="step8" value="32.00">
-                                <label for="step8_12">32.00</label>
-                            </div>
-                            <div class="radio">
-                                <input class="custom-radio" type="radio" id="step8_13" name="step8" value="34.00">
-                                <label for="step8_13">34.00</label>
-                            </div>
-                            <div class="radio">
-                                <input class="custom-radio" type="radio" id="step8_14" name="step8" value="35.00">
-                                <label for="step8_14">35.00</label>
-                            </div>
-                            <div class="radio">
-                                <input class="custom-radio" type="radio" id="step8_15" name="step8" value="36.00">
-                                <label for="step8_15">36.00</label>
-                            </div>
-                            <div class="radio">
-                                <input class="custom-radio" type="radio" id="step8_16" name="step8" value="36.50">
-                                <label for="step8_16">36.50</label>
+                            <div 
+                                v-for="(question, index) in data[7].QUESTIONS" 
+                                v-bind:key="question.ID" 
+                                class="radio"
+                            >
+                                <input 
+                                    type="radio" 
+                                    v-bind:name="data[7].ID" 
+                                    v-bind:id="question.ID" 
+                                    v-bind:value="question.ID" 
+                                    class="custom-radio" 
+                                    @change="selected.SIZE = question.ID"
+                                    v-bind:checked="selected.SIZE ? selected.SIZE === question.ID : index === 0"
+                                >
+                                <label 
+                                    v-bind:for="question.ID" 
+                                >{{ question.NAME }}</label>
                             </div>
                         </form>
                     </div>
