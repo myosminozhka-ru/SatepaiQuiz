@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satepai Quiz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap&_v=20220830114310" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css?_v=20220830114310">
+</head>
+<body>
+    <div class="wrapper" id="app">
+        <main class="steps center_block">
+    <div class="steps__in">
+        <div class="content__in step_1 isActive" data-screen="step_1">
+            <div class="content__quiz">
+                <section class="section_bl">
+                    <div class="section_bl__l-side">
+                        <h1 class="section_bl__h1">Создай мечту</h1>
+                        <div class="section_bl__step">
+                            <div class="section_bl__numb"><span>01</span></div>
+                            <div class="section_bl__title">Выбор огранки камня</div>
+                        </div>
+                        <form action="" class="section_bl__form" id="quiz1">
+                            <label for="step1_1" class="section_bl__label isActive">
+                                <input type="radio" name="step1" id="step1_1" value="Radiant" class="section_bl__radio" checked>
+                                <div class="section_bl__img">
+                                    <img src="./img/krist1.svg" alt="Radiant">
+                                </div>
+                                <span>Radiant</span>
+                            </label>
+                            <label for="step1_2" class="section_bl__label">
+                                <input type="radio" name="step1" id="step1_2" value="Emerald" class="section_bl__radio">
+                                <div class="section_bl__img">
+                                    <img src="./img/krist2.svg" alt="Emerald">
+                                </div>
+                                <span>Emerald</span>
+                            </label>
+                            <label for="step1_3" class="section_bl__label">
+                                <input type="radio" name="step1" id="step1_3" value="Marquise" class="section_bl__radio">
+                                <div class="section_bl__img">
+                                    <img src="./img/krist3.svg" alt="Marquise">
+                                </div>
+                                <span>Marquise</span>
+                            </label>
+                            <label for="step1_4" class="section_bl__label">
+                                <input type="radio" name="step1" id="step1_4" value="oval" class="section_bl__radio">
+                                <div class="section_bl__img">
+                                    <img src="./img/krist4.svg" alt="oval">
+                                </div>
+                                <span>oval</span>
+                            </label>
+                            <label for="step1_5" class="section_bl__label">
+                                <input type="radio" name="step1" id="step1_5" value="Pear" class="section_bl__radio">
+                                <div class="section_bl__img">
+                                    <img src="./img/krist5.svg" alt="Pear">
+                                </div>
+                                <span>Pear</span>
+                            </label>
+                            <label for="step1_6" class="section_bl__label">
+                                <input type="radio" name="step1" id="step1_6" value="Heart" class="section_bl__radio">
+                                <div class="section_bl__img">
+                                    <img src="./img/krist6.svg" alt="Heart">
+                                </div>
+                                <span>Heart</span>
+                            </label>
+                        </form>
+                    </div>
+                    <div class="section_bl__r-side">
+                        <div class="tabs_block">
+                            <div class="review">
+                                <div class="review__tabs">
+                                    <div class="review__close"></div>
+                                    <ul>
+                                        <li class="review__btn isActive" id="review__block-1"><span>Интерактив</span></li>
+                                        <li class="review__btn" id="review__block-2"><span>Фото</span></li>
+                                        <li class="review__btn" id="review__block-3"><span>Видео</span></li>
+                                    </ul>
+                                </div>
+                                <div class="review__blocks">
+                                    <div class="review__block review__block-1 isActive">
+                                        <!-- <iframe src="soliter.html" allowfullscreen frameborder="0" scrolling="no"></iframe> -->
+                                    </div>
+                                    <div class="review__block review__block-2">
+                                        <div class="sl sl_js">
+                                            <div class="sl__img"><picture><source srcset="./img/ring1.webp" type="image/webp"><img src="./img/ring1.png" alt=""></picture></div>
+                                            <div class="sl__img"><picture><source srcset="./img/ring1.webp" type="image/webp"><img src="./img/ring1.png" alt=""></picture></div>
+                                            <div class="sl__img"><picture><source srcset="./img/ring1.webp" type="image/webp"><img src="./img/ring1.png" alt=""></picture></div>
+                                        </div>
+                                    </div>
+                                    <div class="review__block review__block-3">
+                                        <video controls="controls" poster="video/duel.jpg">
+                                            <source src="./files/pv.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="content__button">
+                <div class="navig">
+                    <div class="navig__back">Назад</div>
+                    <div class="navig__dots">
+                        <div class="navig__dot isActive"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                    </div>
+                    <div class="navig__next" data-target="step_2" @click="mainContent.chooseScreen('step_2').apply(mainContent)">Далее</div>
+                </div>
+                <button class="section_bl__btn">Связаться с нами</button>
+            </div>
+        </div>
+        <div class="content__in center_block step_2" data-screen="step_2">
+            <div class="content__quiz">
+                <section class="section_bl">
+                    <div class="section_bl__l-side">
+                        <h1 class="section_bl__h1">Создай мечту</h1>
+                        <div class="section_bl__step">
+                            <div class="section_bl__numb"><span>02</span></div>
+                            <div class="section_bl__title">Выбор Стиля</div>
+                        </div>
+                        <form action="" class="section_bl__form" id="quiz2">
+                            <label for="step2_1" class="section_bl__label isActive">
+                                <input type="radio" name="step2" id="step2_1" value="солитер" class="section_bl__radio" checked>
+                                <div class="section_bl__img">
+                                    <img src="./img/krist1.svg" alt="солитер">
+                                </div>
+                                <span>солитер</span>
+                            </label>
+                            <label for="step2_2" class="section_bl__label">
+                                <input type="radio" name="step2" id="step2_2" value="в паве бриллантов по кругу камня" class="section_bl__radio">
+                                <div class="section_bl__img">
+                                    <img src="./img/krist2.svg" alt="в паве бриллантов по кругу камня">
+                                </div>
+                                <span>в паве бриллантов по кругу камня</span>
+                            </label>
+                            <label for="step2_3" class="section_bl__label">
+                                <input type="radio" name="step2" id="step2_3" value="три бриллианта" class="section_bl__radio">
+                                <div class="section_bl__img">
+                                    <img src="./img/krist3.svg" alt="три бриллианта">
+                                </div>
+                                <span>три бриллианта</span>
+                            </label>
+                            <label for="step2_4" class="section_bl__label">
+                                <input type="radio" name="step2" id="step2_4" value="ОТправить Свой дизайн" class="section_bl__radio">
+                                <div class="section_bl__img">
+                                    <img src="./img/krist7.svg" alt="ОТправить Свой дизайн">
+                                </div>
+                                <span>ОТправить Свой дизайн</span>
+                            </label>
+                        </form>
+                    </div>
+                    <div class="section_bl__r-side">
+                        <div class="tabs_block">
+                            <div class="review">
+                                <div class="review__tabs">
+                                    <div class="review__close"></div>
+                                    <ul>
+                                        <li class="review__btn isActive" id="review__block-1"><span>Интерактив</span></li>
+                                        <li class="review__btn" id="review__block-2"><span>Фото</span></li>
+                                        <li class="review__btn" id="review__block-3"><span>Видео</span></li>
+                                    </ul>
+                                </div>
+                                <div class="review__blocks">
+                                    <div class="review__block review__block-1 isActive">
+                                        <!-- <iframe src="soliter.html" allowfullscreen frameborder="0" scrolling="no"></iframe> -->
+                                    </div>
+                                    <div class="review__block review__block-2">
+                                        <div class="sl sl_js">
+                                            <div class="sl__img"><picture><source srcset="./img/ring1.webp" type="image/webp"><img src="./img/ring1.png" alt=""></picture></div>
+                                            <div class="sl__img"><picture><source srcset="./img/ring1.webp" type="image/webp"><img src="./img/ring1.png" alt=""></picture></div>
+                                            <div class="sl__img"><picture><source srcset="./img/ring1.webp" type="image/webp"><img src="./img/ring1.png" alt=""></picture></div>
+                                        </div>
+                                    </div>
+                                    <div class="review__block review__block-3">
+                                        <video controls="controls" poster="video/duel.jpg">
+                                            <source src="./files/pv.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="content__button">
+                <div class="navig">
+                    <div class="navig__back" data-target="step_1" data-back="true" @click="mainContent.chooseScreen('step_1').apply(mainContent)">Назад</div>
+                    <div class="navig__dots">
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot isActive"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                    </div>
+                    <div class="navig__next" data-target="step_3" @click="mainContent.chooseScreen('step_3').apply(mainContent)">Далее</div>
+                </div>
+                <button class="section_bl__btn">Связаться с нами</button>
+            </div>
+        </div>
+        <div class="content__in center_block step_3" data-screen="step_3">
+            <div class="content__quiz">
+                <section class="section_bl">
+                    <div class="section_bl__l-side">
+                        <h1 class="section_bl__h1">Создай мечту</h1>
+                        <div class="section_bl__step">
+                            <div class="section_bl__numb"><span>03</span></div>
+                            <div class="section_bl__title">ВНаличие подножки</div>
+                        </div>
+                        <form action="" class="section_bl__form" id="quiz3">
+                            <label for="step3_1" class="section_bl__label isActive">
+                                <input type="radio" name="step3" id="step3_1" value="солитер" class="section_bl__radio" checked>
+                                <div class="section_bl__img">
+                                    <img src="./img/krist1.svg" alt="солитер">
+                                </div>
+                                <span>На подножке</span>
+                            </label>
+                            <label for="step3_2" class="section_bl__label">
+                                <input type="radio" name="step3" id="step3_2" value="в паве бриллантов по кругу камня" class="section_bl__radio">
+                                <div class="section_bl__img">
+                                    <img src="./img/krist2.svg" alt="в паве бриллантов по кругу камня">
+                                </div>
+                                <span>без подножки</span>
+                            </label>
+                        </form>
+                    </div>
+                    <div class="section_bl__r-side">
+                        <div class="tabs_block">
+                            <div class="review">
+                                <div class="review__tabs">
+                                    <div class="review__close"></div>
+                                    <ul>
+                                        <li class="review__btn isActive" id="review__block-1"><span>Интерактив</span></li>
+                                        <li class="review__btn" id="review__block-2"><span>Фото</span></li>
+                                        <li class="review__btn" id="review__block-3"><span>Видео</span></li>
+                                    </ul>
+                                </div>
+                                <div class="review__blocks">
+                                    <div class="review__block review__block-1 isActive">
+                                        <!-- <iframe src="soliter.html" allowfullscreen frameborder="0" scrolling="no"></iframe> -->
+                                    </div>
+                                    <div class="review__block review__block-2">
+                                        <div class="sl sl_js">
+                                            <div class="sl__img"><picture><source srcset="./img/ring1.webp" type="image/webp"><img src="./img/ring1.png" alt=""></picture></div>
+                                            <div class="sl__img"><picture><source srcset="./img/ring1.webp" type="image/webp"><img src="./img/ring1.png" alt=""></picture></div>
+                                            <div class="sl__img"><picture><source srcset="./img/ring1.webp" type="image/webp"><img src="./img/ring1.png" alt=""></picture></div>
+                                        </div>
+                                    </div>
+                                    <div class="review__block review__block-3">
+                                        <video controls="controls" poster="video/duel.jpg">
+                                            <source src="./files/pv.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="content__button">
+                <div class="navig">
+                    <div class="navig__back" data-target="step_2" data-back="true" @click="mainContent.chooseScreen('step_2').apply(mainContent)">Назад</div>
+                    <div class="navig__dots">
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot isActive"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                    </div>
+                    <div class="navig__next" data-target="step_4" @click="mainContent.chooseScreen('step_4').apply(mainContent)">Далее</div>
+                </div>
+                <button class="section_bl__btn">Связаться с нами</button>
+            </div>
+        </div>
+        <div class="content__in center_block step_4" data-screen="step_4">
+            <div class="content__quiz">
+                <section class="section_bl">
+                    <div class="section_bl__l-side">
+                        <h1 class="section_bl__h1">Создай мечту</h1>
+                        <div class="section_bl__step">
+                            <div class="section_bl__numb"><span>04</span></div>
+                            <div class="section_bl__title">Наличие бриллиантов на шинке</div>
+                        </div>
+                        <form action="" class="section_bl__form" id="quiz4">
+                            <label for="step4_1" class="section_bl__label isActive">
+                                <input type="radio" name="step4" id="step4_1" value="солитер" class="section_bl__radio" checked>
+                                <div class="section_bl__img">
+                                    <img src="./img/krist1.svg" alt="солитер">
+                                </div>
+                                <span>Без бриллиантов </span>
+                                <div class="section_bl__prc">+ 250$</div>
+                            </label>
+                            <label for="step4_2" class="section_bl__label">
+                                <input type="radio" name="step3" id="step4_2" value="в паве бриллантов по кругу камня" class="section_bl__radio">
+                                <div class="section_bl__img">
+                                    <img src="./img/krist2.svg" alt="в паве бриллантов по кругу камня">
+                                </div>
+                                <span>Один ряд бриллиантов </span>
+                                <div class="section_bl__prc">+ 500$</div>
+                            </label>
+                            <label for="step4_3" class="section_bl__label">
+                                <input type="radio" name="step3" id="step4_3" value="в паве бриллантов по кругу камня" class="section_bl__radio">
+                                <div class="section_bl__img">
+                                    <img src="./img/krist3.svg" alt="в паве бриллантов по кругу камня">
+                                </div>
+                                <span>Три ряда бриллиантов </span>
+                                <div class="section_bl__prc">+ 1500$</div>
+                            </label>
+                        </form>
+                    </div>
+                    <div class="section_bl__r-side">
+                        <div class="tabs_block">
+                            <div class="review">
+                                <div class="review__tabs">
+                                    <div class="review__close"></div>
+                                    <ul>
+                                        <li class="review__btn isActive" id="review__block-1"><span>Интерактив</span></li>
+                                        <li class="review__btn" id="review__block-2"><span>Фото</span></li>
+                                        <li class="review__btn" id="review__block-3"><span>Видео</span></li>
+                                    </ul>
+                                </div>
+                                <div class="review__blocks">
+                                    <div class="review__block review__block-1 isActive">
+                                        <!-- <iframe src="soliter.html" allowfullscreen frameborder="0" scrolling="no"></iframe> -->
+                                    </div>
+                                    <div class="review__block review__block-2">
+                                        <div class="sl sl_js">
+                                            <div class="sl__img"><picture><source srcset="./img/ring1.webp" type="image/webp"><img src="./img/ring1.png" alt=""></picture></div>
+                                            <div class="sl__img"><picture><source srcset="./img/ring1.webp" type="image/webp"><img src="./img/ring1.png" alt=""></picture></div>
+                                            <div class="sl__img"><picture><source srcset="./img/ring1.webp" type="image/webp"><img src="./img/ring1.png" alt=""></picture></div>
+                                        </div>
+                                    </div>
+                                    <div class="review__block review__block-3">
+                                        <video controls="controls" poster="video/duel.jpg">
+                                            <source src="./files/pv.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="content__button">
+                <div class="navig">
+                    <div class="navig__back" data-target="step_3" data-back="true" @click="mainContent.chooseScreen('step_3').apply(mainContent)">Назад</div>
+                    <div class="navig__dots">
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot isActive"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                    </div>
+                    <div class="navig__next" data-target="step_5" @click="mainContent.chooseScreen('step_5').apply(mainContent)">Далее</div>
+                </div>
+                <button class="section_bl__btn">Связаться с нами</button>
+            </div>
+        </div>
+        <div class="content__in center_block step_5" data-screen="step_5">
+            <div class="content__quiz">
+                <section class="section_bl">
+                    <div class="section_bl__l-side">
+                        <h1 class="section_bl__h1">Создай мечту</h1>
+                        <div class="section_bl__step">
+                            <div class="section_bl__numb"><span>05</span></div>
+                            <div class="section_bl__title">Выберите материал</div>
+                        </div>
+                        <form action="" class="section_bl__form" id="quiz5">
+                            <label for="step5_1" class="section_bl__label isActive">
+                                <input type="radio" name="step5" id="step5_1" value="солитер" class="section_bl__radio" checked>
+                                <div class="section_bl__img">
+                                    <img src="./img/gold1.svg" alt="солитер">
+                                </div>
+                                <span>Белое золото</span>
+                            </label>
+                            <label for="step5_2" class="section_bl__label">
+                                <input type="radio" name="step3" id="step5_2" value="в паве бриллантов по кругу камня" class="section_bl__radio">
+                                <div class="section_bl__img">
+                                    <img src="./img/gold2.svg" alt="в паве бриллантов по кругу камня">
+                                </div>
+                                <span>Желтое золото</span>
+                            </label>
+                            <label for="step5_3" class="section_bl__label">
+                                <input type="radio" name="step3" id="step5_3" value="в паве бриллантов по кругу камня" class="section_bl__radio">
+                                <div class="section_bl__img">
+                                    <img src="./img/gold3.svg" alt="в паве бриллантов по кругу камня">
+                                </div>
+                                <span>Розовое золото</span>
+                            </label>
+                        </form>
+                    </div>
+                    <div class="section_bl__r-side">
+                        <div class="tabs_block">
+                            <div class="review">
+                                <div class="review__tabs">
+                                    <div class="review__close"></div>
+                                    <ul>
+                                        <li class="review__btn isActive" id="review__block-1"><span>Интерактив</span></li>
+                                        <li class="review__btn" id="review__block-2"><span>Фото</span></li>
+                                        <li class="review__btn" id="review__block-3"><span>Видео</span></li>
+                                    </ul>
+                                </div>
+                                <div class="review__blocks">
+                                    <div class="review__block review__block-1 isActive">
+                                        <!-- <iframe src="soliter.html" allowfullscreen frameborder="0" scrolling="no"></iframe> -->
+                                    </div>
+                                    <div class="review__block review__block-2">
+                                        <div class="sl sl_js">
+                                            <div class="sl__img"><picture><source srcset="./img/ring1.webp" type="image/webp"><img src="./img/ring1.png" alt=""></picture></div>
+                                            <div class="sl__img"><picture><source srcset="./img/ring1.webp" type="image/webp"><img src="./img/ring1.png" alt=""></picture></div>
+                                            <div class="sl__img"><picture><source srcset="./img/ring1.webp" type="image/webp"><img src="./img/ring1.png" alt=""></picture></div>
+                                        </div>
+                                    </div>
+                                    <div class="review__block review__block-3">
+                                        <video controls="controls" poster="video/duel.jpg">
+                                            <source src="./files/pv.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="content__button">
+                <div class="navig">
+                    <div class="navig__back" data-target="step_4" data-back="true" @click="mainContent.chooseScreen('step_4').apply(mainContent)">Назад</div>
+                    <div class="navig__dots">
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot isActive"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                    </div>
+                    <div class="navig__next" data-target="step_6" @click="mainContent.chooseScreen('step_6').apply(mainContent)">Далее</div>
+                </div>
+                <button class="section_bl__btn">Связаться с нами</button>
+            </div>
+        </div>
+        <div class="content__in center_block step_6" data-screen="step_6">
+            <div class="content__quiz">
+                <section class="section_bl">
+                    <div class="section_bl__l-side">
+                        <h1 class="section_bl__h1">Создай мечту</h1>
+                        <div class="section_bl__step">
+                            <div class="section_bl__numb"><span>06</span></div>
+                            <div class="section_bl__title">Цвет лапок на камне</div>
+                        </div>
+                        <form action="" class="section_bl__form" id="quiz6">
+                            <label for="step6_1" class="section_bl__label isActive">
+                                <input type="radio" name="step6" id="step6_1" value="солитер" class="section_bl__radio" checked>
+                                <div class="section_bl__img">
+                                    <img src="./img/gold1.svg" alt="солитер">
+                                </div>
+                                <span>Белое золото</span>
+                            </label>
+                            <label for="step6_2" class="section_bl__label">
+                                <input type="radio" name="step3" id="step6_2" value="в паве бриллантов по кругу камня" class="section_bl__radio">
+                                <div class="section_bl__img">
+                                    <img src="./img/gold2.svg" alt="в паве бриллантов по кругу камня">
+                                </div>
+                                <span>Желтое золото</span>
+                            </label>
+                            <label for="step6_3" class="section_bl__label">
+                                <input type="radio" name="step3" id="step6_3" value="в паве бриллантов по кругу камня" class="section_bl__radio">
+                                <div class="section_bl__img">
+                                    <img src="./img/gold3.svg" alt="в паве бриллантов по кругу камня">
+                                </div>
+                                <span>Розовое золото</span>
+                            </label>
+                        </form>
+                    </div>
+                    <div class="section_bl__r-side">
+                        <div class="tabs_block">
+                            <div class="review">
+                                <div class="review__tabs">
+                                    <div class="review__close"></div>
+                                    <ul>
+                                        <li class="review__btn isActive" id="review__block-1"><span>Интерактив</span></li>
+                                        <li class="review__btn" id="review__block-2"><span>Фото</span></li>
+                                        <li class="review__btn" id="review__block-3"><span>Видео</span></li>
+                                    </ul>
+                                </div>
+                                <div class="review__blocks">
+                                    <div class="review__block review__block-1 isActive">
+                                        <!-- <iframe src="soliter.html" allowfullscreen frameborder="0" scrolling="no"></iframe> -->
+                                    </div>
+                                    <div class="review__block review__block-2">
+                                        <div class="sl sl_js">
+                                            <div class="sl__img"><picture><source srcset="./img/ring1.webp" type="image/webp"><img src="./img/ring1.png" alt=""></picture></div>
+                                            <div class="sl__img"><picture><source srcset="./img/ring1.webp" type="image/webp"><img src="./img/ring1.png" alt=""></picture></div>
+                                            <div class="sl__img"><picture><source srcset="./img/ring1.webp" type="image/webp"><img src="./img/ring1.png" alt=""></picture></div>
+                                        </div>
+                                    </div>
+                                    <div class="review__block review__block-3">
+                                        <video controls="controls" poster="video/duel.jpg">
+                                            <source src="./files/pv.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="content__button">
+                <div class="navig">
+                    <div class="navig__back" data-target="step_5" data-back="true" @click="mainContent.chooseScreen('step_5').apply(mainContent)">Назад</div>
+                    <div class="navig__dots">
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot isActive"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                    </div>
+                    <div class="navig__next" data-target="step_7" @click="mainContent.chooseScreen('step_7').apply(mainContent)">Далее</div>
+                </div>
+                <button class="section_bl__btn">Связаться с нами</button>
+            </div>
+        </div>
+        <div class="content__in center_block step_7" data-screen="step_7">
+            <div class="content__quiz">
+                <section class="section_bl">
+                    <div class="section_bl__l-side">
+                        <h1 class="section_bl__h1">Создай мечту</h1>
+                        <div class="section_bl__step">
+                            <div class="section_bl__numb"><span>07</span></div>
+                            <div class="section_bl__title">Надпись на кольце</div>
+                        </div>
+                        <form action="" class="section_bl__form" id="quiz6">
+                            <textarea placeholder="Напишите что будет на кольце"></textarea>
+                        </form>
+                    </div>
+                    <div class="section_bl__r-side">
+                        <div class="tabs_block">
+                            <div class="review">
+                                <div class="review__tabs">
+                                    <div class="review__close"></div>
+                                    <ul>
+                                        <li class="review__btn isActive" id="review__block-1"><span>Интерактив</span></li>
+                                        <li class="review__btn" id="review__block-2"><span>Фото</span></li>
+                                        <li class="review__btn" id="review__block-3"><span>Видео</span></li>
+                                    </ul>
+                                </div>
+                                <div class="review__blocks">
+                                    <div class="review__block review__block-1 isActive">
+                                        <!-- <iframe src="soliter.html" allowfullscreen frameborder="0" scrolling="no"></iframe> -->
+                                    </div>
+                                    <div class="review__block review__block-2">
+                                        <div class="sl sl_js">
+                                            <div class="sl__img"><picture><source srcset="./img/ring1.webp" type="image/webp"><img src="./img/ring1.png" alt=""></picture></div>
+                                            <div class="sl__img"><picture><source srcset="./img/ring1.webp" type="image/webp"><img src="./img/ring1.png" alt=""></picture></div>
+                                            <div class="sl__img"><picture><source srcset="./img/ring1.webp" type="image/webp"><img src="./img/ring1.png" alt=""></picture></div>
+                                        </div>
+                                    </div>
+                                    <div class="review__block review__block-3">
+                                        <video controls="controls" poster="video/duel.jpg">
+                                            <source src="./files/pv.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="content__button">
+                <div class="navig">
+                    <div class="navig__back" data-target="step_6" data-back="true" @click="mainContent.chooseScreen('step_6').apply(mainContent)">Назад</div>
+                    <div class="navig__dots">
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot isActive"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                    </div>
+                    <div class="navig__next" data-target="step_8" @click="mainContent.chooseScreen('step_8').apply(mainContent)">Далее</div>
+                </div>
+                <button class="section_bl__btn">Связаться с нами</button>
+            </div>
+        </div>
+        <div class="content__in center_block step_8" data-screen="step_8">
+            <div class="content__quiz">
+                <section class="section_bl">
+                    <div class="section_bl__l-side">
+                        <h1 class="section_bl__h1">Создай мечту</h1>
+                        <div class="section_bl__step">
+                            <div class="section_bl__numb"><span>08</span></div>
+                            <div class="section_bl__title">Размер кольца</div>
+                        </div>
+                        <form action="" class="section_bl__form" id="quiz1">
+                            <div class="radio">
+                                <input class="custom-radio" type="radio" id="step8_1" name="step8" value="18.00">
+                                <label for="step8_1">18.00</label>
+                            </div>
+                            <div class="radio">
+                                <input class="custom-radio" type="radio" id="step8_2" name="step8" value="20.00">
+                                <label for="step8_2">20.00</label>
+                            </div>
+                            <div class="radio">
+                                <input class="custom-radio" type="radio" id="step8_3" name="step8" value="30.00">
+                                <label for="step8_3">30.00</label>
+                            </div>
+                            <div class="radio">
+                                <input class="custom-radio" type="radio" id="step8_4" name="step8" value="32.00">
+                                <label for="step8_4">32.00</label>
+                            </div>
+                            <div class="radio">
+                                <input class="custom-radio" type="radio" id="step8_5" name="step8" value="34.00">
+                                <label for="step8_5">34.00</label>
+                            </div>
+                            <div class="radio">
+                                <input class="custom-radio" type="radio" id="step8_6" name="step8" value="35.00">
+                                <label for="step8_6">35.00</label>
+                            </div>
+                            <div class="radio">
+                                <input class="custom-radio" type="radio" id="step8_7" name="step8" value="36.00">
+                                <label for="step8_7">36.00</label>
+                            </div>
+                            <div class="radio">
+                                <input class="custom-radio" type="radio" id="step8_8" name="step8" value="36.50">
+                                <label for="step8_8">36.50</label>
+                            </div>
+                            <div class="radio">
+                                <input class="custom-radio" type="radio" id="step8_9" name="step8" value="18.00">
+                                <label for="step8_9">18.00</label>
+                            </div>
+                            <div class="radio">
+                                <input class="custom-radio" type="radio" id="step8_10" name="step8" value="20.00">
+                                <label for="step8_10">20.00</label>
+                            </div>
+                            <div class="radio">
+                                <input class="custom-radio" type="radio" id="step8_11" name="step8" value="30.00">
+                                <label for="step8_11">30.00</label>
+                            </div>
+                            <div class="radio">
+                                <input class="custom-radio" type="radio" id="step8_12" name="step8" value="32.00">
+                                <label for="step8_12">32.00</label>
+                            </div>
+                            <div class="radio">
+                                <input class="custom-radio" type="radio" id="step8_13" name="step8" value="34.00">
+                                <label for="step8_13">34.00</label>
+                            </div>
+                            <div class="radio">
+                                <input class="custom-radio" type="radio" id="step8_14" name="step8" value="35.00">
+                                <label for="step8_14">35.00</label>
+                            </div>
+                            <div class="radio">
+                                <input class="custom-radio" type="radio" id="step8_15" name="step8" value="36.00">
+                                <label for="step8_15">36.00</label>
+                            </div>
+                            <div class="radio">
+                                <input class="custom-radio" type="radio" id="step8_16" name="step8" value="36.50">
+                                <label for="step8_16">36.50</label>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="section_bl__r-side">
+                        <div class="tabs_block">
+                            <div class="review">
+                                <div class="review__tabs">
+                                    <div class="review__close"></div>
+                                    <ul>
+                                        <li class="review__btn isActive" id="review__block-1"><span>Интерактив</span></li>
+                                        <li class="review__btn" id="review__block-2"><span>Фото</span></li>
+                                        <li class="review__btn" id="review__block-3"><span>Видео</span></li>
+                                    </ul>
+                                </div>
+                                <div class="review__blocks">
+                                    <div class="review__block review__block-1 isActive">
+                                        <!-- <iframe src="soliter.html" allowfullscreen frameborder="0" scrolling="no"></iframe> -->
+                                    </div>
+                                    <div class="review__block review__block-2">
+                                        <div class="sl sl_js">
+                                            <div class="sl__img"><picture><source srcset="./img/ring1.webp" type="image/webp"><img src="./img/ring1.png" alt=""></picture></div>
+                                            <div class="sl__img"><picture><source srcset="./img/ring1.webp" type="image/webp"><img src="./img/ring1.png" alt=""></picture></div>
+                                            <div class="sl__img"><picture><source srcset="./img/ring1.webp" type="image/webp"><img src="./img/ring1.png" alt=""></picture></div>
+                                        </div>
+                                    </div>
+                                    <div class="review__block review__block-3">
+                                        <video controls="controls" poster="video/duel.jpg">
+                                            <source src="./files/pv.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="content__button">
+                <div class="navig">
+                    <div class="navig__back" data-target="step_7" data-back="true" @click="mainContent.chooseScreen('step_7').apply(mainContent)">Назад</div>
+                    <div class="navig__dots">
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot isActive"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                    </div>
+                    <div class="navig__next" data-target="step_9" @click="mainContent.chooseScreen('step_9').apply(mainContent)">Далее</div>
+                </div>
+                <button class="section_bl__btn">Связаться с нами</button>
+            </div>
+        </div>
+        <div class="content__in center_block step_9" data-screen="step_9">
+            <div class="content__quiz">
+                <section class="section_bl">
+                    <div class="section_bl__l-side">
+                        <h1 class="section_bl__h1">Создай мечту</h1>
+                        <div class="section_bl__step">
+                            <div class="section_bl__numb"><span>09</span></div>
+                            <div class="section_bl__title">Выбор камня</div>
+                        </div>
+                        <form action="" class="section_bl__form" id="quiz9">
+
+                        </form>
+                    </div>
+                </section>
+            </div>
+            <div class="content__button">
+                <div class="navig">
+                    <div class="navig__back" data-target="step_8" data-back="true" @click="mainContent.chooseScreen('step_8').apply(mainContent)">Назад</div>
+                    <div class="navig__dots">
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot"></div>
+                        <div class="navig__dot isActive"></div>
+                        <div class="navig__dot"></div>
+                    </div>
+                    <div class="navig__next" data-target="step_10" @click="mainContent.chooseScreen('step_10').apply(mainContent)">Далее</div>
+                </div>
+                <button class="section_bl__btn">Связаться с нами</button>
+            </div>
+        </div>
+        <div class="content__in center_block step_10" data-screen="step_10">
+            <div class="content__quiz">
+                <section class="section_bl">
+                    <div class="section_bl__l-side">
+                        <h1 class="section_bl__h1">Создай мечту</h1>
+                        <div class="section_bl__step">
+                            <div class="section_bl__numb"><span>10</span></div>
+                            <div class="section_bl__title">Ваше изделие</div>
+                        </div>
+                        <div class="section_bl__list">
+                            <div class="section_bl__opt">
+                                <div class="section_bl__t">огранка камня</div>
+                                <div class="section_bl__b">Radiant</div>
+                            </div>
+                            <div class="section_bl__opt">
+                                <div class="section_bl__t">Стиль</div>
+                                <div class="section_bl__b">В паве бриллантов по кругу камня</div>
+                            </div>
+                            <div class="section_bl__opt">
+                                <div class="section_bl__t">Наличие подножки</div>
+                                <div class="section_bl__b">Без подножки</div>
+                            </div>
+                            <div class="section_bl__opt">
+                                <div class="section_bl__t">бриллианты на шинке</div>
+                                <div class="section_bl__b">Один ряд бриллиантов </div>
+                            </div>
+                            <div class="section_bl__opt">
+                                <div class="section_bl__t">золото</div>
+                                <div class="section_bl__b">Белое золото</div>
+                            </div>
+                            <div class="section_bl__opt">
+                                <div class="section_bl__t">Цвет лапок</div>
+                                <div class="section_bl__b">Белое золото</div>
+                            </div>
+                            <div class="section_bl__opt">
+                                <div class="section_bl__t">Надпись на кольце</div>
+                                <div class="section_bl__b">213</div>
+                            </div>
+                            <div class="section_bl__opt">
+                                <div class="section_bl__t">Размер</div>
+                                <div class="section_bl__b">18,50</div>
+                            </div>
+                            <div class="section_bl__opt">
+                                <div class="section_bl__t">Камень</div>
+                                <div class="section_bl__b">Diamond</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section_bl__r-side">
+                        <div class="tabs_block">
+                            <div class="review">
+                                <div class="review__tabs">
+                                    <div class="review__close"></div>
+                                    <ul>
+                                        <li class="review__btn isActive" id="review__block-1"><span>Интерактив</span></li>
+                                        <li class="review__btn" id="review__block-2"><span>Фото</span></li>
+                                        <li class="review__btn" id="review__block-3"><span>Видео</span></li>
+                                    </ul>
+                                </div>
+                                <div class="review__blocks">
+                                    <div class="review__block review__block-1 isActive">
+                                        <!-- <iframe src="soliter.html" allowfullscreen frameborder="0" scrolling="no"></iframe> -->
+                                    </div>
+                                    <div class="review__block review__block-2">
+                                        <div class="sl sl_js">
+                                            <div class="sl__img"><picture><source srcset="./img/ring1.webp" type="image/webp"><img src="./img/ring1.png" alt=""></picture></div>
+                                            <div class="sl__img"><picture><source srcset="./img/ring1.webp" type="image/webp"><img src="./img/ring1.png" alt=""></picture></div>
+                                            <div class="sl__img"><picture><source srcset="./img/ring1.webp" type="image/webp"><img src="./img/ring1.png" alt=""></picture></div>
+                                        </div>
+                                    </div>
+                                    <div class="review__block review__block-3">
+                                        <video controls="controls" poster="video/duel.jpg">
+                                            <source src="./files/pv.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="content__button">
+                <div class="navig">
+                    <div class="navig__item">
+                        <div class="navig__l">Цена:</div>
+                        <div class="navig__r">256 790 <span>rub</span></div>
+                    </div>
+                </div>
+                <a href="#" class="section_bl__link">Оформить заказ</a>
+            </div>
+        </div>
+    </div>
+</main>
+    </div>
+    <script src="js/app.min.js?_v=20220830114310"></script>
+</body>
+</html>

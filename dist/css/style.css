@@ -659,6 +659,55 @@ template {
 @font-face {
   font-family: "TTNorms";
   font-display: swap;
+  src: url("../fonts/TTNorms-Black.woff2") format("woff2"), url("../fonts/TTNorms-Black.woff") format("woff"), url("../fonts/TTNorms-Black.ttf") format("ttf");
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: "TTNorms";
+  font-display: swap;
+  src: url("../fonts/TTNorms-Heavy.woff2") format("woff2"), url("../fonts/TTNorms-Heavy.woff") format("woff"), url("../fonts/TTNorms-Heavy.ttf") format("ttf");
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: "TTNorms";
+  font-display: swap;
+  src: url("../fonts/TTNorms-Italic.woff2") format("woff2"), url("../fonts/TTNorms-Italic.woff") format("woff"), url("../fonts/TTNorms-Italic.ttf") format("ttf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "TTNorms";
+  font-display: swap;
+  src: url("../fonts/TTNorms-Light.woff2") format("woff2"), url("../fonts/TTNorms-Light.woff") format("woff"), url("../fonts/TTNorms-Light.ttf") format("ttf");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "TTNorms";
+  font-display: swap;
+  src: url("../fonts/TTNorms-Medium.woff2") format("woff2"), url("../fonts/TTNorms-Medium.woff") format("woff"), url("../fonts/TTNorms-Medium.ttf") format("ttf");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "TTNorms";
+  font-display: swap;
+  src: url("../fonts/TTNorms-Thin.woff2") format("woff2"), url("../fonts/TTNorms-Thin.woff") format("woff"), url("../fonts/TTNorms-Thin.ttf") format("ttf");
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: "TTNorms";
+  font-display: swap;
+  src: url("../fonts/TTNorms-Regular.woff2") format("woff2"), url("../fonts/TTNorms-Regular.woff") format("woff"), url("../fonts/TTNorms-Regular.ttf") format("ttf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "TTNorms";
+  font-display: swap;
   src: url("../fonts/TTNorms-Bold.woff2") format("woff2"), url("../fonts/TTNorms-Bold.woff") format("woff"), url("../fonts/TTNorms-Bold.ttf") format("ttf");
   font-weight: 700;
 }
@@ -673,57 +722,8 @@ template {
 @font-face {
   font-family: "TTNorms";
   font-display: swap;
-  src: url("../fonts/TTNorms-Black.woff2") format("woff2"), url("../fonts/TTNorms-Black.woff") format("woff"), url("../fonts/TTNorms-Black.ttf") format("ttf");
-  font-weight: 900;
-}
-
-@font-face {
-  font-family: "TTNorms";
-  font-display: swap;
-  src: url("../fonts/TTNorms-Italic.woff2") format("woff2"), url("../fonts/TTNorms-Italic.woff") format("woff"), url("../fonts/TTNorms-Italic.ttf") format("ttf");
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: "TTNorms";
-  font-display: swap;
-  src: url("../fonts/TTNorms-Heavy.woff2") format("woff2"), url("../fonts/TTNorms-Heavy.woff") format("woff"), url("../fonts/TTNorms-Heavy.ttf") format("ttf");
-  font-weight: 800;
-}
-
-@font-face {
-  font-family: "TTNorms";
-  font-display: swap;
-  src: url("../fonts/TTNorms-Medium.woff2") format("woff2"), url("../fonts/TTNorms-Medium.woff") format("woff"), url("../fonts/TTNorms-Medium.ttf") format("ttf");
-  font-weight: 500;
-}
-
-@font-face {
-  font-family: "TTNorms";
-  font-display: swap;
-  src: url("../fonts/TTNorms-Regular.woff2") format("woff2"), url("../fonts/TTNorms-Regular.woff") format("woff"), url("../fonts/TTNorms-Regular.ttf") format("ttf");
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: "TTNorms";
-  font-display: swap;
   src: url("../fonts/TTNorms-ExtraLight.woff2") format("woff2"), url("../fonts/TTNorms-ExtraLight.woff") format("woff"), url("../fonts/TTNorms-ExtraLight.ttf") format("ttf");
   font-weight: 200;
-}
-
-@font-face {
-  font-family: "TTNorms";
-  font-display: swap;
-  src: url("../fonts/TTNorms-Thin.woff2") format("woff2"), url("../fonts/TTNorms-Thin.woff") format("woff"), url("../fonts/TTNorms-Thin.ttf") format("ttf");
-  font-weight: 100;
-}
-
-@font-face {
-  font-family: "TTNorms";
-  font-display: swap;
-  src: url("../fonts/TTNorms-Light.woff2") format("woff2"), url("../fonts/TTNorms-Light.woff") format("woff"), url("../fonts/TTNorms-Light.ttf") format("ttf");
-  font-weight: 300;
 }
 
 body,
@@ -953,11 +953,9 @@ img {
   justify-content: center;
 }
 
-.no-webp .section_bl__r-side{
-  background: url("../img/bg_quiz.jpg") 50%/cover no-repeat; }
-
 .section_bl__r-side {
   width: 50%;
+  background: linear-gradient(28.93deg, #95ACD6 -27.75%, #C5D4F1 108.15%);
   padding: 125px 10px;
   display: flex;
   align-items: center;
@@ -1095,7 +1093,7 @@ img {
   pointer-events: none;
   width: 100%;
   height: 100%;
-  background: url("data:image/svg+xml,%3Csvg width='324' height='273' viewBox='0 0 324 273' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M206.131 191.186C163.349 225.513 119.69 250.415 83.7011 262.936C65.7043 269.197 49.6521 272.353 36.6 272.059C23.5447 271.766 13.5644 268.026 7.59019 260.581C1.61601 253.135 0.1279 242.582 2.67038 229.773C5.21222 216.967 11.7712 201.98 21.7834 185.768C41.8053 153.347 75.5762 116.121 118.358 81.7939C161.14 47.4667 204.799 22.5645 240.788 10.0436C258.785 3.78234 274.837 0.626702 287.889 0.920058C300.945 1.21349 310.925 4.95308 316.899 12.3987C322.874 19.8443 324.362 30.3978 321.819 43.2066C319.277 56.0121 312.718 70.9991 302.706 87.2117C282.684 119.633 248.913 156.858 206.131 191.186Z' stroke='url(%23paint0_linear_1_7094)'/%3E%3Cpath d='M124.373 175.247C85.17 141.285 53.1109 106.602 32.9671 77.99C22.893 63.6809 15.8159 50.9138 12.3071 40.5305C8.78564 30.1094 8.91496 22.2676 12.9473 17.6129C16.9797 12.9582 24.7229 11.7124 35.5396 13.7124C46.317 15.7052 59.9625 20.8901 75.5616 28.8217C106.753 44.6811 145.652 71.4689 184.855 105.43C224.058 139.392 256.117 174.075 276.261 202.687C286.335 216.996 293.412 229.763 296.921 240.146C300.442 250.568 300.313 258.409 296.28 263.064C292.248 267.719 284.505 268.965 273.688 266.965C262.911 264.972 249.265 259.787 233.666 251.855C202.475 235.996 163.576 209.208 124.373 175.247Z' stroke='url(%23paint1_linear_1_7094)'/%3E%3Cdefs%3E%3ClinearGradient id='paint0_linear_1_7094' x1='353.582' y1='-30.4561' x2='53.109' y2='275.827' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23B3CEFF'/%3E%3Cstop offset='0.295131' stop-color='%23B3CEFF' stop-opacity='0'/%3E%3Cstop offset='0.7639' stop-color='%23B3CEFF' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23B3CEFF'/%3E%3C/linearGradient%3E%3ClinearGradient id='paint1_linear_1_7094' x1='340.441' y1='292.165' x2='-3.95163' y2='83.4654' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23B3CEFF'/%3E%3Cstop offset='0.295131' stop-color='%23B3CEFF' stop-opacity='0'/%3E%3Cstop offset='0.7639' stop-color='%23B3CEFF' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23B3CEFF'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E%0A") 50%/100% no-repeat;
+  background: url("data:image/svg+xml,%3Csvg width='324' height='273' viewBox='0 0 324 273' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M206.131 191.186C163.349 225.513 119.69 250.415 83.7011 262.936C65.7043 269.197 49.6521 272.353 36.6 272.059C23.5447 271.766 13.5644 268.026 7.59019 260.581C1.61601 253.135 0.1279 242.582 2.67038 229.773C5.21222 216.967 11.7712 201.98 21.7834 185.768C41.8053 153.347 75.5762 116.121 118.358 81.7939C161.14 47.4667 204.799 22.5645 240.788 10.0436C258.785 3.78234 274.837 0.626702 287.889 0.920058C300.945 1.21349 310.925 4.95308 316.899 12.3987C322.874 19.8443 324.362 30.3978 321.819 43.2066C319.277 56.0121 312.718 70.9991 302.706 87.2117C282.684 119.633 248.913 156.858 206.131 191.186Z' stroke='url(%23paint0_linear_1_7094)'/%3E%3Cpath d='M124.373 175.247C85.17 141.285 53.1109 106.602 32.9671 77.99C22.893 63.6809 15.8159 50.9138 12.3071 40.5305C8.78564 30.1094 8.91496 22.2676 12.9473 17.6129C16.9797 12.9582 24.7229 11.7124 35.5396 13.7124C46.317 15.7052 59.9625 20.8901 75.5616 28.8217C106.753 44.6811 145.652 71.4689 184.855 105.43C224.058 139.392 256.117 174.075 276.261 202.687C286.335 216.996 293.412 229.763 296.921 240.146C300.442 250.568 300.313 258.409 296.28 263.064C292.248 267.719 284.505 268.965 273.688 266.965C262.911 264.972 249.265 259.787 233.666 251.855C202.475 235.996 163.576 209.208 124.373 175.247Z' stroke='url(%23paint1_linear_1_7094)'/%3E%3Cdefs%3E%3ClinearGradient id='paint0_linear_1_7094' x1='353.582' y1='-30.4561' x2='53.109' y2='275.827' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23B3CEFF'/%3E%3Cstop offset='0.295131' stop-color='%23B3CEFF' stop-opacity='0'/%3E%3Cstop offset='0.7639' stop-color='%23B3CEFF' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23B3CEFF'/%3E%3C/linearGradient%3E%3ClinearGradient id='paint1_linear_1_7094' x1='340.441' y1='292.165' x2='-3.95163' y2='83.4654' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23B3CEFF'/%3E%3Cstop offset='0.295131' stop-color='%23B3CEFF' stop-opacity='0'/%3E%3Cstop offset='0.7639' stop-color='%23B3CEFF' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23B3CEFF'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E%0A") 50%/80% no-repeat;
 }
 
 .sl__img img {
@@ -1493,6 +1491,87 @@ img {
   font-size: 20px;
 }
 
+.open {
+  background-color: #000;
+}
+
+.open__inner {
+  position: relative;
+}
+
+.open__img {
+  height: 100vh;
+}
+
+.open__img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.open__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.open__title {
+  font-family: "Forum", cursive;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 50px;
+  white-space: nowrap;
+  text-transform: uppercase;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 0 20px;
+  margin-bottom: 55px;
+}
+
+.open__title::before {
+  content: "";
+  display: inline-block;
+  width: 30px;
+  height: 1px;
+  background-color: #fff;
+  margin-right: 20px;
+}
+
+.open__title::after {
+  content: "";
+  width: 107%;
+  height: 73px;
+  border: 1px solid #fff;
+  border-radius: 75%;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%) rotate(-15deg);
+}
+
+.open__start {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "TT Norms";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: #fff;
+  text-decoration: none;
+  min-height: 55px;
+  min-width: 236px;
+  padding: 15px 20px;
+  background-image: linear-gradient(11.75deg, #95ACD6 -42.9%, #C5D4F1 106.72%);
+}
+
 @media all and (max-width: 1200px) {
   .step_8 .section_bl__form {
     padding-left: 0;
@@ -1849,6 +1928,10 @@ img {
     align-items: center;
     justify-content: center;
   }
+
+  .open__title {
+    font-size: 32px;
+  }
 }
 
 @media all and (max-width: 580px) {
@@ -1876,5 +1959,3 @@ img {
     margin-top: 0;
   }
 }
-
-.webp .section_bl__r-side{ background: url(../img/bg_quiz.webp) 50%/cover no-repeat; }
