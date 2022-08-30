@@ -147,5 +147,9 @@ window.app = new Vue({
           }
         })
       },
+      sendSelected() {
+        console.log(this.selected)
+        this.mainContent.chooseScreen('step_9')
+      }
     }
 });

@@ -1,5 +1,7 @@
 const MainContent = class MainContent {
-    constructor() {}
+    constructor() {
+      this.currentStep = null
+    }
     chooseScreen(target) {
         if (!document.querySelector(`.content__in.isActive [data-target="${target}"]`).dataset.back) {
             console.log(`вперед к ${target}`);
@@ -7,6 +9,7 @@ const MainContent = class MainContent {
         } else {
             console.log(`назад к ${target}`);
         }
+        this.currentStep = target
         document.querySelector('.content__in.isActive').classList.remove('isActive');
         document.querySelector(`[data-screen="${target}"]`).classList.add('isActive')
         document.querySelector(`[data-screen="${target}"]`).classList.remove('isSlided')
