@@ -16,14 +16,23 @@ const MainContent = class MainContent {
     }
     init() {}
     getData() {
-      // http://satepais.fvds.ru/local/ajax/json.php
-      // http://localhost:3000/json.json
       return fetch('http://satepais.fvds.ru/local/ajax/json.php')
       .then((response) => {
           return response.json()
       })
       .then((data) => {
-          console.log(data);
+          return data;
+      });
+    }
+    sendFormData(formData) {
+      return fetch('http://satepais.fvds.ru/local/ajax/json.php', {
+        body: formData,
+        method: 'post',
+      })
+      .then((response) => {
+          return response.json();
+      })
+      .then((data) => {
           return data;
       });
     }

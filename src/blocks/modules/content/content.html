@@ -15,15 +15,15 @@
                                 v-bind:key="question.ID" 
                                 v-bind:for="question.ID" 
                                 class="section_bl__label" 
-                                v-bind:class="{isActive: selected.STONE_CUT === question.ID}">
+                                v-bind:class="{isActive: selected.STONE_CUT.id === question.ID}">
                                 <input 
                                     type="radio" 
                                     v-bind:name="data[0].ID" 
                                     v-bind:id="question.ID" 
                                     v-bind:value="question.ID" 
                                     class="section_bl__radio" 
-                                    @change="selected.STONE_CUT = question.ID"
-                                    v-bind:checked="selected.STONE_CUT === question.ID"
+                                    @change="setSelectedData('STONE_CUT', question.ID, question.NAME)"
+                                    v-bind:checked="selected.STONE_CUT.id === question.ID"
                                 >
                                 <div class="section_bl__img">
                                     <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
@@ -104,15 +104,15 @@
                                 v-if="!question.PROPERIES.OWN_CHOSE"
                                 v-bind:for="question.ID" 
                                 class="section_bl__label" 
-                                v-bind:class="{isActive: selected.STONE_STYLE === question.ID}">
+                                v-bind:class="{isActive: selected.STONE_STYLE.id === question.ID}">
                                 <input 
                                     type="radio" 
                                     v-bind:name="data[1].ID" 
                                     v-bind:id="question.ID" 
                                     v-bind:value="question.ID" 
                                     class="section_bl__radio" 
-                                    @change="selected.STONE_STYLE = question.ID"
-                                    v-bind:checked="selected.STONE_STYLE === question.ID"
+                                    @change="setSelectedData('STONE_STYLE', question.ID, question.NAME)"
+                                    v-bind:checked="selected.STONE_STYLE.id === question.ID"
                                 >
                                 <div class="section_bl__img">
                                     <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
@@ -122,23 +122,16 @@
                             <label for="step2_4" class="section_bl__label">
                                 <input 
                                     type="file" 
-                                    name="step2" 
+                                    name="step2_4" 
                                     id="step2_4" 
                                     class="section_bl__radio"
-                                    @change="(e) => {
-                                      if (e.target.value) {
-                                        selected.STONE_STYLE = null
-                                        selected.OWN_STONE_STYLE = true
-                                      } else {
-                                        selected.OWN_STONE_STYLE = null
-                                      }
-                                    }"
+                                    @change="setOwnStyle"
                                 >
                                 <div class="section_bl__img">
                                     <img src="./img/krist7.svg" alt="ОТправить Свой дизайн">
                                 </div>
-                                <span>{{ selected.OWN_STONE_STYLE ? "Загружен" : "Отправить Свой дизайн" }}</span>
-                                <span>{{ selected.OWN_STONE_STYLE ? "Удалить" : "" }}</span>
+                                <span>{{ selected.OWN_STONE_STYLE.id ? "Загружен" : "Отправить Свой дизайн" }}</span>
+                                <span>{{ selected.OWN_STONE_STYLE.id ? "Удалить" : "" }}</span>
                             </label>
                         </form>
                     </div>
@@ -210,15 +203,15 @@
                                 v-bind:key="question.ID" 
                                 v-bind:for="question.ID" 
                                 class="section_bl__label" 
-                                v-bind:class="{isActive: selected.STONE_FOOTBOARD === question.ID}">
+                                v-bind:class="{isActive: selected.STONE_FOOTBOARD.id === question.ID}">
                                 <input 
                                     type="radio" 
                                     v-bind:name="data[2].ID" 
                                     v-bind:id="question.ID" 
                                     v-bind:value="question.ID" 
                                     class="section_bl__radio" 
-                                    @change="selected.STONE_FOOTBOARD = question.ID"
-                                    v-bind:checked="selected.STONE_FOOTBOARD === question.ID"
+                                    @change="setSelectedData('STONE_FOOTBOARD', question.ID, question.NAME)"
+                                    v-bind:checked="selected.STONE_FOOTBOARD.id === question.ID"
                                 >
                                 <div class="section_bl__img">
                                     <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
@@ -295,15 +288,15 @@
                                 v-bind:key="question.ID" 
                                 v-bind:for="question.ID" 
                                 class="section_bl__label" 
-                                v-bind:class="{isActive: selected.DIAMONDS_ON_SHINKO === question.ID}">
+                                v-bind:class="{isActive: selected.DIAMONDS_ON_SHINKO.id === question.ID}">
                                 <input 
                                     type="radio" 
                                     v-bind:name="data[3].ID" 
                                     v-bind:id="question.ID" 
                                     v-bind:value="question.ID" 
                                     class="section_bl__radio" 
-                                    @change="selected.DIAMONDS_ON_SHINKO = question.ID"
-                                    v-bind:checked="selected.DIAMONDS_ON_SHINKO === question.ID"
+                                    @change="setSelectedData('DIAMONDS_ON_SHINKO', question.ID, question.NAME)"
+                                    v-bind:checked="selected.DIAMONDS_ON_SHINKO.id === question.ID"
                                 >
                                 <div class="section_bl__img">
                                     <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
@@ -381,15 +374,15 @@
                                 v-bind:key="question.ID" 
                                 v-bind:for="question.ID" 
                                 class="section_bl__label" 
-                                v-bind:class="{isActive: selected.MATERIAL === question.ID}">
+                                v-bind:class="{isActive: selected.MATERIAL.id === question.ID}">
                                 <input 
                                     type="radio" 
                                     v-bind:name="data[4].ID" 
                                     v-bind:id="question.ID" 
                                     v-bind:value="question.ID" 
                                     class="section_bl__radio" 
-                                    @change="selected.MATERIAL = question.ID"
-                                    v-bind:checked="selected.MATERIAL === question.ID"
+                                    @change="setSelectedData('MATERIAL', question.ID, question.NAME)"
+                                    v-bind:checked="selected.MATERIAL.id === question.ID"
                                 >
                                 <div class="section_bl__img">
                                     <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
@@ -466,15 +459,15 @@
                                 v-bind:key="question.ID" 
                                 v-bind:for="question.ID" 
                                 class="section_bl__label" 
-                                v-bind:class="{isActive: selected.COLOR_OF_PAWS === question.ID}">
+                                v-bind:class="{isActive: selected.COLOR_OF_PAWS.id === question.ID}">
                                 <input 
                                     type="radio" 
                                     v-bind:name="data[5].ID" 
                                     v-bind:id="question.ID" 
                                     v-bind:value="question.ID" 
                                     class="section_bl__radio" 
-                                    @change="selected.COLOR_OF_PAWS = question.ID"
-                                    v-bind:checked="selected.COLOR_OF_PAWS === question.ID"
+                                    @change="setSelectedData('COLOR_OF_PAWS', question.ID, question.NAME)"
+                                    v-bind:checked="selected.COLOR_OF_PAWS.id === question.ID"
                                 >
                                 <div class="section_bl__img">
                                     <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
@@ -546,7 +539,7 @@
                             <div class="section_bl__title">Надпись на кольце</div>
                         </div>
                         <form action="" class="section_bl__form" id="quiz6">
-                            <textarea v-model="selected.TEXT" placeholder="Напишите что будет на кольце"></textarea>
+                            <textarea v-model="selected.TEXT.name" placeholder="Напишите что будет на кольце"></textarea>
                         </form>
                     </div>
                     <div class="section_bl__r-side">
@@ -623,8 +616,8 @@
                                     v-bind:id="question.ID" 
                                     v-bind:value="question.ID" 
                                     class="custom-radio" 
-                                    @change="selected.SIZE = question.ID"
-                                    v-bind:checked="selected.SIZE === question.ID"
+                                    @change="setSelectedData('SIZE', question.ID, question.NAME)"
+                                    v-bind:checked="selected.SIZE.id === question.ID"
                                 >
                                 <label 
                                     v-bind:for="question.ID" 

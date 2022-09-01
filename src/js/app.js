@@ -19,10 +19,6 @@ import MainContent from '../blocks/modules/content/content.js';
 //     };
 // });
 $(document).ready(function () {
-    $('.section_bl__label').on('click', function() {
-        $('.section_bl__label').removeClass('isActive');
-        $(this).addClass('isActive');
-    })
 
     var slideEl = $('.review').find('.review__block');
     var slideBt = $('.review').find('.review__btn');
@@ -82,15 +78,15 @@ window.app = new Vue({
         mainContent: new MainContent(),
         data: [{QUESTIONS: []}, {QUESTIONS: []}, {QUESTIONS: []}, {QUESTIONS: []}, {QUESTIONS: []}, {QUESTIONS: []}, {QUESTIONS: []}, {QUESTIONS: []}],
         selected: {
-          STONE_CUT: null,
-          STONE_STYLE: null,
-          OWN_STONE_STYLE: null,
-          STONE_FOOTBOARD: null,
-          DIAMONDS_ON_SHINKO: null,
-          MATERIAL: null,
-          COLOR_OF_PAWS: null,
-          TEXT: null,
-          SIZE: null,
+          STONE_CUT: {name: null, id: null},
+          STONE_STYLE: {name: null, id: null},
+          OWN_STONE_STYLE: {name: null, id: null},
+          STONE_FOOTBOARD: {name: null, id: null},
+          DIAMONDS_ON_SHINKO: {name: null, id: null},
+          MATERIAL: {name: null, id: null},
+          COLOR_OF_PAWS: {name: null, id: null},
+          TEXT: {name: null, id: null},
+          SIZE: {name: null, id: null},
         },
         url: "http://satepais.fvds.ru",
       }
@@ -120,35 +116,63 @@ window.app = new Vue({
         this.data = await this.mainContent.getData();
         this.setDefaultValues()
       },
+      setSelectedData(key, id = null, name = null) {
+        if (!key) return;
+        this.selected[key].id = id
+        this.selected[key].name = name
+      },
       setDefaultValues() {
         this.data.forEach(i => {
           switch(i.NAME) {
             case "ВЫБОР ОГРАНКИ КАМНЯ":
-              this.selected.STONE_CUT = i.QUESTIONS[0].ID
+              this.setSelectedData('STONE_CUT', i.QUESTIONS[0].ID, i.QUESTIONS[0].NAME)
               break;
             case "ВЫБОР СТИЛЯ":
-              this.selected.STONE_STYLE = i.QUESTIONS[0].ID
+              this.setSelectedData('STONE_STYLE', i.QUESTIONS[0].ID, i.QUESTIONS[0].NAME)
               break;
             case "ВНАЛИЧИЕ ПОДНОЖКИ":
-              this.selected.STONE_FOOTBOARD = i.QUESTIONS[0].ID
+              this.setSelectedData('STONE_FOOTBOARD', i.QUESTIONS[0].ID, i.QUESTIONS[0].NAME)
               break;
             case "НАЛИЧИЕ БРИЛЛИАНТОВ НА ШИНКЕ":
-              this.selected.DIAMONDS_ON_SHINKO = i.QUESTIONS[0].ID
+              this.setSelectedData('DIAMONDS_ON_SHINKO', i.QUESTIONS[0].ID, i.QUESTIONS[0].NAME)
               break;
             case "ВЫБЕРИТЕ МАТЕРИАЛ":
-              this.selected.MATERIAL = i.QUESTIONS[0].ID
+              this.setSelectedData('MATERIAL', i.QUESTIONS[0].ID, i.QUESTIONS[0].NAME)
               break;
             case "ЦВЕТ ЛАПОК НА КАМНЕ":
-              this.selected.COLOR_OF_PAWS = i.QUESTIONS[0].ID
+              this.setSelectedData('COLOR_OF_PAWS', i.QUESTIONS[0].ID, i.QUESTIONS[0].NAME)
               break;
             case "РАЗМЕР КОЛЬЦА":
-              this.selected.SIZE = i.QUESTIONS[0].ID
+              this.setSelectedData('SIZE', i.QUESTIONS[0].ID, i.QUESTIONS[0].NAME)
               break;
           }
         })
       },
-      sendSelected() {
+      setOwnStyle(e) {
+        if (e.target.value) {
+          console.dir(e.target.value)
+          console.dir(e.target.files[0])
+          this.selected.STONE_STYLE.id = null
+          this.selected.STONE_STYLE.name = null
+          this.selected.OWN_STONE_STYLE.id = e.target.files[0]
+          this.selected.OWN_STONE_STYLE.name = 'свой стиль'
+        } else {
+          this.selected.OWN_STONE_STYLE.id = null
+          this.selected.OWN_STONE_STYLE.name = null
+        }
+      },
+      async sendSelected() {
         console.log(this.selected)
+        const formData = new FormData()
+        for (let key in this.selected) {
+          if (key === 'TEXT') {
+            formData.set(key, this.selected[key].name);
+          } else {
+            formData.set(key, this.selected[key].id);
+          }
+        }
+        const res = await this.mainContent.sendFormData(formData)
+        console.log(res)
         this.mainContent.chooseScreen('step_9')
       }
     }
