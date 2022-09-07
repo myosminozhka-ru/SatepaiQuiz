@@ -1,5 +1,5 @@
 <main class="steps center_block">
-    <div class="steps__in">
+    <div class="steps__in" v-bind:class="{visible: filter.modalIsOpen}">
         <div class="content__in step_1 isActive" data-screen="step_1">
             <div class="content__quiz">
                 <section class="section_bl">
@@ -22,7 +22,7 @@
                                     v-bind:id="question.ID" 
                                     v-bind:value="question.ID" 
                                     class="section_bl__radio" 
-                                    @change="setSelectedData('STONE_CUT', question.ID, question.NAME)"
+                                    @change="setSelectedData('STONE_CUT', question.ID, question.NAME, 0, index)"
                                     v-bind:checked="selected.STONE_CUT.id === question.ID"
                                 >
                                 <div class="section_bl__img">
@@ -45,18 +45,16 @@
                                 </div>
                                 <div class="review__blocks">
                                     <div class="review__block review__block-1 isActive">
-                                        <!-- <iframe src="soliter.html" allowfullscreen frameborder="0" scrolling="no"></iframe> -->
+                                        <iframe :src="getMediaURL(0, 'html')" allowfullscreen frameborder="0" scrolling="no"></iframe>
                                     </div>
                                     <div class="review__block review__block-2">
-                                        <div class="sl sl_js">
-                                            <div class="sl__img"><img src="./img/ring1.png" alt=""></div>
-                                            <div class="sl__img"><img src="./img/ring1.png" alt=""></div>
-                                            <div class="sl__img"><img src="./img/ring1.png" alt=""></div>
+                                        <div class="sl">
+                                            <div class="sl__img"><img :src="getMediaURL(0, 'image')" alt=""></div>
                                         </div>
                                     </div>
                                     <div class="review__block review__block-3">
                                         <video controls="controls" poster="video/duel.jpg">
-                                            <source src="./files/pv.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                                            <source :src="getMediaURL(0, 'video')" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
                                         </video>
                                     </div>
                                 </div>
@@ -111,7 +109,7 @@
                                     v-bind:id="question.ID" 
                                     v-bind:value="question.ID" 
                                     class="section_bl__radio" 
-                                    @change="setSelectedData('STONE_STYLE', question.ID, question.NAME)"
+                                    @change="setSelectedData('STONE_STYLE', question.ID, question.NAME, 1, index)"
                                     v-bind:checked="selected.STONE_STYLE.id === question.ID"
                                 >
                                 <div class="section_bl__img">
@@ -147,21 +145,19 @@
                                     </ul>
                                 </div>
                                 <div class="review__blocks">
-                                    <div class="review__block review__block-1 isActive">
-                                        <!-- <iframe src="soliter.html" allowfullscreen frameborder="0" scrolling="no"></iframe> -->
-                                    </div>
-                                    <div class="review__block review__block-2">
-                                        <div class="sl sl_js">
-                                            <div class="sl__img"><img src="./img/ring1.png" alt=""></div>
-                                            <div class="sl__img"><img src="./img/ring1.png" alt=""></div>
-                                            <div class="sl__img"><img src="./img/ring1.png" alt=""></div>
-                                        </div>
-                                    </div>
-                                    <div class="review__block review__block-3">
-                                        <video controls="controls" poster="video/duel.jpg">
-                                            <source src="./files/pv.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-                                        </video>
-                                    </div>
+                                  <div class="review__block review__block-1 isActive">
+                                      <iframe :src="getMediaURL(1, 'html')" allowfullscreen frameborder="0" scrolling="no"></iframe>
+                                  </div>
+                                  <div class="review__block review__block-2">
+                                      <div class="sl">
+                                          <div class="sl__img"><img :src="getMediaURL(1, 'image')" alt=""></div>
+                                      </div>
+                                  </div>
+                                  <div class="review__block review__block-3">
+                                      <video controls="controls" poster="video/duel.jpg">
+                                          <source :src="getMediaURL(1, 'video')" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                                      </video>
+                                  </div>
                                 </div>
                             </div>
                         </div>
@@ -210,7 +206,7 @@
                                     v-bind:id="question.ID" 
                                     v-bind:value="question.ID" 
                                     class="section_bl__radio" 
-                                    @change="setSelectedData('STONE_FOOTBOARD', question.ID, question.NAME)"
+                                    @change="setSelectedData('STONE_FOOTBOARD', question.ID, question.NAME, 2, index)"
                                     v-bind:checked="selected.STONE_FOOTBOARD.id === question.ID"
                                 >
                                 <div class="section_bl__img">
@@ -232,21 +228,19 @@
                                     </ul>
                                 </div>
                                 <div class="review__blocks">
-                                    <div class="review__block review__block-1 isActive">
-                                        <!-- <iframe src="soliter.html" allowfullscreen frameborder="0" scrolling="no"></iframe> -->
-                                    </div>
-                                    <div class="review__block review__block-2">
-                                        <div class="sl sl_js">
-                                            <div class="sl__img"><img src="./img/ring1.png" alt=""></div>
-                                            <div class="sl__img"><img src="./img/ring1.png" alt=""></div>
-                                            <div class="sl__img"><img src="./img/ring1.png" alt=""></div>
-                                        </div>
-                                    </div>
-                                    <div class="review__block review__block-3">
-                                        <video controls="controls" poster="video/duel.jpg">
-                                            <source src="./files/pv.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-                                        </video>
-                                    </div>
+                                  <div class="review__block review__block-1 isActive">
+                                      <iframe :src="getMediaURL(2, 'html')" allowfullscreen frameborder="0" scrolling="no"></iframe>
+                                  </div>
+                                  <div class="review__block review__block-2">
+                                      <div class="sl">
+                                          <div class="sl__img"><img :src="getMediaURL(2, 'image')" alt=""></div>
+                                      </div>
+                                  </div>
+                                  <div class="review__block review__block-3">
+                                      <video controls="controls" poster="video/duel.jpg">
+                                          <source :src="getMediaURL(2, 'video')" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                                      </video>
+                                  </div>
                                 </div>
                             </div>
                         </div>
@@ -295,7 +289,7 @@
                                     v-bind:id="question.ID" 
                                     v-bind:value="question.ID" 
                                     class="section_bl__radio" 
-                                    @change="setSelectedData('DIAMONDS_ON_SHINKO', question.ID, question.NAME)"
+                                    @change="setSelectedData('DIAMONDS_ON_SHINKO', question.ID, question.NAME, 3, index)"
                                     v-bind:checked="selected.DIAMONDS_ON_SHINKO.id === question.ID"
                                 >
                                 <div class="section_bl__img">
@@ -318,21 +312,19 @@
                                     </ul>
                                 </div>
                                 <div class="review__blocks">
-                                    <div class="review__block review__block-1 isActive">
-                                        <!-- <iframe src="soliter.html" allowfullscreen frameborder="0" scrolling="no"></iframe> -->
-                                    </div>
-                                    <div class="review__block review__block-2">
-                                        <div class="sl sl_js">
-                                            <div class="sl__img"><img src="./img/ring1.png" alt=""></div>
-                                            <div class="sl__img"><img src="./img/ring1.png" alt=""></div>
-                                            <div class="sl__img"><img src="./img/ring1.png" alt=""></div>
-                                        </div>
-                                    </div>
-                                    <div class="review__block review__block-3">
-                                        <video controls="controls" poster="video/duel.jpg">
-                                            <source src="./files/pv.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-                                        </video>
-                                    </div>
+                                  <div class="review__block review__block-1 isActive">
+                                      <iframe :src="getMediaURL(3, 'html')" allowfullscreen frameborder="0" scrolling="no"></iframe>
+                                  </div>
+                                  <div class="review__block review__block-2">
+                                      <div class="sl">
+                                          <div class="sl__img"><img :src="getMediaURL(3, 'image')" alt=""></div>
+                                      </div>
+                                  </div>
+                                  <div class="review__block review__block-3">
+                                      <video controls="controls" poster="video/duel.jpg">
+                                          <source :src="getMediaURL(3, 'video')" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                                      </video>
+                                  </div>
                                 </div>
                             </div>
                         </div>
@@ -381,7 +373,7 @@
                                     v-bind:id="question.ID" 
                                     v-bind:value="question.ID" 
                                     class="section_bl__radio" 
-                                    @change="setSelectedData('MATERIAL', question.ID, question.NAME)"
+                                    @change="setSelectedData('MATERIAL', question.ID, question.NAME, 4, index)"
                                     v-bind:checked="selected.MATERIAL.id === question.ID"
                                 >
                                 <div class="section_bl__img">
@@ -403,21 +395,19 @@
                                     </ul>
                                 </div>
                                 <div class="review__blocks">
-                                    <div class="review__block review__block-1 isActive">
-                                        <!-- <iframe src="soliter.html" allowfullscreen frameborder="0" scrolling="no"></iframe> -->
-                                    </div>
-                                    <div class="review__block review__block-2">
-                                        <div class="sl sl_js">
-                                            <div class="sl__img"><img src="./img/ring1.png" alt=""></div>
-                                            <div class="sl__img"><img src="./img/ring1.png" alt=""></div>
-                                            <div class="sl__img"><img src="./img/ring1.png" alt=""></div>
-                                        </div>
-                                    </div>
-                                    <div class="review__block review__block-3">
-                                        <video controls="controls" poster="video/duel.jpg">
-                                            <source src="./files/pv.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-                                        </video>
-                                    </div>
+                                  <div class="review__block review__block-1 isActive">
+                                      <iframe :src="getMediaURL(4, 'html')" allowfullscreen frameborder="0" scrolling="no"></iframe>
+                                  </div>
+                                  <div class="review__block review__block-2">
+                                      <div class="sl">
+                                          <div class="sl__img"><img :src="getMediaURL(4, 'image')" alt=""></div>
+                                      </div>
+                                  </div>
+                                  <div class="review__block review__block-3">
+                                      <video controls="controls" poster="video/duel.jpg">
+                                          <source :src="getMediaURL(4, 'video')" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                                      </video>
+                                  </div>
                                 </div>
                             </div>
                         </div>
@@ -466,7 +456,7 @@
                                     v-bind:id="question.ID" 
                                     v-bind:value="question.ID" 
                                     class="section_bl__radio" 
-                                    @change="setSelectedData('COLOR_OF_PAWS', question.ID, question.NAME)"
+                                    @change="setSelectedData('COLOR_OF_PAWS', question.ID, question.NAME, 5, index)"
                                     v-bind:checked="selected.COLOR_OF_PAWS.id === question.ID"
                                 >
                                 <div class="section_bl__img">
@@ -488,21 +478,19 @@
                                     </ul>
                                 </div>
                                 <div class="review__blocks">
-                                    <div class="review__block review__block-1 isActive">
-                                        <!-- <iframe src="soliter.html" allowfullscreen frameborder="0" scrolling="no"></iframe> -->
-                                    </div>
-                                    <div class="review__block review__block-2">
-                                        <div class="sl sl_js">
-                                            <div class="sl__img"><img src="./img/ring1.png" alt=""></div>
-                                            <div class="sl__img"><img src="./img/ring1.png" alt=""></div>
-                                            <div class="sl__img"><img src="./img/ring1.png" alt=""></div>
-                                        </div>
-                                    </div>
-                                    <div class="review__block review__block-3">
-                                        <video controls="controls" poster="video/duel.jpg">
-                                            <source src="./files/pv.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-                                        </video>
-                                    </div>
+                                  <div class="review__block review__block-1 isActive">
+                                      <iframe :src="getMediaURL(5, 'html')" allowfullscreen frameborder="0" scrolling="no"></iframe>
+                                  </div>
+                                  <div class="review__block review__block-2">
+                                      <div class="sl">
+                                          <div class="sl__img"><img :src="getMediaURL(5, 'image')" alt=""></div>
+                                      </div>
+                                  </div>
+                                  <div class="review__block review__block-3">
+                                      <video controls="controls" poster="video/duel.jpg">
+                                          <source :src="getMediaURL(5, 'video')" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                                      </video>
+                                  </div>
                                 </div>
                             </div>
                         </div>
@@ -554,21 +542,19 @@
                                     </ul>
                                 </div>
                                 <div class="review__blocks">
-                                    <div class="review__block review__block-1 isActive">
-                                        <!-- <iframe src="soliter.html" allowfullscreen frameborder="0" scrolling="no"></iframe> -->
-                                    </div>
-                                    <div class="review__block review__block-2">
-                                        <div class="sl sl_js">
-                                            <div class="sl__img"><img src="./img/ring1.png" alt=""></div>
-                                            <div class="sl__img"><img src="./img/ring1.png" alt=""></div>
-                                            <div class="sl__img"><img src="./img/ring1.png" alt=""></div>
-                                        </div>
-                                    </div>
-                                    <div class="review__block review__block-3">
-                                        <video controls="controls" poster="video/duel.jpg">
-                                            <source src="./files/pv.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-                                        </video>
-                                    </div>
+                                  <div class="review__block review__block-1 isActive">
+                                      <iframe :src="getMediaURL(null, 'html')" allowfullscreen frameborder="0" scrolling="no"></iframe>
+                                  </div>
+                                  <div class="review__block review__block-2">
+                                      <div class="sl">
+                                          <div class="sl__img"><img :src="getMediaURL(null, 'image')" alt=""></div>
+                                      </div>
+                                  </div>
+                                  <div class="review__block review__block-3">
+                                      <video controls="controls" poster="video/duel.jpg">
+                                          <source :src="getMediaURL(null, 'video')" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                                      </video>
+                                  </div>
                                 </div>
                             </div>
                         </div>
@@ -616,7 +602,7 @@
                                     v-bind:id="question.ID" 
                                     v-bind:value="question.ID" 
                                     class="custom-radio" 
-                                    @change="setSelectedData('SIZE', question.ID, question.NAME)"
+                                    @change="setSelectedData('SIZE', question.ID, question.NAME, 6, index)"
                                     v-bind:checked="selected.SIZE.id === question.ID"
                                 >
                                 <label 
@@ -637,21 +623,19 @@
                                     </ul>
                                 </div>
                                 <div class="review__blocks">
-                                    <div class="review__block review__block-1 isActive">
-                                        <!-- <iframe src="soliter.html" allowfullscreen frameborder="0" scrolling="no"></iframe> -->
-                                    </div>
-                                    <div class="review__block review__block-2">
-                                        <div class="sl sl_js">
-                                            <div class="sl__img"><img src="./img/ring1.png" alt=""></div>
-                                            <div class="sl__img"><img src="./img/ring1.png" alt=""></div>
-                                            <div class="sl__img"><img src="./img/ring1.png" alt=""></div>
-                                        </div>
-                                    </div>
-                                    <div class="review__block review__block-3">
-                                        <video controls="controls" poster="video/duel.jpg">
-                                            <source src="./files/pv.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-                                        </video>
-                                    </div>
+                                  <div class="review__block review__block-1 isActive">
+                                      <iframe :src="getMediaURL(null, 'html')" allowfullscreen frameborder="0" scrolling="no"></iframe>
+                                  </div>
+                                  <div class="review__block review__block-2">
+                                      <div class="sl">
+                                          <div class="sl__img"><img :src="getMediaURL(null, 'image')" alt=""></div>
+                                      </div>
+                                  </div>
+                                  <div class="review__block review__block-3">
+                                      <video controls="controls" poster="video/duel.jpg">
+                                          <source :src="getMediaURL(null, 'video')" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                                      </video>
+                                  </div>
                                 </div>
                             </div>
                         </div>
@@ -683,36 +667,141 @@
         <div class="content__in center_block step_9" data-screen="step_9">
             <div class="content__quiz">
                 <section class="section_bl">
-                    <div class="section_bl__l-side">
-                        <h1 class="section_bl__h1">Создай мечту</h1>
-                        <div class="section_bl__step">
-                            <div class="section_bl__numb"><span>09</span></div>
-                            <div class="section_bl__title">Выбор камня</div>
+                    <div class="section_bl__top">
+                      <h1 class="section_bl__h1">Создай мечту</h1>
+                      <div class="section_bl__step">
+                          <div class="section_bl__numb"><span>09</span></div>
+                      </div>
+                    </div>
+                    <div class="stones">
+                      <div class="stones__filter">
+                        <div class="filter">
+                          <div class="filter__mtitle" @click="filter.modalIsOpen = true">фильтр <img src="./img/arrow-filter.svg" alt=""></div>
+                          <div class="filter__modal" v-bind:class="{isActive: filter.modalIsOpen}">
+                            <div class="filter__inner">
+                              <div class="filter__head">
+                                <div class="filter__mtitle filter__mtitle--inmodal" @click="filter.modalIsOpen = false">фильтр <img src="./img/arrow-filter.svg" alt=""></div>
+                                <div class="filter__reset" @click="resetFilter">
+                                  <img src="./img/reset.svg" alt=""> сбросить
+                                </div>
+                              </div>
+                              <div class="filter__acc">
+                                <div class="filter__acc-item">
+                                  <div class="filter__acc-head">
+                                    <div class="filter__acc-title">Цена</div>
+                                    <button class="filter__acc-arrow" v-bind:class="{isActive: filter.acc.price}" type="button" @click="filter.acc.price = !filter.acc.price">
+                                      <img src="./img/arrow-filter.svg" alt="">
+                                    </button>
+                                  </div>
+                                  <div class="filter__acc-body" v-show="filter.acc.price">
+                                    <div class="filter__range">
+                                      <input class="filter__range-input" type="range" min="filter.default.price1" max="filter.default.price2" step="1000" name="" id="" v-model="selectedFilter.price">
+                                      <div class="filter__range-values">
+                                        <div class="filter__range-value filter__range-value--from">{{ selectedFilter.price }}</div>
+                                        <div class="filter__range-value filter__range-value--to">{{ filter.default.price2 }} RUB</div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="filter__acc-item">
+                                  <div class="filter__acc-head">
+                                    <div class="filter__acc-title">Карат</div>
+                                    <button class="filter__acc-arrow" v-bind:class="{isActive: filter.acc.karat}" type="button" @click="filter.acc.karat = !filter.acc.karat">
+                                      <img src="./img/arrow-filter.svg" alt="">
+                                    </button>
+                                  </div>
+                                  <div class="filter__acc-body" v-show="filter.acc.karat">
+                                    <div class="filter__range">
+                                      <input class="filter__range-input" type="range" min="filter.default.karat1" max="filter.default.karat2" step="0.1" name="" id="" v-model="selectedFilter.karat">
+                                      <div class="filter__range-values">
+                                        <div class="filter__range-value filter__range-value--from">{{ selectedFilter.karat }}</div>
+                                        <div class="filter__range-value filter__range-value--to">{{ filter.default.karat2 }}</div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="filter__acc-item">
+                                  <div class="filter__acc-head">
+                                    <div class="filter__acc-title">Цвет</div>
+                                    <button class="filter__acc-arrow" v-bind:class="{isActive: filter.acc.color}" type="button" @click="filter.acc.color = !filter.acc.color">
+                                      <img src="./img/arrow-filter.svg" alt="">
+                                    </button>
+                                  </div>
+                                  <div class="filter__acc-body" v-show="filter.acc.color">
+                                    <div class="filter__checkboxes">
+                                      <label 
+                                        v-for="(color, index) in filter.colors"
+                                        v-bind:key="color"
+                                        class="filter__checkbox">
+                                        {{color}}
+                                        <input type="radio" hidden name="color" 
+                                        v-bind:value="color" 
+                                        @change="selectedFilter.color = color" 
+                                        v-bind:checked="selectedFilter.color === color">
+                                        <span></span>
+                                      </label>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="filter__show-wrap">
+                                <button class="button filter__show" type="button" @click="filterHandler">Показать</button>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                        <form action="" class="section_bl__form" id="quiz9">
-
-                        </form>
+                      </div>
+                      <div class="stones__content">
+                        <div class="stones__list">
+                          <div v-for="item in response" v-bind:key="item.ID" class="stones__item" v-bind:class="{isActive: selectedStone.id == item.ID}">
+                            <div class="stones__img-wrap">
+                              <picture class="stones__img">
+                                <img v-bind:src="url + item.PREVIEW_PICTURE" alt="">
+                              </picture>
+                            </div>
+                            <div class="stones__cancel" v-if="selectedStone.id == item.ID" @click="selectStone(null)">Отменить выбор</div>
+                            <div class="stones__item-info">
+                              <div class="stones__clarity">{{ getPropFromProps(item.PROPERIES, 'Clarity').VALUE }} Clarity</div>
+                              <div class="stones__name">{{ item.NAME }}</div>
+                              <div class="stones__karat-color">
+                                <div class="stones__karat">Карат: <span>{{ getPropFromProps(item.PROPERIES, 'HighSize').VALUE }}</span></div>
+                                <div class="stones__color">Цвет: <span>{{ getPropFromProps(item.PROPERIES, 'color').VALUE }}</span></div>
+                              </div>
+                              <div class="stones__item-footer">
+                                <div class="stones__price"><p>Цена:</p> <span class="value">{{ item.PRICE && item.PRICE.PRICE }}</span> <span class="currency">{{ item.PRICE && item.PRICE.CURRENCY }}</span></div>
+                                <button class="stones__add-plus" type="button" v-if="selectedStone.id != item.ID" @click="selectStone(item)"><img src="./img/circle-plus.svg" alt=""></button>
+                              </div>
+                              <div class="stones__add-wrap">
+                                <button class="button stones__add" type="button" @click="selectStone(item)">Выбрать</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="stones__more" v-if="limit.limit">
+                          <button class="stones__more-btn" type="button" @click="dowloadMore">Показать еще <img src="./img/more.svg" alt=""></button>
+                        </div>
+                        <div class="content__button">
+                            <div class="navig">
+                                <div class="navig__back" data-target="step_8" data-back="true" @click="mainContent.chooseScreen('step_8')">Назад</div>
+                                <div class="navig__dots">
+                                    <div class="navig__dot"></div>
+                                    <div class="navig__dot"></div>
+                                    <div class="navig__dot"></div>
+                                    <div class="navig__dot"></div>
+                                    <div class="navig__dot"></div>
+                                    <div class="navig__dot"></div>
+                                    <div class="navig__dot"></div>
+                                    <div class="navig__dot"></div>
+                                    <div class="navig__dot isActive"></div>
+                                    <div class="navig__dot"></div>
+                                </div>
+                                <div class="navig__next" data-target="step_10" @click="stoneSelected">Далее</div>
+                            </div>
+                            <button class="section_bl__btn">Связаться с нами</button>
+                        </div>
+                      </div>
                     </div>
                 </section>
-            </div>
-            <div class="content__button">
-                <div class="navig">
-                    <div class="navig__back" data-target="step_8" data-back="true" @click="mainContent.chooseScreen('step_8')">Назад</div>
-                    <div class="navig__dots">
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot isActive"></div>
-                        <div class="navig__dot"></div>
-                    </div>
-                    <div class="navig__next" data-target="step_10" @click="mainContent.chooseScreen('step_10')">Далее</div>
-                </div>
-                <button class="section_bl__btn">Связаться с нами</button>
             </div>
         </div>
         <div class="content__in center_block step_10" data-screen="step_10">
@@ -727,70 +816,50 @@
                         <div class="section_bl__list">
                             <div class="section_bl__opt">
                                 <div class="section_bl__t">огранка камня</div>
-                                <div class="section_bl__b">Radiant</div>
+                                <div class="section_bl__b">{{ selected.STONE_CUT.name }}</div>
                             </div>
                             <div class="section_bl__opt">
                                 <div class="section_bl__t">Стиль</div>
-                                <div class="section_bl__b">В паве бриллантов по кругу камня</div>
+                                <div class="section_bl__b">{{ selected.OWN_STONE_STYLE.name ? 'Свой стиль' : selected.STONE_STYLE.name }}</div>
                             </div>
                             <div class="section_bl__opt">
                                 <div class="section_bl__t">Наличие подножки</div>
-                                <div class="section_bl__b">Без подножки</div>
+                                <div class="section_bl__b">{{ selected.STONE_FOOTBOARD.name }}</div>
                             </div>
                             <div class="section_bl__opt">
                                 <div class="section_bl__t">бриллианты на шинке</div>
-                                <div class="section_bl__b">Один ряд бриллиантов </div>
+                                <div class="section_bl__b">{{ selected.DIAMONDS_ON_SHINKO.name }}</div>
                             </div>
                             <div class="section_bl__opt">
                                 <div class="section_bl__t">золото</div>
-                                <div class="section_bl__b">Белое золото</div>
+                                <div class="section_bl__b">{{ selected.MATERIAL.name }}</div>
                             </div>
                             <div class="section_bl__opt">
                                 <div class="section_bl__t">Цвет лапок</div>
-                                <div class="section_bl__b">Белое золото</div>
+                                <div class="section_bl__b">{{ selected.COLOR_OF_PAWS.name }}</div>
                             </div>
                             <div class="section_bl__opt">
                                 <div class="section_bl__t">Надпись на кольце</div>
-                                <div class="section_bl__b">213</div>
+                                <div class="section_bl__b">{{ selected.TEXT.name ? selected.TEXT.name : '-' }}</div>
                             </div>
                             <div class="section_bl__opt">
                                 <div class="section_bl__t">Размер</div>
-                                <div class="section_bl__b">18,50</div>
+                                <div class="section_bl__b">{{ selected.SIZE.name }}</div>
                             </div>
                             <div class="section_bl__opt">
                                 <div class="section_bl__t">Камень</div>
-                                <div class="section_bl__b">Diamond</div>
+                                <div class="section_bl__b">{{ selectedStone.name }}</div>
                             </div>
                         </div>
                     </div>
                     <div class="section_bl__r-side">
                         <div class="tabs_block">
                             <div class="review">
-                                <div class="review__tabs">
-                                    <div class="review__close"></div>
-                                    <ul>
-                                        <li class="review__btn isActive" id="review__block-1"><span>Интерактив</span></li>
-                                        <li class="review__btn" id="review__block-2"><span>Фото</span></li>
-                                        <li class="review__btn" id="review__block-3"><span>Видео</span></li>
-                                    </ul>
-                                </div>
-                                <div class="review__blocks">
-                                    <div class="review__block review__block-1 isActive">
-                                        <!-- <iframe src="soliter.html" allowfullscreen frameborder="0" scrolling="no"></iframe> -->
-                                    </div>
-                                    <div class="review__block review__block-2">
-                                        <div class="sl sl_js">
-                                            <div class="sl__img"><img src="./img/ring1.png" alt=""></div>
-                                            <div class="sl__img"><img src="./img/ring1.png" alt=""></div>
-                                            <div class="sl__img"><img src="./img/ring1.png" alt=""></div>
-                                        </div>
-                                    </div>
-                                    <div class="review__block review__block-3">
-                                        <video controls="controls" poster="video/duel.jpg">
-                                            <source src="./files/pv.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-                                        </video>
-                                    </div>
-                                </div>
+                              <div class="review__block review__block-2">
+                                  <div class="sl">
+                                      <div class="sl__img"><img :src="getMediaURL(9, 'final')" alt=""></div>
+                                  </div>
+                              </div>
                             </div>
                         </div>
                     </div>
@@ -800,11 +869,48 @@
                 <div class="navig">
                     <div class="navig__item">
                         <div class="navig__l">Цена:</div>
-                        <div class="navig__r">256 790 <span>rub</span></div>
+                        <div class="navig__r">{{ selectedStone.PRICE.PRICE }} <span>{{ selectedStone.PRICE.CURRENCY }}</span></div>
                     </div>
                 </div>
-                <a href="#" class="section_bl__link">Оформить заказ</a>
+                <a href="#" class="section_bl__link" @click="feedbackIsOpen = true">Оформить заказ</a>
             </div>
         </div>
+    </div>
+    <div class="modal" v-if="feedbackIsOpen">
+      <form @submit.prevent class="modal__inner">
+        <div class="modal__close" @click="feedbackIsOpen = false">
+          <img src="./img/modal-close.svg" alt="">
+        </div>
+        <div class="modal__title">Feedback</div>
+        <div class="modal__subtitle">Оформите онлайн резерв в подходящем магазине. Заберите заказ в удобное для вас время или воспользуйтесь доставкой на дом.</div>
+        <label class="modal__item modal__item--required">
+          <input type="text" class="modal__input" name="name" required placeholder="Имя">
+        </label>
+        <div class="modal__item modal__item--required">
+          <input type="email" class="modal__input" name="email" required placeholder="E-mail">
+        </div>
+        <label class="modal__item modal__item--required">
+          <input type="tel" class="modal__input" name="tel" required placeholder="+7(___)___-__-__">
+        </label>
+        <div class="modal__item modal__item--required">
+          <textarea name="question" class="modal__textarea" id="" cols="30" rows="10" required placeholder="Краткий вопрос"></textarea>
+        </div>
+        <label class="modal__item modal__item--file" @drop.prevent="dropHandler">
+          <span class="drop"><img src="./img/Download.svg" alt=""> Перетащите файл сюда</span>
+          <span class="file">Выберите файл</span>
+          <input type="file" class="modal__input" name="file" @change="setModalFile" hidden>
+        </label>
+        <div v-if="modalFileName" class="modal__item">
+          <div class="">{{ modalFileName }}</div>
+        </div>
+        <div class="modal__item">
+          <textarea name="description" class="modal__textarea modal__textarea--description" id="" cols="30" rows="10" placeholder="Опишите детали будущего изделия, стиль, вид и цвет металла, размер"></textarea>
+        </div>
+        <div class="modal__btn-wrap">
+          <button class="modal__send" @click="sendFinalFormData" type="submit">Отправить</button>
+        </div>
+        <div class="modal__sms" v-if="finalDataResponse.hasError === false">Отправлено, спасибо!</div>
+        <div class="modal__sms" v-if="finalDataResponse.hasError === true">Ошибка, попробуйте позже!</div>
+      </form>
     </div>
 </main>

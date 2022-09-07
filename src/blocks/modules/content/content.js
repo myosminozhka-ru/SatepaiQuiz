@@ -25,7 +25,23 @@ const MainContent = class MainContent {
       });
     }
     sendFormData(formData) {
-      return fetch('http://satepais.fvds.ru/local/ajax/json.php', {
+      // отправка постом с параметрами в body
+      // return fetch(`http://satepais.fvds.ru/local/ajax/stones.php`, {
+      //   body: formData,
+      //   method: 'post',
+      // })
+
+      // временный вариант
+      return fetch(`http://satepais.fvds.ru/local/ajax/stones.php?shape=Pear&start=${formData.get('start') || 0}&end=${formData.get('end') || 5}&color=${formData.get('color') || 'D'}&karat=${formData.get('karat') || '10'}&price1=1000&price2=${200000 || formData.get('price') || 200000}`)
+      .then((response) => {
+          return response.json();
+      })
+      .then((data) => {
+          return data;
+      });
+    }
+    sendStone(formData) {
+      return fetch(`http://satepais.fvds.ru/local/ajax/addstones.php`, {
         body: formData,
         method: 'post',
       })
@@ -33,7 +49,10 @@ const MainContent = class MainContent {
           return response.json();
       })
       .then((data) => {
-          return data;
+          return {...data, hasError: false};
+      })
+      .catch(e => {
+        return {error: e, hasError: true};
       });
     }
 }
