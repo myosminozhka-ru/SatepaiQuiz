@@ -22,36 +22,44 @@ const MainContent = class MainContent {
       })
       .then((data) => {
           return data;
+      })
+      .catch(e => {
+        console.log('getData', e)
+        return {error: e};
       });
     }
     sendFormData(formData) {
-      // отправка постом с параметрами в body
-      // return fetch(`http://satepais.fvds.ru/local/ajax/stones.php`, {
-      //   body: formData,
-      //   method: 'post',
-      // })
-
-      // временный вариант
-      return fetch(`http://satepais.fvds.ru/local/ajax/stones.php?shape=Pear&start=${formData.get('start') || 0}&end=${formData.get('end') || 5}&color=${formData.get('color') || 'D'}&karat=${formData.get('karat') || '10'}&price1=1000&price2=${200000 || formData.get('price') || 200000}`)
+      return fetch(`http://satepais.fvds.ru/local/ajax/stones.php`, {
+        body: formData,
+        method: 'POST',
+      })
       .then((response) => {
           return response.json();
       })
       .then((data) => {
           return data;
+      })
+      .catch(e => {
+        console.log('sendFormData', e)
+        return {error: e};
       });
     }
     sendStone(formData) {
+      for(var pair of formData.entries()) {
+          console.log(pair[0]+ ', '+ pair[1]);
+      }
       return fetch(`http://satepais.fvds.ru/local/ajax/addstones.php`, {
         body: formData,
-        method: 'post',
+        method: 'POST',
       })
       .then((response) => {
-          return response.json();
+        return response.json();
       })
       .then((data) => {
-          return {...data, hasError: false};
+        return {...data, hasError: false};
       })
       .catch(e => {
+        console.log('sendStone', e)
         return {error: e, hasError: true};
       });
     }

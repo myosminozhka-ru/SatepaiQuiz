@@ -8,11 +8,11 @@ import 'slick-carousel';
 import MainContent from '../blocks/modules/content/content.js';
 
 // $(function () {
-//     var header = document.getElementById("quiz1");
-//     var btns = header.getElementsByClassName("section_bl__label");
-//     for (var i = 0; i < btns.length; i++) {
+//     let header = document.getElementById("quiz1");
+//     let btns = header.getElementsByClassName("section_bl__label");
+//     for (let i = 0; i < btns.length; i++) {
 //       btns[i].addEventListener("click", function() {
-//         var current = document.getElementsByClassName("isActive");
+//         let current = document.getElementsByClassName("isActive");
 //         current[0].className = current[0].className.replace(" isActive", "");
 //         this.className += " isActive";
 //       });
@@ -20,8 +20,8 @@ import MainContent from '../blocks/modules/content/content.js';
 // });
 $(document).ready(function () {
 
-    var slideEl = $('.review').find('.review__block');
-    var slideBt = $('.review').find('.review__btn');
+    let slideEl = $('.review').find('.review__block');
+    let slideBt = $('.review').find('.review__btn');
     slideBt.click(function () {
         $(this).parent().find('.review__btn').removeClass('isActive');
         $(this).addClass('isActive');
@@ -514,7 +514,7 @@ window.app = new Vue({
         selectedFilter: {
           color: null,
           karat: 0.5,
-          price: 1000,
+          price: 200000,
         },
         limit: {
           value: 6,
@@ -530,7 +530,7 @@ window.app = new Vue({
             karat: true,
           },
           default: {
-            price: 50000,
+            price: 200000,
             price1: 1000,
             price2: 500000,
             color: 'D',
@@ -662,18 +662,19 @@ window.app = new Vue({
       },
       async sendSelected() {
         for (let key in this.selected) {
-          if (key === 'TEXT') {
-            this.configuratorFormData.set(key, this.selected[key].name);
+          if (key === 'STONE_CUT') {
+            this.configuratorFormData.set('shape', this.selected[key].name);
           } else {
             this.configuratorFormData.set(key, this.selected[key].name);
           }
         }
         this.configuratorFormData.set('start', this.limit.start);
         this.configuratorFormData.set('end', this.limit.end);
+        this.configuratorFormData.set('price1', this.filter.default.price1);
+        this.configuratorFormData.set('price2', this.selectedFilter.price);
+        this.configuratorFormData.set('color', this.selectedFilter.color);
+        this.configuratorFormData.set('karat', this.selectedFilter.karat);
 
-        for(var pair of this.configuratorFormData.entries()) {
-            console.log(pair[0]+ ', '+ pair[1]);
-        }
         try {
           this.response = await this.mainContent.sendFormData(this.configuratorFormData)
         } catch (error) {
@@ -682,6 +683,7 @@ window.app = new Vue({
         this.mainContent.chooseScreen('step_9')
       },
       getPropFromProps(props, code) {
+        if (!(props && props.length)) return {};
         const prop = props.find(i => i.CODE.toLowerCase() === code.toLowerCase());
         return prop ? prop : {};
       },
@@ -695,14 +697,10 @@ window.app = new Vue({
         for (let key in this.selectedFilter) {
           this.configuratorFormData.set(key, this.selectedFilter[key]);
         }
-        for(var pair of this.configuratorFormData.entries()) {
-            console.log(pair[0]+ ', '+ pair[1]);
-        }
         try {
           this.response = await this.mainContent.sendFormData(this.configuratorFormData)
           
         } catch (error) {
-          console.log('sendFilter')
           console.error(error)
         }
       },
@@ -742,7 +740,12 @@ window.app = new Vue({
         this.selectedFilter.karat = this.filter.default.karat;
         this.selectedFilter.color = this.filter.default.color;
       },
-      async sendFinalFormData() {
+      async sendFinalFormData(e) {
+        const modalFormData = new FormData(e.target)
+        for(let pair of modalFormData.entries()) {
+          this.configuratorFormData.append(pair[0], pair[1]);
+        }
+        this.configuratorFormData.set('selectedStone', JSON.stringify(this.selectedStone));
         this.finalDataResponse = await this.mainContent.sendStone(this.configuratorFormData)
       },
       dropHandler(ev) {

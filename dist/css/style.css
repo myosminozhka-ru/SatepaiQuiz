@@ -673,8 +673,8 @@ template {
 @font-face {
   font-family: "TTNorms";
   font-display: swap;
-  src: url("../fonts/TTNorms-Light.woff2") format("woff2"), url("../fonts/TTNorms-Light.woff") format("woff"), url("../fonts/TTNorms-Light.ttf") format("ttf");
-  font-weight: 300;
+  src: url("../fonts/TTNorms-Heavy.woff2") format("woff2"), url("../fonts/TTNorms-Heavy.woff") format("woff"), url("../fonts/TTNorms-Heavy.ttf") format("ttf");
+  font-weight: 800;
 }
 
 @font-face {
@@ -687,28 +687,7 @@ template {
 @font-face {
   font-family: "TTNorms";
   font-display: swap;
-  src: url("../fonts/TTNorms-Medium.woff2") format("woff2"), url("../fonts/TTNorms-Medium.woff") format("woff"), url("../fonts/TTNorms-Medium.ttf") format("ttf");
-  font-weight: 500;
-}
-
-@font-face {
-  font-family: "TTNorms";
-  font-display: swap;
   src: url("../fonts/TTNorms-ExtraBold.woff2") format("woff2"), url("../fonts/TTNorms-ExtraBold.woff") format("woff"), url("../fonts/TTNorms-ExtraBold.ttf") format("ttf");
-  font-weight: 800;
-}
-
-@font-face {
-  font-family: "TTNorms";
-  font-display: swap;
-  src: url("../fonts/TTNorms-Regular.woff2") format("woff2"), url("../fonts/TTNorms-Regular.woff") format("woff"), url("../fonts/TTNorms-Regular.ttf") format("ttf");
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: "TTNorms";
-  font-display: swap;
-  src: url("../fonts/TTNorms-Heavy.woff2") format("woff2"), url("../fonts/TTNorms-Heavy.woff") format("woff"), url("../fonts/TTNorms-Heavy.ttf") format("ttf");
   font-weight: 800;
 }
 
@@ -717,6 +696,27 @@ template {
   font-display: swap;
   src: url("../fonts/TTNorms-ExtraLight.woff2") format("woff2"), url("../fonts/TTNorms-ExtraLight.woff") format("woff"), url("../fonts/TTNorms-ExtraLight.ttf") format("ttf");
   font-weight: 200;
+}
+
+@font-face {
+  font-family: "TTNorms";
+  font-display: swap;
+  src: url("../fonts/TTNorms-Light.woff2") format("woff2"), url("../fonts/TTNorms-Light.woff") format("woff"), url("../fonts/TTNorms-Light.ttf") format("ttf");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "TTNorms";
+  font-display: swap;
+  src: url("../fonts/TTNorms-Medium.woff2") format("woff2"), url("../fonts/TTNorms-Medium.woff") format("woff"), url("../fonts/TTNorms-Medium.ttf") format("ttf");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "TTNorms";
+  font-display: swap;
+  src: url("../fonts/TTNorms-Regular.woff2") format("woff2"), url("../fonts/TTNorms-Regular.woff") format("woff"), url("../fonts/TTNorms-Regular.ttf") format("ttf");
+  font-weight: 400;
 }
 
 @font-face {
@@ -1461,6 +1461,14 @@ img {
   flex-grow: 1;
 }
 
+.step_9 .stones__empty {
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+  padding: 40px 20px;
+  height: 70vh;
+}
+
 .step_9 .stones__list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -2104,6 +2112,20 @@ img {
   border: none;
   background-color: #343434;
   cursor: pointer;
+}
+
+.modal__sms {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}
+
+.modal__sms--success {
+  color: chartreuse;
+}
+
+.modal__sms--error {
+  color: tomato;
 }
 
 .open {

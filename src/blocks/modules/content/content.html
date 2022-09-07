@@ -80,7 +80,7 @@
                     </div>
                     <div class="navig__next" data-target="step_2" @click="mainContent.chooseScreen('step_2')">Далее</div>
                 </div>
-                <button class="section_bl__btn">Связаться с нами</button>
+                <button class="section_bl__btn" @click="feedbackIsOpen = true">Связаться с нами</button>
             </div>
         </div>
         <div class="content__in center_block step_2" data-screen="step_2">
@@ -181,7 +181,7 @@
                     </div>
                     <div class="navig__next" data-target="step_3" @click="mainContent.chooseScreen('step_3')">Далее</div>
                 </div>
-                <button class="section_bl__btn">Связаться с нами</button>
+                <button class="section_bl__btn" @click="feedbackIsOpen = true">Связаться с нами</button>
             </div>
         </div>
         <div class="content__in center_block step_3" data-screen="step_3">
@@ -264,7 +264,7 @@
                     </div>
                     <div class="navig__next" data-target="step_4" @click="mainContent.chooseScreen('step_4')">Далее</div>
                 </div>
-                <button class="section_bl__btn">Связаться с нами</button>
+                <button class="section_bl__btn" @click="feedbackIsOpen = true">Связаться с нами</button>
             </div>
         </div>
         <div class="content__in center_block step_4" data-screen="step_4">
@@ -348,7 +348,7 @@
                     </div>
                     <div class="navig__next" data-target="step_5" @click="mainContent.chooseScreen('step_5')">Далее</div>
                 </div>
-                <button class="section_bl__btn">Связаться с нами</button>
+                <button class="section_bl__btn" @click="feedbackIsOpen = true">Связаться с нами</button>
             </div>
         </div>
         <div class="content__in center_block step_5" data-screen="step_5">
@@ -431,7 +431,7 @@
                     </div>
                     <div class="navig__next" data-target="step_6" @click="mainContent.chooseScreen('step_6')">Далее</div>
                 </div>
-                <button class="section_bl__btn">Связаться с нами</button>
+                <button class="section_bl__btn" @click="feedbackIsOpen = true">Связаться с нами</button>
             </div>
         </div>
         <div class="content__in center_block step_6" data-screen="step_6">
@@ -514,7 +514,7 @@
                     </div>
                     <div class="navig__next" data-target="step_7" @click="mainContent.chooseScreen('step_7')">Далее</div>
                 </div>
-                <button class="section_bl__btn">Связаться с нами</button>
+                <button class="section_bl__btn" @click="feedbackIsOpen = true">Связаться с нами</button>
             </div>
         </div>
         <div class="content__in center_block step_7" data-screen="step_7">
@@ -578,7 +578,7 @@
                     </div>
                     <div class="navig__next" data-target="step_8" @click="mainContent.chooseScreen('step_8')">Далее</div>
                 </div>
-                <button class="section_bl__btn">Связаться с нами</button>
+                <button class="section_bl__btn" @click="feedbackIsOpen = true">Связаться с нами</button>
             </div>
         </div>
         <div class="content__in center_block step_8" data-screen="step_8">
@@ -661,7 +661,7 @@
                       @click="sendSelected"
                     >Далее</div>
                 </div>
-                <button class="section_bl__btn">Связаться с нами</button>
+                <button class="section_bl__btn" @click="feedbackIsOpen = true">Связаться с нами</button>
             </div>
         </div>
         <div class="content__in center_block step_9" data-screen="step_9">
@@ -695,7 +695,7 @@
                                   </div>
                                   <div class="filter__acc-body" v-show="filter.acc.price">
                                     <div class="filter__range">
-                                      <input class="filter__range-input" type="range" min="filter.default.price1" max="filter.default.price2" step="1000" name="" id="" v-model="selectedFilter.price">
+                                      <input class="filter__range-input" type="range" v-bind:min="filter.default.price1" v-bind:max="filter.default.price2" step="1000" name="" id="" v-model="selectedFilter.price">
                                       <div class="filter__range-values">
                                         <div class="filter__range-value filter__range-value--from">{{ selectedFilter.price }}</div>
                                         <div class="filter__range-value filter__range-value--to">{{ filter.default.price2 }} RUB</div>
@@ -712,7 +712,7 @@
                                   </div>
                                   <div class="filter__acc-body" v-show="filter.acc.karat">
                                     <div class="filter__range">
-                                      <input class="filter__range-input" type="range" min="filter.default.karat1" max="filter.default.karat2" step="0.1" name="" id="" v-model="selectedFilter.karat">
+                                      <input class="filter__range-input" type="range" v-bind:min="filter.default.karat1" v-bind:max="filter.default.karat2" step="0.1" name="" id="" v-model="selectedFilter.karat">
                                       <div class="filter__range-values">
                                         <div class="filter__range-value filter__range-value--from">{{ selectedFilter.karat }}</div>
                                         <div class="filter__range-value filter__range-value--to">{{ filter.default.karat2 }}</div>
@@ -777,7 +777,8 @@
                             </div>
                           </div>
                         </div>
-                        <div class="stones__more" v-if="limit.limit">
+                        <div class="stones__empty" v-if="response.length === 0">Не найдено</div>
+                        <div class="stones__more" v-if="response.length && limit.limit">
                           <button class="stones__more-btn" type="button" @click="dowloadMore">Показать еще <img src="./img/more.svg" alt=""></button>
                         </div>
                         <div class="content__button">
@@ -797,7 +798,7 @@
                                 </div>
                                 <div class="navig__next" data-target="step_10" @click="stoneSelected">Далее</div>
                             </div>
-                            <button class="section_bl__btn">Связаться с нами</button>
+                            <button class="section_bl__btn" @click="feedbackIsOpen = true">Связаться с нами</button>
                         </div>
                       </div>
                     </div>
@@ -869,7 +870,7 @@
                 <div class="navig">
                     <div class="navig__item">
                         <div class="navig__l">Цена:</div>
-                        <div class="navig__r">{{ selectedStone.PRICE.PRICE }} <span>{{ selectedStone.PRICE.CURRENCY }}</span></div>
+                        <div class="navig__r">{{ selectedStone.PRICE && selectedStone.PRICE.PRICE }} <span>{{ selectedStone.PRICE && selectedStone.PRICE.CURRENCY }}</span></div>
                     </div>
                 </div>
                 <a href="#" class="section_bl__link" @click="feedbackIsOpen = true">Оформить заказ</a>
@@ -877,7 +878,7 @@
         </div>
     </div>
     <div class="modal" v-if="feedbackIsOpen">
-      <form @submit.prevent class="modal__inner">
+      <form @submit.prevent="sendFinalFormData" class="modal__inner">
         <div class="modal__close" @click="feedbackIsOpen = false">
           <img src="./img/modal-close.svg" alt="">
         </div>
@@ -895,22 +896,24 @@
         <div class="modal__item modal__item--required">
           <textarea name="question" class="modal__textarea" id="" cols="30" rows="10" required placeholder="Краткий вопрос"></textarea>
         </div>
-        <label class="modal__item modal__item--file" @drop.prevent="dropHandler">
-          <span class="drop"><img src="./img/Download.svg" alt=""> Перетащите файл сюда</span>
-          <span class="file">Выберите файл</span>
-          <input type="file" class="modal__input" name="file" @change="setModalFile" hidden>
-        </label>
-        <div v-if="modalFileName" class="modal__item">
-          <div class="">{{ modalFileName }}</div>
-        </div>
-        <div class="modal__item">
-          <textarea name="description" class="modal__textarea modal__textarea--description" id="" cols="30" rows="10" placeholder="Опишите детали будущего изделия, стиль, вид и цвет металла, размер"></textarea>
+        <div class="" v-if="!selectedStone.name">
+          <label class="modal__item modal__item--file" @drop.prevent="dropHandler">
+            <span class="drop"><img src="./img/Download.svg" alt=""> Перетащите файл сюда</span>
+            <span class="file">Выберите файл</span>
+            <input type="file" class="modal__input" name="file" @change="setModalFile" hidden>
+          </label>
+          <div v-if="modalFileName" class="modal__item">
+            <div class="">{{ modalFileName }}</div>
+          </div>
+          <div class="modal__item">
+            <textarea name="description" class="modal__textarea modal__textarea--description" id="" cols="30" rows="10" placeholder="Опишите детали будущего изделия, стиль, вид и цвет металла, размер"></textarea>
+          </div>
         </div>
         <div class="modal__btn-wrap">
-          <button class="modal__send" @click="sendFinalFormData" type="submit">Отправить</button>
+          <button class="modal__send" type="submit">Отправить</button>
         </div>
-        <div class="modal__sms" v-if="finalDataResponse.hasError === false">Отправлено, спасибо!</div>
-        <div class="modal__sms" v-if="finalDataResponse.hasError === true">Ошибка, попробуйте позже!</div>
+        <div class="modal__sms modal__sms--success" v-if="finalDataResponse.hasError === false">Отправлено, спасибо!</div>
+        <div class="modal__sms modal__sms--error" v-if="finalDataResponse.hasError === true">Ошибка, попробуйте позже!</div>
       </form>
     </div>
 </main>
