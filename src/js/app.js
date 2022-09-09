@@ -540,7 +540,7 @@ window.app = new Vue({
           },
           modalIsOpen: false
         },
-        url: "http://satepais.fvds.ru",
+        url: "https://satepais.fvds.ru",
         configuratorFormData: new FormData(),
         feedbackIsOpen: false,
         mediaURLs: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],

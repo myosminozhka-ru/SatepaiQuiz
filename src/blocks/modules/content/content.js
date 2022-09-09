@@ -16,7 +16,7 @@ const MainContent = class MainContent {
     }
     init() {}
     getData() {
-      return fetch('http://satepais.fvds.ru/local/ajax/json.php')
+      return fetch('https://satepais.fvds.ru/local/ajax/json.php')
       .then((response) => {
           return response.json()
       })
@@ -29,7 +29,7 @@ const MainContent = class MainContent {
       });
     }
     sendFormData(formData) {
-      return fetch(`http://satepais.fvds.ru/local/ajax/stones.php`, {
+      return fetch(`https://satepais.fvds.ru/local/ajax/stones.php`, {
         body: formData,
         method: 'POST',
       })
@@ -48,7 +48,7 @@ const MainContent = class MainContent {
       for(var pair of formData.entries()) {
           console.log(pair[0]+ ', '+ pair[1]);
       }
-      return fetch(`http://satepais.fvds.ru/local/ajax/addstones.php`, {
+      return fetch(`https://satepais.fvds.ru/local/ajax/addstones.php`, {
         body: formData,
         method: 'POST',
       })
