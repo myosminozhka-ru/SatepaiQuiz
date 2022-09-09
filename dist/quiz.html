@@ -8,8 +8,9 @@
     <title>Satepai Quiz</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap&_v=20220909183146" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?_v=20220909183146">
+    <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap&_v=20220909184436" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css?_v=20220909184436">
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.7/jquery.inputmask.min.js?_v=20220909184436" integrity="sha512-jTgBq4+dMYh73dquskmUFEgMY5mptcbqSw2rmhOZZSJjZbD2wMt0H5nhqWtleVkyBEjmzid5nyERPSNBafG4GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
 </head>
 <body>
     <div class="wrapper" id="app">
@@ -899,7 +900,7 @@
             </div>
         </div>
     </div>
-    <div class="modal" v-if="feedbackIsOpen" v-bind:class="{isActive: feedbackIsOpen}">
+    <div class="modal" v-show="feedbackIsOpen" v-bind:class="{isActive: feedbackIsOpen}">
       <form @submit.prevent="sendFinalFormData" class="modal__inner">
         <div class="modal__close" @click="feedbackIsOpen = false">
           <img src="./img/modal-close.svg" alt="">
@@ -936,7 +937,7 @@
         </div>
       </form>
     </div>
-    <div class="modal" v-if="finalDataResponse.hasError !== null" v-bind:class="{isActive: finalDataResponse.hasError !== null}">
+    <div class="modal" v-show="finalDataResponse.hasError !== null" v-bind:class="{isActive: finalDataResponse.hasError !== null}">
       <div class="modal__inner">
         <div class="modal__close" @click="finalDataResponse.hasError = null">
           <img src="./img/modal-close.svg" alt="" @click="finalDataResponse.hasError = null">
@@ -950,6 +951,6 @@
     </div>
 </main>
     </div>
-    <script src="js/app.min.js?_v=20220909183146"></script>
+    <script src="js/app.min.js?_v=20220909184436"></script>
 </body>
 </html>

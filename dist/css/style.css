@@ -1433,15 +1433,15 @@ template {
 @font-face {
   font-family: "TTNorms";
   font-display: swap;
-  src: url("../fonts/TTNorms-Black.woff2") format("woff2"), url("../fonts/TTNorms-Black.woff") format("woff"), url("../fonts/TTNorms-Black.ttf") format("ttf");
-  font-weight: 900;
+  src: url("../fonts/TTNorms-Bold.woff2") format("woff2"), url("../fonts/TTNorms-Bold.woff") format("woff"), url("../fonts/TTNorms-Bold.ttf") format("ttf");
+  font-weight: 700;
 }
 
 @font-face {
   font-family: "TTNorms";
   font-display: swap;
-  src: url("../fonts/TTNorms-Bold.woff2") format("woff2"), url("../fonts/TTNorms-Bold.woff") format("woff"), url("../fonts/TTNorms-Bold.ttf") format("ttf");
-  font-weight: 700;
+  src: url("../fonts/TTNorms-Black.woff2") format("woff2"), url("../fonts/TTNorms-Black.woff") format("woff"), url("../fonts/TTNorms-Black.ttf") format("ttf");
+  font-weight: 900;
 }
 
 @font-face {
@@ -1461,6 +1461,13 @@ template {
 @font-face {
   font-family: "TTNorms";
   font-display: swap;
+  src: url("../fonts/TTNorms-ExtraBold.woff2") format("woff2"), url("../fonts/TTNorms-ExtraBold.woff") format("woff"), url("../fonts/TTNorms-ExtraBold.ttf") format("ttf");
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: "TTNorms";
+  font-display: swap;
   src: url("../fonts/TTNorms-ExtraLight.woff2") format("woff2"), url("../fonts/TTNorms-ExtraLight.woff") format("woff"), url("../fonts/TTNorms-ExtraLight.ttf") format("ttf");
   font-weight: 200;
 }
@@ -1475,8 +1482,8 @@ template {
 @font-face {
   font-family: "TTNorms";
   font-display: swap;
-  src: url("../fonts/TTNorms-Thin.woff2") format("woff2"), url("../fonts/TTNorms-Thin.woff") format("woff"), url("../fonts/TTNorms-Thin.ttf") format("ttf");
-  font-weight: 100;
+  src: url("../fonts/TTNorms-Medium.woff2") format("woff2"), url("../fonts/TTNorms-Medium.woff") format("woff"), url("../fonts/TTNorms-Medium.ttf") format("ttf");
+  font-weight: 500;
 }
 
 @font-face {
@@ -1489,15 +1496,8 @@ template {
 @font-face {
   font-family: "TTNorms";
   font-display: swap;
-  src: url("../fonts/TTNorms-ExtraBold.woff2") format("woff2"), url("../fonts/TTNorms-ExtraBold.woff") format("woff"), url("../fonts/TTNorms-ExtraBold.ttf") format("ttf");
-  font-weight: 800;
-}
-
-@font-face {
-  font-family: "TTNorms";
-  font-display: swap;
-  src: url("../fonts/TTNorms-Medium.woff2") format("woff2"), url("../fonts/TTNorms-Medium.woff") format("woff"), url("../fonts/TTNorms-Medium.ttf") format("ttf");
-  font-weight: 500;
+  src: url("../fonts/TTNorms-Thin.woff2") format("woff2"), url("../fonts/TTNorms-Thin.woff") format("woff"), url("../fonts/TTNorms-Thin.ttf") format("ttf");
+  font-weight: 100;
 }
 
 body,

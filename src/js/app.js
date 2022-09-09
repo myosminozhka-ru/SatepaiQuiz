@@ -5,6 +5,7 @@ import Vue from 'vue/dist/vue.js';
 import $ from 'jquery';
 import 'slick-carousel';
 import ionRangeSlider from 'ion-rangeslider';
+import mask from 'jquery-inputmask'
 
 import MainContent from '../blocks/modules/content/content.js';
 
@@ -569,6 +570,7 @@ window.app = new Vue({
           },
         });
         window.rangePriceInstance = $("#rangePrice").data("ionRangeSlider");
+
         window.rangeKaratInstance = $("#rangeKarat").ionRangeSlider({
           type: "double",
           min: 0.1,
@@ -579,6 +581,8 @@ window.app = new Vue({
           },
         });
         window.rangeKaratInstance = $("#rangeKarat").data("ionRangeSlider");
+
+        $(".modal__input[name='tel']").mask("+7(999)999-99-99",{placeholder:"+7(___)___-__-__"});
     },
     beforeCreate() {        
         window.addEventListener('resize', () => {
