@@ -8,15 +8,14 @@
     <title>Satepai Quiz</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap&_v=20220909184436" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?_v=20220909184436">
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.7/jquery.inputmask.min.js?_v=20220909184436" integrity="sha512-jTgBq4+dMYh73dquskmUFEgMY5mptcbqSw2rmhOZZSJjZbD2wMt0H5nhqWtleVkyBEjmzid5nyERPSNBafG4GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap&_v=20220910003733" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css?_v=20220910003733">
 </head>
 <body>
     <div class="wrapper" id="app">
         <main class="steps center_block">
     <div class="steps__in" v-bind:class="{visible: filter.modalIsOpen}">
-        <div class="content__in step_1 " data-screen="step_1">
+        <div class="content__in step_1 isActive" data-screen="step_1">
             <div class="content__quiz">
                 <section class="section_bl">
                     <div class="section_bl__l-side">
@@ -684,7 +683,7 @@
                 <button class="section_bl__btn" @click="feedbackIsOpen = true">Связаться с нами</button>
             </div>
         </div>
-        <div class="content__in center_block step_9 isActive" data-screen="step_9">
+        <div class="content__in center_block step_9" data-screen="step_9">
             <div class="content__quiz">
                 <section class="section_bl">
                     <div class="section_bl__top">
@@ -951,6 +950,6 @@
     </div>
 </main>
     </div>
-    <script src="js/app.min.js?_v=20220909184436"></script>
+    <script src="js/app.min.js?_v=20220910003733"></script>
 </body>
 </html>
