@@ -8,14 +8,14 @@
     <title>Satepai Quiz</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap&_v=20220909123312" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?_v=20220909123312">
+    <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap&_v=20220909183146" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css?_v=20220909183146">
 </head>
 <body>
     <div class="wrapper" id="app">
         <main class="steps center_block">
     <div class="steps__in" v-bind:class="{visible: filter.modalIsOpen}">
-        <div class="content__in step_1 isActive" data-screen="step_1">
+        <div class="content__in step_1 " data-screen="step_1">
             <div class="content__quiz">
                 <section class="section_bl">
                     <div class="section_bl__l-side">
@@ -562,16 +562,16 @@
                                 </div>
                                 <div class="review__blocks">
                                   <div class="review__block review__block-1 isActive">
-                                      <iframe :src="getMediaURL(null, 'html')" allowfullscreen frameborder="0" scrolling="no"></iframe>
+                                      <iframe :src="getMediaURL(5, 'html')" allowfullscreen frameborder="0" scrolling="no"></iframe>
                                   </div>
                                   <div class="review__block review__block-2">
                                       <div class="sl">
-                                          <div class="sl__img"><img :src="getMediaURL(null, 'image')" alt=""></div>
+                                          <div class="sl__img"><img :src="getMediaURL(5, 'image')" alt=""></div>
                                       </div>
                                   </div>
                                   <div class="review__block review__block-3">
                                       <video controls="controls" poster="video/duel.jpg">
-                                          <source :src="getMediaURL(null, 'video')" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                                          <source :src="getMediaURL(5, 'video')" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
                                       </video>
                                   </div>
                                 </div>
@@ -643,16 +643,16 @@
                                 </div>
                                 <div class="review__blocks">
                                   <div class="review__block review__block-1 isActive">
-                                      <iframe :src="getMediaURL(null, 'html')" allowfullscreen frameborder="0" scrolling="no"></iframe>
+                                      <iframe :src="getMediaURL(5, 'html')" allowfullscreen frameborder="0" scrolling="no"></iframe>
                                   </div>
                                   <div class="review__block review__block-2">
                                       <div class="sl">
-                                          <div class="sl__img"><img :src="getMediaURL(null, 'image')" alt=""></div>
+                                          <div class="sl__img"><img :src="getMediaURL(5, 'image')" alt=""></div>
                                       </div>
                                   </div>
                                   <div class="review__block review__block-3">
                                       <video controls="controls" poster="video/duel.jpg">
-                                          <source :src="getMediaURL(null, 'video')" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                                          <source :src="getMediaURL(5, 'video')" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
                                       </video>
                                   </div>
                                 </div>
@@ -683,7 +683,7 @@
                 <button class="section_bl__btn" @click="feedbackIsOpen = true">Связаться с нами</button>
             </div>
         </div>
-        <div class="content__in center_block step_9" data-screen="step_9">
+        <div class="content__in center_block step_9 isActive" data-screen="step_9">
             <div class="content__quiz">
                 <section class="section_bl">
                     <div class="section_bl__top">
@@ -714,10 +714,10 @@
                                   </div>
                                   <div class="filter__acc-body" v-show="filter.acc.price">
                                     <div class="filter__range">
-                                      <input class="filter__range-input" type="range" v-bind:min="filter.default.price1" v-bind:max="filter.default.price2" step="1000" name="" id="" v-model="selectedFilter.price">
+                                      <input type="text" class="js-range-slider" id="rangePrice" name="my_range" value="" />
                                       <div class="filter__range-values">
-                                        <div class="filter__range-value filter__range-value--from">{{ selectedFilter.price }}</div>
-                                        <div class="filter__range-value filter__range-value--to">{{ filter.default.price2 }} USD</div>
+                                        <div class="filter__range-value filter__range-value--from">{{ getSelectedFilter.price1 }}</div>
+                                        <div class="filter__range-value filter__range-value--to">{{ getSelectedFilter.price2 }} USD</div>
                                       </div>
                                     </div>
                                   </div>
@@ -731,10 +731,10 @@
                                   </div>
                                   <div class="filter__acc-body" v-show="filter.acc.karat">
                                     <div class="filter__range">
-                                      <input class="filter__range-input" type="range" v-bind:min="filter.default.karat1" v-bind:max="filter.default.karat2" step="0.1" name="" id="" v-model="selectedFilter.karat">
+                                      <input type="text" class="js-range-slider" id="rangeKarat" name="my_range" value="" />
                                       <div class="filter__range-values">
-                                        <div class="filter__range-value filter__range-value--from">{{ selectedFilter.karat }}</div>
-                                        <div class="filter__range-value filter__range-value--to">{{ filter.default.karat2 }}</div>
+                                        <div class="filter__range-value filter__range-value--from">{{ getSelectedFilter.karat1 }}</div>
+                                        <div class="filter__range-value filter__range-value--to">{{ getSelectedFilter.karat2 }}</div>
                                       </div>
                                     </div>
                                   </div>
@@ -764,7 +764,7 @@
                                 </div>
                               </div>
                               <div class="filter__show-wrap">
-                                <button class="button filter__show" type="button" @click="filterHandler">Показать</button>
+                                <button class="button filter__show" type="button" @click="filterHandler">Применить</button>
                               </div>
                             </div>
                           </div>
@@ -779,7 +779,6 @@
                                   <img v-bind:src="url + item.PREVIEW_PICTURE" alt="">
                                 </picture>
                               </div>
-                              <div class="stones__cancel" v-if="selectedStone.id == item.ID" @click="selectStone(null)">Отменить выбор</div>
                               <div class="stones__item-info">
                                 <div class="stones__clarity">{{ getPropFromProps(item.PROPERIES, 'Clarity').VALUE }} Clarity</div>
                                 <div class="stones__name">{{ item.NAME }}</div>
@@ -789,10 +788,12 @@
                                 </div>
                                 <div class="stones__item-footer">
                                   <div class="stones__price"><p>Цена:</p> <span class="value">{{ item.PRICE && item.PRICE.PRICE }}</span> <span class="currency">{{ item.PRICE && item.PRICE.CURRENCY }}</span></div>
-                                  <button class="stones__add-plus" type="button" v-if="selectedStone.id != item.ID" @click="selectStone(item)"><img src="./img/circle-plus.svg" alt=""></button>
+                                  <button v-if="selectedStone.id == item.ID" class="stones__add-plus" type="button" v-if="selectedStone.id != item.ID" @click="selectStone(null)"><img src="./img/cancel-stone.svg" alt=""></button>
+                                  <button v-else class="stones__add-plus" type="button" v-if="selectedStone.id != item.ID" @click="selectStone(item)"><img src="./img/circle-plus.svg" alt=""></button>
                                 </div>
                                 <div class="stones__add-wrap">
-                                  <button class="button stones__add" type="button" @click="selectStone(item)">Выбрать</button>
+                                  <button v-if="selectedStone.id == item.ID" class="button stones__add" type="button" @click="selectStone(null)">Отменить</button>
+                                  <button v-else class="button stones__add" type="button" @click="selectStone(item)">Выбрать</button>
                                 </div>
                               </div>
                             </div>
@@ -898,7 +899,7 @@
             </div>
         </div>
     </div>
-    <div class="modal" v-if="feedbackIsOpen">
+    <div class="modal" v-if="feedbackIsOpen" v-bind:class="{isActive: feedbackIsOpen}">
       <form @submit.prevent="sendFinalFormData" class="modal__inner">
         <div class="modal__close" @click="feedbackIsOpen = false">
           <img src="./img/modal-close.svg" alt="">
@@ -933,12 +934,22 @@
         <div class="modal__btn-wrap">
           <button class="modal__send" type="submit">Отправить</button>
         </div>
-        <div class="modal__sms modal__sms--success" v-if="finalDataResponse.hasError === false">Отправлено, спасибо!</div>
-        <div class="modal__sms modal__sms--error" v-if="finalDataResponse.hasError === true">Ошибка, попробуйте позже!</div>
       </form>
+    </div>
+    <div class="modal" v-if="finalDataResponse.hasError !== null" v-bind:class="{isActive: finalDataResponse.hasError !== null}">
+      <div class="modal__inner">
+        <div class="modal__close" @click="finalDataResponse.hasError = null">
+          <img src="./img/modal-close.svg" alt="" @click="finalDataResponse.hasError = null">
+        </div>
+        <div class="modal__title"  v-if="finalDataResponse.hasError === false">Спасибо!</div>
+        <div class="modal__sms modal__sms--success" v-if="finalDataResponse.hasError === false">Благодарим Вас за информацию о вашей мечте!<br>
+          Мы изучим Ваши пожелания и свяжемся с Вами для согласования следующих действий.</div>
+          <div class="modal__title"  v-if="finalDataResponse.hasError === true">Упc...</div>
+        <div class="modal__sms modal__sms--error" v-if="finalDataResponse.hasError === true">Ошибка, попробуйте позже!</div>
+      </div>
     </div>
 </main>
     </div>
-    <script src="js/app.min.js?_v=20220909123312"></script>
+    <script src="js/app.min.js?_v=20220909183146"></script>
 </body>
 </html>

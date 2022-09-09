@@ -1,6 +1,7 @@
 const MainContent = class MainContent {
-    constructor() {
+    constructor(api) {
       this.currentStep = null
+      this.api = api
     }
     chooseScreen(target) {
         if (!document.querySelector(`.content__in.isActive [data-target="${target}"]`).dataset.back) {
@@ -16,7 +17,7 @@ const MainContent = class MainContent {
     }
     init() {}
     getData() {
-      return fetch('https://satepais.fvds.ru/local/ajax/json.php')
+      return fetch(this.api + '/json.php')
       .then((response) => {
           return response.json()
       })
@@ -29,7 +30,7 @@ const MainContent = class MainContent {
       });
     }
     sendFormData(formData) {
-      return fetch(`https://satepais.fvds.ru/local/ajax/stones.php`, {
+      return fetch(this.api + `/stones.php`, {
         body: formData,
         method: 'POST',
       })
@@ -48,7 +49,7 @@ const MainContent = class MainContent {
       for(var pair of formData.entries()) {
           console.log(pair[0]+ ', '+ pair[1]);
       }
-      return fetch(`https://satepais.fvds.ru/local/ajax/addstones.php`, {
+      return fetch(this.api + `/addstones.php`, {
         body: formData,
         method: 'POST',
       })
