@@ -638,16 +638,18 @@ window.app = new Vue({
         })
       },
       setOwnStyle(e) {
-        if (e.target.value) {
-          console.dir(e.target.value)
-          console.dir(e.target.files[0])
+        if (e === null) {
+          this.selected.OWN_STONE_STYLE.id = null
+          this.selected.OWN_STONE_STYLE.name = null
+          const question = this.data[1].QUESTIONS[0]
+          this.setSelectedData('STONE_STYLE', question.ID, question.NAME, 1, 0)
+          return;
+        }
+        if (e.target && e.target.value) {
           this.selected.STONE_STYLE.id = null
           this.selected.STONE_STYLE.name = null
           this.selected.OWN_STONE_STYLE.id = 'свой стиль'
           this.selected.OWN_STONE_STYLE.name = e.target.files[0]
-        } else {
-          this.selected.OWN_STONE_STYLE.id = null
-          this.selected.OWN_STONE_STYLE.name = null
         }
       },
       setModalFile(e) {

@@ -7,8 +7,8 @@
     <title>Satepai Quiz</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap&_v=20220908013730" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?_v=20220908013730">
+    <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap&_v=20220908134809" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css?_v=20220908134809">
 </head>
 <body>
     <div class="wrapper" id="app">
@@ -131,7 +131,7 @@
                                 </div>
                                 <span>{{ question.NAME }}</span>
                             </label>
-                            <label for="step2_4" class="section_bl__label">
+                            <label v-if="!selected.OWN_STONE_STYLE.name" for="step2_4" class="section_bl__label">
                                 <input 
                                     type="file" 
                                     name="step2_4" 
@@ -142,9 +142,13 @@
                                 <div class="section_bl__img">
                                     <img src="./img/krist7.svg" alt="ОТправить Свой дизайн">
                                 </div>
-                                <span>{{ selected.OWN_STONE_STYLE.id ? "Загружен" : "Отправить Свой дизайн" }}</span>
-                                <span>{{ selected.OWN_STONE_STYLE.id ? "Удалить" : "" }}</span>
+                                <span>Отправить Свой дизайн</span>
                             </label>
+                            <div v-else class="section_bl__label">
+                              <span>Загружен файл: {{ selected.OWN_STONE_STYLE.name.name }}</span>
+                              <br><br>
+                              <span @click="setOwnStyle(null)">Удалить?</span>
+                            </div>
                         </form>
                     </div>
                     <div class="section_bl__r-side">
@@ -712,7 +716,7 @@
                                       <input class="filter__range-input" type="range" v-bind:min="filter.default.price1" v-bind:max="filter.default.price2" step="1000" name="" id="" v-model="selectedFilter.price">
                                       <div class="filter__range-values">
                                         <div class="filter__range-value filter__range-value--from">{{ selectedFilter.price }}</div>
-                                        <div class="filter__range-value filter__range-value--to">{{ filter.default.price2 }} RUB</div>
+                                        <div class="filter__range-value filter__range-value--to">{{ filter.default.price2 }} USD</div>
                                       </div>
                                     </div>
                                   </div>
@@ -767,26 +771,28 @@
                       </div>
                       <div class="stones__content">
                         <div class="stones__list">
-                          <div v-for="item in response" v-bind:key="item.ID" class="stones__item" v-bind:class="{isActive: selectedStone.id == item.ID}">
-                            <div class="stones__img-wrap">
-                              <picture class="stones__img">
-                                <img v-bind:src="url + item.PREVIEW_PICTURE" alt="">
-                              </picture>
-                            </div>
-                            <div class="stones__cancel" v-if="selectedStone.id == item.ID" @click="selectStone(null)">Отменить выбор</div>
-                            <div class="stones__item-info">
-                              <div class="stones__clarity">{{ getPropFromProps(item.PROPERIES, 'Clarity').VALUE }} Clarity</div>
-                              <div class="stones__name">{{ item.NAME }}</div>
-                              <div class="stones__karat-color">
-                                <div class="stones__karat">Карат: <span>{{ getPropFromProps(item.PROPERIES, 'HighSize').VALUE }}</span></div>
-                                <div class="stones__color">Цвет: <span>{{ getPropFromProps(item.PROPERIES, 'color').VALUE }}</span></div>
+                          <div v-for="item in response" v-bind:key="item.ID" class="stones__item">
+                            <div class="stones__item-inner" v-bind:class="{isActive: selectedStone.id == item.ID}">
+                              <div class="stones__img-wrap">
+                                <picture class="stones__img">
+                                  <img v-bind:src="url + item.PREVIEW_PICTURE" alt="">
+                                </picture>
                               </div>
-                              <div class="stones__item-footer">
-                                <div class="stones__price"><p>Цена:</p> <span class="value">{{ item.PRICE && item.PRICE.PRICE }}</span> <span class="currency">{{ item.PRICE && item.PRICE.CURRENCY }}</span></div>
-                                <button class="stones__add-plus" type="button" v-if="selectedStone.id != item.ID" @click="selectStone(item)"><img src="./img/circle-plus.svg" alt=""></button>
-                              </div>
-                              <div class="stones__add-wrap">
-                                <button class="button stones__add" type="button" @click="selectStone(item)">Выбрать</button>
+                              <div class="stones__cancel" v-if="selectedStone.id == item.ID" @click="selectStone(null)">Отменить выбор</div>
+                              <div class="stones__item-info">
+                                <div class="stones__clarity">{{ getPropFromProps(item.PROPERIES, 'Clarity').VALUE }} Clarity</div>
+                                <div class="stones__name">{{ item.NAME }}</div>
+                                <div class="stones__karat-color">
+                                  <div class="stones__karat">Карат: <span>{{ getPropFromProps(item.PROPERIES, 'HighSize').VALUE }}</span></div>
+                                  <div class="stones__color">Цвет: <span>{{ getPropFromProps(item.PROPERIES, 'color').VALUE }}</span></div>
+                                </div>
+                                <div class="stones__item-footer">
+                                  <div class="stones__price"><p>Цена:</p> <span class="value">{{ item.PRICE && item.PRICE.PRICE }}</span> <span class="currency">{{ item.PRICE && item.PRICE.CURRENCY }}</span></div>
+                                  <button class="stones__add-plus" type="button" v-if="selectedStone.id != item.ID" @click="selectStone(item)"><img src="./img/circle-plus.svg" alt=""></button>
+                                </div>
+                                <div class="stones__add-wrap">
+                                  <button class="button stones__add" type="button" @click="selectStone(item)">Выбрать</button>
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -932,6 +938,6 @@
     </div>
 </main>
     </div>
-    <script src="js/app.min.js?_v=20220908013730"></script>
+    <script src="js/app.min.js?_v=20220908134809"></script>
 </body>
 </html>
