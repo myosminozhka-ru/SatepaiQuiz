@@ -42,6 +42,7 @@
     "webpack-stream": "latest"
   },
   "dependencies": {
+    "ion-rangeslider": "^2.3.1",
     "jquery": "^3.6.0",
     "slick-carousel": "^1.8.1",
     "vue": "^2.6.14"

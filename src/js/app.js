@@ -4,6 +4,7 @@ globalFunctions.isWebp();
 import Vue from 'vue/dist/vue.js';
 import $ from 'jquery';
 import 'slick-carousel';
+import ionRangeSlider from 'ion-rangeslider';
 
 import MainContent from '../blocks/modules/content/content.js';
 
@@ -75,7 +76,7 @@ window.app = new Vue({
             mobile: 768,
             window: window.innerWidth
         },
-        mainContent: new MainContent(),
+        mainContent: new MainContent('https://satepais.fvds.ru/local/ajax'),
         data: [{QUESTIONS: []}, {QUESTIONS: []}, {QUESTIONS: []}, {QUESTIONS: []}, {QUESTIONS: []}, {QUESTIONS: []}, {QUESTIONS: []}, {QUESTIONS: []}],
         selected: {
           STONE_CUT: {name: null, id: null},
@@ -513,8 +514,10 @@ window.app = new Vue({
         }],
         selectedFilter: {
           color: null,
-          karat: 0.5,
-          price: 200000,
+          price1: 1000,
+          price2: 500000,
+          karat1: 0.1,
+          karat2: 20,
         },
         limit: {
           value: 6,
@@ -530,11 +533,9 @@ window.app = new Vue({
             karat: true,
           },
           default: {
-            price: 200000,
             price1: 1000,
             price2: 500000,
             color: 'D',
-            karat: 0.5,
             karat1: 0.1,
             karat2: 20,
           },
@@ -548,13 +549,36 @@ window.app = new Vue({
           message: null,
           hasError: null
         },
-        modalFileName: null
+        modalFileName: null,
       }
     },
     mounted() {
         this.getData()
         this.mainContent.init();
         this.selectedFilter.color = this.filter.default.color
+        const setRangeValue = (data, from, to) => {
+          this.selectedFilter[from] = +data.from
+          this.selectedFilter[to] = +data.to
+        }
+        $("#rangePrice").ionRangeSlider({
+          type: "double",
+          min: 1000,
+          max: 500000,
+          onChange: function (data) {
+            setRangeValue(data, 'price1', 'price2')
+          },
+        });
+        window.rangePriceInstance = $("#rangePrice").data("ionRangeSlider");
+        window.rangeKaratInstance = $("#rangeKarat").ionRangeSlider({
+          type: "double",
+          min: 0.1,
+          max: 20,
+          step: 0.1,   
+          onChange: function (data) {
+            setRangeValue(data, 'karat1', 'karat2')
+          },
+        });
+        window.rangeKaratInstance = $("#rangeKarat").data("ionRangeSlider");
     },
     beforeCreate() {        
         window.addEventListener('resize', () => {
@@ -571,6 +595,9 @@ window.app = new Vue({
         isTablet: function () {
             return this.sizes.window < this.sizes.tablet && this.sizes.window > this.sizes.mobile;
         },
+        getSelectedFilter() {
+          return this.selectedFilter
+        }
     },
     methods: {
       async getData() {
@@ -600,10 +627,8 @@ window.app = new Vue({
         if (type === 'image') {
           return this.url + '/upload/config/imgs/' + this.mediaURLs.slice(0, step + 1).join('_') + '.jpg'
         } else if (type === 'video') {
-          return null
           return this.url + '/upload/config/video/' + this.mediaURLs.slice(0, step + 1).join('_') + '.mp4'
         } else if (type === 'html') {
-          return null
           return this.url + '/upload/config/interact/' + this.mediaURLs.slice(0, step + 1).join('_') + '.html'
         } else if (type === 'final') {
           return this.url + '/upload/config/imgs/' + this.mediaURLs.slice(0, step + 1).join('_') + '.jpg'
@@ -673,9 +698,10 @@ window.app = new Vue({
         this.configuratorFormData.set('start', this.limit.start);
         this.configuratorFormData.set('end', this.limit.end);
         this.configuratorFormData.set('price1', this.filter.default.price1);
-        this.configuratorFormData.set('price2', this.selectedFilter.price);
+        this.configuratorFormData.set('price2', this.selectedFilter.price2);
         this.configuratorFormData.set('color', this.selectedFilter.color);
-        this.configuratorFormData.set('karat', this.selectedFilter.karat);
+        this.configuratorFormData.set('karat1', this.selectedFilter.karat1);
+        this.configuratorFormData.set('karat2', this.selectedFilter.karat2);
 
         try {
           this.response = await this.mainContent.sendFormData(this.configuratorFormData)
@@ -738,9 +764,13 @@ window.app = new Vue({
         this.selectedStone.name = obj.NAME
       },
       resetFilter() {
-        this.selectedFilter.price = this.filter.default.price;
-        this.selectedFilter.karat = this.filter.default.karat;
+        this.selectedFilter.price1 = this.filter.default.price1;
+        this.selectedFilter.price2 = this.filter.default.price2;
+        this.selectedFilter.karat1 = this.filter.default.karat1;
+        this.selectedFilter.karat2 = this.filter.default.karat2;
         this.selectedFilter.color = this.filter.default.color;
+        window.rangePriceInstance.reset()
+        window.rangeKaratInstance.reset()
       },
       async sendFinalFormData(e) {
         const modalFormData = new FormData(e.target)
@@ -749,6 +779,7 @@ window.app = new Vue({
         }
         this.configuratorFormData.set('selectedStone', JSON.stringify(this.selectedStone));
         this.finalDataResponse = await this.mainContent.sendStone(this.configuratorFormData)
+        this.feedbackIsOpen = false
       },
       dropHandler(ev) {
         ev.preventDefault();
