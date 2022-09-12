@@ -8,8 +8,8 @@
     <title>Satepai Quiz</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap&_v=20220910003733" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?_v=20220910003733">
+    <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap&_v=20220912165214" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css?_v=20220912165214">
 </head>
 <body>
     <div class="wrapper" id="app">
@@ -44,6 +44,7 @@
                                     <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
                                 </div>
                                 <span>{{ question.NAME }}</span>
+                                <div v-if="question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE" class="section_bl__prc">+ {{ question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE }}$</div>
                             </label>
                         </form>
                     </div>
@@ -131,6 +132,7 @@
                                     <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
                                 </div>
                                 <span>{{ question.NAME }}</span>
+                                <div v-if="question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE" class="section_bl__prc">+ {{ question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE }}$</div>
                             </label>
                             <label v-if="!selected.OWN_STONE_STYLE.name" for="step2_4" class="section_bl__label">
                                 <input 
@@ -232,6 +234,7 @@
                                     <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
                                 </div>
                                 <span>{{ question.NAME }}</span>
+                                <div v-if="question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE" class="section_bl__prc">+ {{ question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE }}$</div>
                             </label>
                         </form>
                     </div>
@@ -315,7 +318,7 @@
                                     <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
                                 </div>
                                 <span>{{ question.NAME }}</span>
-                                <div class="section_bl__prc">+ {{ question.PROPERIES.PRICE.VALUE }}{{ question.PROPERIES.CURENCY.VALUE === "USD" ? "$" : "" }}</div>
+                                <div v-if="question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE" class="section_bl__prc">+ {{ question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE }}$</div>
                             </label>
                         </form>
                     </div>
@@ -399,6 +402,7 @@
                                     <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
                                 </div>
                                 <span>{{ question.NAME }}</span>
+                                <div v-if="question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE" class="section_bl__prc">+ {{ question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE }}$</div>
                             </label>
                         </form>
                     </div>
@@ -482,6 +486,7 @@
                                     <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
                                 </div>
                                 <span>{{ question.NAME }}</span>
+                                <div v-if="question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE" class="section_bl__prc">+ {{ question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE }}$</div>
                             </label>
                         </form>
                     </div>
@@ -950,6 +955,6 @@
     </div>
 </main>
     </div>
-    <script src="js/app.min.js?_v=20220910003733"></script>
+    <script src="js/app.min.js?_v=20220912165214"></script>
 </body>
 </html>
