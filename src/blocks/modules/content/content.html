@@ -29,6 +29,7 @@
                                     <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
                                 </div>
                                 <span>{{ question.NAME }}</span>
+                                <div v-if="question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE" class="section_bl__prc">+ {{ question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE }}$</div>
                             </label>
                         </form>
                     </div>
@@ -116,6 +117,7 @@
                                     <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
                                 </div>
                                 <span>{{ question.NAME }}</span>
+                                <div v-if="question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE" class="section_bl__prc">+ {{ question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE }}$</div>
                             </label>
                             <label v-if="!selected.OWN_STONE_STYLE.name" for="step2_4" class="section_bl__label">
                                 <input 
@@ -217,6 +219,7 @@
                                     <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
                                 </div>
                                 <span>{{ question.NAME }}</span>
+                                <div v-if="question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE" class="section_bl__prc">+ {{ question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE }}$</div>
                             </label>
                         </form>
                     </div>
@@ -300,7 +303,7 @@
                                     <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
                                 </div>
                                 <span>{{ question.NAME }}</span>
-                                <div class="section_bl__prc">+ {{ question.PROPERIES.PRICE.VALUE }}{{ question.PROPERIES.CURENCY.VALUE === "USD" ? "$" : "" }}</div>
+                                <div v-if="question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE" class="section_bl__prc">+ {{ question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE }}$</div>
                             </label>
                         </form>
                     </div>
@@ -384,6 +387,7 @@
                                     <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
                                 </div>
                                 <span>{{ question.NAME }}</span>
+                                <div v-if="question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE" class="section_bl__prc">+ {{ question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE }}$</div>
                             </label>
                         </form>
                     </div>
@@ -467,6 +471,7 @@
                                     <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
                                 </div>
                                 <span>{{ question.NAME }}</span>
+                                <div v-if="question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE" class="section_bl__prc">+ {{ question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE }}$</div>
                             </label>
                         </form>
                     </div>

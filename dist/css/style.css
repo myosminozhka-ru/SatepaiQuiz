@@ -1454,20 +1454,6 @@ template {
 @font-face {
   font-family: "TTNorms";
   font-display: swap;
-  src: url("../fonts/TTNorms-Bold.woff2") format("woff2"), url("../fonts/TTNorms-Bold.woff") format("woff"), url("../fonts/TTNorms-Bold.ttf") format("ttf");
-  font-weight: 700;
-}
-
-@font-face {
-  font-family: "TTNorms";
-  font-display: swap;
-  src: url("../fonts/TTNorms-Italic.woff2") format("woff2"), url("../fonts/TTNorms-Italic.woff") format("woff"), url("../fonts/TTNorms-Italic.ttf") format("ttf");
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: "TTNorms";
-  font-display: swap;
   src: url("../fonts/TTNorms-Light.woff2") format("woff2"), url("../fonts/TTNorms-Light.woff") format("woff"), url("../fonts/TTNorms-Light.ttf") format("ttf");
   font-weight: 300;
 }
@@ -1482,8 +1468,15 @@ template {
 @font-face {
   font-family: "TTNorms";
   font-display: swap;
-  src: url("../fonts/TTNorms-Medium.woff2") format("woff2"), url("../fonts/TTNorms-Medium.woff") format("woff"), url("../fonts/TTNorms-Medium.ttf") format("ttf");
-  font-weight: 500;
+  src: url("../fonts/TTNorms-Bold.woff2") format("woff2"), url("../fonts/TTNorms-Bold.woff") format("woff"), url("../fonts/TTNorms-Bold.ttf") format("ttf");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "TTNorms";
+  font-display: swap;
+  src: url("../fonts/TTNorms-Thin.woff2") format("woff2"), url("../fonts/TTNorms-Thin.woff") format("woff"), url("../fonts/TTNorms-Thin.ttf") format("ttf");
+  font-weight: 100;
 }
 
 @font-face {
@@ -1496,8 +1489,15 @@ template {
 @font-face {
   font-family: "TTNorms";
   font-display: swap;
-  src: url("../fonts/TTNorms-Thin.woff2") format("woff2"), url("../fonts/TTNorms-Thin.woff") format("woff"), url("../fonts/TTNorms-Thin.ttf") format("ttf");
-  font-weight: 100;
+  src: url("../fonts/TTNorms-Medium.woff2") format("woff2"), url("../fonts/TTNorms-Medium.woff") format("woff"), url("../fonts/TTNorms-Medium.ttf") format("ttf");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "TTNorms";
+  font-display: swap;
+  src: url("../fonts/TTNorms-Italic.woff2") format("woff2"), url("../fonts/TTNorms-Italic.woff") format("woff"), url("../fonts/TTNorms-Italic.ttf") format("ttf");
+  font-weight: 400;
 }
 
 body,
@@ -1767,6 +1767,16 @@ img {
 .section_bl__btn:hover {
   background: #000;
   color: #fff;
+}
+
+.section_bl__prc {
+  font-family: "Forum", serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  color: #5F90EA;
+  margin-top: 10px;
 }
 
 .content__button {
@@ -2090,16 +2100,6 @@ img {
 .step_4 .section_bl__form {
   padding-left: 0;
   padding-right: 0;
-}
-
-.step_4 .section_bl__prc {
-  font-family: "Forum", serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  text-align: center;
-  color: #5F90EA;
-  margin-top: 10px;
 }
 
 .step_7 .section_bl__form {
@@ -3439,6 +3439,10 @@ img {
 }
 
 @media all and (max-width: 768px) {
+  .section_bl__prc {
+    font-size: 14px;
+  }
+
   .step_3 .section_bl__form {
     margin-left: 0;
     margin-right: 0;
@@ -3459,10 +3463,6 @@ img {
     width: 50%;
     margin-left: 0;
     margin-right: 0;
-  }
-
-  .step_4 .section_bl__prc {
-    display: none;
   }
 
   .step_7 .section_bl__form {
