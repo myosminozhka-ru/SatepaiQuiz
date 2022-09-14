@@ -25,8 +25,7 @@ const MainContent = class MainContent {
           return data;
       })
       .catch(e => {
-        console.log('getData', e)
-        return {error: e};
+        return [];
       });
     }
     sendFormData(formData) {
@@ -41,8 +40,7 @@ const MainContent = class MainContent {
           return data;
       })
       .catch(e => {
-        console.log('sendFormData', e)
-        return {error: e};
+        return [];
       });
     }
     sendStone(formData) {
