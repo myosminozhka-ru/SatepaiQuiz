@@ -224,7 +224,7 @@ window.app = new Vue({
           } else if (type === 'video') {
             return this.url + '/upload/config/video/0.mp4'
           } else if (type === 'html') {
-            return this.url + '/soliter.html'
+            return this.url + '/local/quiz/soliter.html'
           }
         }
         if (type === 'image') {
@@ -232,7 +232,7 @@ window.app = new Vue({
         } else if (type === 'video') {
           return this.url + '/upload/config/video/' + this.mediaURLs.slice(0, step + 1).join('_') + '.mp4'
         } else if (type === 'html') {
-          return "/soliter.html"; // временно
+          return this.url + '/local/quiz/soliter.html' // временно
           return this.url + '/upload/config/interact/' + this.mediaURLs.slice(0, step + 1).join('_') + '.html'
         } else if (type === 'final') {
           return this.url + '/upload/config/imgs/' + this.mediaURLs.slice(0, step + 1).join('_') + '.jpg'
