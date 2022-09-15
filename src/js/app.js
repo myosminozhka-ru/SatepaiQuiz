@@ -29,7 +29,6 @@ $(document).ready(function () {
         $(this).addClass('isActive');
         $(this).parents('.review').find('.review__block').hide();
         $(this).parents('.review').find('.review__block').removeClass('isActive');
-        console.log(this.id)
         $(this).parents('.review').find($('.' + this.id)).show();
         $(this).parents('.review').find($('.' + this.id)).addClass('isActive');
     });
@@ -80,15 +79,15 @@ window.app = new Vue({
         mainContent: new MainContent('https://satepais.fvds.ru/local/ajax'),
         data: [{QUESTIONS: []}, {QUESTIONS: []}, {QUESTIONS: []}, {QUESTIONS: []}, {QUESTIONS: []}, {QUESTIONS: []}, {QUESTIONS: []}, {QUESTIONS: []}],
         selected: {
-          STONE_CUT: {name: null, id: null},
-          STONE_STYLE: {name: null, id: null},
-          OWN_STONE_STYLE: {name: null, id: null},
-          STONE_FOOTBOARD: {name: null, id: null},
-          DIAMONDS_ON_SHINKO: {name: null, id: null},
-          MATERIAL: {name: null, id: null},
-          COLOR_OF_PAWS: {name: null, id: null},
-          TEXT: {name: null, id: null},
-          SIZE: {name: null, id: null},
+          STONE_CUT: {name: null, id: null, price: 0},
+          STONE_STYLE: {name: null, id: null, price: 0},
+          OWN_STONE_STYLE: {name: null, id: null, price: 0},
+          STONE_FOOTBOARD: {name: null, id: null, price: 0},
+          DIAMONDS_ON_SHINKO: {name: null, id: null, price: 0},
+          MATERIAL: {name: null, id: null, price: 0},
+          COLOR_OF_PAWS: {name: null, id: null, price: 0},
+          TEXT: {name: null, id: null, price: 0},
+          SIZE: {name: null, id: null, price: 0},
         },
         selectedStone: {
           name: null,
@@ -137,38 +136,14 @@ window.app = new Vue({
           hasError: null
         },
         modalFileName: null,
+        screen: 'step_1'
       }
     },
     mounted() {
         this.getData()
         this.mainContent.init();
         this.selectedFilter.color = this.filter.default.color
-        const setRangeValue = (data, from, to) => {
-          this.selectedFilter[from] = +data.from
-          this.selectedFilter[to] = +data.to
-        }
-        $("#rangePrice").ionRangeSlider({
-          type: "double",
-          min: 1000,
-          max: 500000,
-          onChange: function (data) {
-            setRangeValue(data, 'price1', 'price2')
-          },
-        });
-        window.rangePriceInstance = $("#rangePrice").data("ionRangeSlider");
-
-        window.rangeKaratInstance = $("#rangeKarat").ionRangeSlider({
-          type: "double",
-          min: 0.1,
-          max: 20,
-          step: 0.1,   
-          onChange: function (data) {
-            setRangeValue(data, 'karat1', 'karat2')
-          },
-        });
-        window.rangeKaratInstance = $("#rangeKarat").data("ionRangeSlider");
-
-        $(".modal__input[name='tel']").mask("+7(999)999-99-99",{placeholder:"+7(___)___-__-__"});
+        this.initRange()
     },
     beforeCreate() {        
         window.addEventListener('resize', () => {
@@ -187,17 +162,55 @@ window.app = new Vue({
         },
         getSelectedFilter() {
           return this.selectedFilter
+        },
+        getMediumPrice() {
+          let res = 0
+          for(var [key, value] of Object.entries(this.selected)) {
+            res += +value.price
+          }
+          return res
         }
     },
     methods: {
+      initRange() {
+        const setRangeValue = (data, from, to) => {
+          this.selectedFilter[from] = +data.from
+          this.selectedFilter[to] = +data.to
+        }
+        if (this.screen === 'step_9') {
+          $("#rangePrice").ionRangeSlider({
+            type: "double",
+            min: 1000,
+            max: 500000,
+            onChange: function (data) {
+              setRangeValue(data, 'price1', 'price2')
+            },
+          });
+          window.rangePriceInstance = $("#rangePrice").data("ionRangeSlider");
+
+          window.rangeKaratInstance = $("#rangeKarat").ionRangeSlider({
+            type: "double",
+            min: 0.1,
+            max: 20,
+            step: 0.1,   
+            onChange: function (data) {
+              setRangeValue(data, 'karat1', 'karat2')
+            },
+          });
+          window.rangeKaratInstance = $("#rangeKarat").data("ionRangeSlider");
+
+          $(".modal__input[name='tel']").mask("+7(999)999-99-99",{placeholder:"+7(___)___-__-__"});
+        }
+      },
       async getData() {
         this.data = await this.mainContent.getData();
         this.setDefaultValues()
       },
-      setSelectedData(key, id = null, name = null, step, index) {
+      setSelectedData(key, id = null, name = null, price = 0, step, index) {
         if (!key) return;
         this.selected[key].id = id
         this.selected[key].name = name
+        this.selected[key].price = price
         this.setMediaURL(step, index)
       },
       setMediaURL(step, index) {
@@ -226,29 +239,34 @@ window.app = new Vue({
         }
         return this.url + '/upload/config/imgs/0.jpg'
       },
+      getPrice(prop) {
+        if (prop.PRICE === undefined) return 0;
+        const num = typeof parseInt(prop.PRICE.VALUE, 10) === 'number'
+        return num ? prop.PRICE.VALUE : 0;
+      },
       setDefaultValues() {
         this.data.forEach(i => {
           switch(i.NAME) {
             case "ВЫБОР ОГРАНКИ КАМНЯ":
-              this.setSelectedData('STONE_CUT', i.QUESTIONS[0].ID, i.QUESTIONS[0].NAME)
+              this.setSelectedData('STONE_CUT', i.QUESTIONS[0].ID, i.QUESTIONS[0].NAME, this.getPrice(i.QUESTIONS[0].PROPERIES))
               break;
             case "ВЫБОР СТИЛЯ":
-              this.setSelectedData('STONE_STYLE', i.QUESTIONS[0].ID, i.QUESTIONS[0].NAME)
+              this.setSelectedData('STONE_STYLE', i.QUESTIONS[0].ID, i.QUESTIONS[0].NAME, this.getPrice(i.QUESTIONS[0].PROPERIES))
               break;
             case "ВНАЛИЧИЕ ПОДНОЖКИ":
-              this.setSelectedData('STONE_FOOTBOARD', i.QUESTIONS[0].ID, i.QUESTIONS[0].NAME)
+              this.setSelectedData('STONE_FOOTBOARD', i.QUESTIONS[0].ID, i.QUESTIONS[0].NAME, this.getPrice(i.QUESTIONS[0].PROPERIES))
               break;
             case "НАЛИЧИЕ БРИЛЛИАНТОВ НА ШИНКЕ":
-              this.setSelectedData('DIAMONDS_ON_SHINKO', i.QUESTIONS[0].ID, i.QUESTIONS[0].NAME)
+              this.setSelectedData('DIAMONDS_ON_SHINKO', i.QUESTIONS[0].ID, i.QUESTIONS[0].NAME, this.getPrice(i.QUESTIONS[0].PROPERIES))
               break;
             case "ВЫБЕРИТЕ МАТЕРИАЛ":
-              this.setSelectedData('MATERIAL', i.QUESTIONS[0].ID, i.QUESTIONS[0].NAME)
+              this.setSelectedData('MATERIAL', i.QUESTIONS[0].ID, i.QUESTIONS[0].NAME, this.getPrice(i.QUESTIONS[0].PROPERIES))
               break;
             case "ЦВЕТ ЛАПОК НА КАМНЕ":
-              this.setSelectedData('COLOR_OF_PAWS', i.QUESTIONS[0].ID, i.QUESTIONS[0].NAME)
+              this.setSelectedData('COLOR_OF_PAWS', i.QUESTIONS[0].ID, i.QUESTIONS[0].NAME, this.getPrice(i.QUESTIONS[0].PROPERIES))
               break;
             case "РАЗМЕР КОЛЬЦА":
-              this.setSelectedData('SIZE', i.QUESTIONS[0].ID, i.QUESTIONS[0].NAME)
+              this.setSelectedData('SIZE', i.QUESTIONS[0].ID, i.QUESTIONS[0].NAME, this.getPrice(i.QUESTIONS[0].PROPERIES))
               break;
           }
         })
@@ -299,7 +317,7 @@ window.app = new Vue({
         } catch (error) {
           console.error(error)
         }
-        this.mainContent.chooseScreen('step_9')
+        this.chooseScreen('step_9')
       },
       getPropFromProps(props, code) {
         if (!(props && props.length)) return {};
@@ -342,7 +360,7 @@ window.app = new Vue({
       },
       stoneSelected() {
         if (this.selectedStone.id && this.selectedStone.name) {
-          this.mainContent.chooseScreen('step_10')
+          this.chooseScreen('step_10')
         }
       },
       selectStone(obj) {
@@ -376,7 +394,6 @@ window.app = new Vue({
         ev.preventDefault();
       
         if (ev.dataTransfer.items) {
-          console.log('File(s) if');
           [...ev.dataTransfer.items].forEach((item, i) => {
             if (item.kind === 'file') {
               const file = item.getAsFile();
@@ -385,5 +402,12 @@ window.app = new Vue({
           });
         } 
       },
-    }
+      chooseScreen(step) {
+        if (!step) return;
+        this.screen = step
+      }
+    },
+    updated() {
+      this.initRange()
+    },
 });

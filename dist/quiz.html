@@ -8,953 +8,978 @@
     <title>Satepai Quiz</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap&_v=20220914211419" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?_v=20220914211419">
+    <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap&_v=20220915213437" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css?_v=20220915213437">
 </head>
 <body>
     <div class="wrapper" id="app">
         <main class="steps center_block">
-    <div class="steps__in" v-bind:class="{visible: filter.modalIsOpen}">
-        <div class="content__in step_1 isActive" data-screen="step_1">
-            <div class="content__quiz">
-                <section class="section_bl">
-                    <div class="section_bl__l-side">
-                        <h1 class="section_bl__h1">Создай мечту</h1>
-                        <div class="section_bl__step">
-                            <div class="section_bl__numb"><span>01</span></div>
-                            <div class="section_bl__title">Выбор огранки камня</div>
-                        </div>
-                        <form action="" class="section_bl__form" id="quiz1">
-                            <label 
-                                v-for="(question, index) in data[0].QUESTIONS" 
-                                v-bind:key="question.ID" 
-                                v-bind:for="question.ID" 
-                                class="section_bl__label" 
-                                v-bind:class="{isActive: selected.STONE_CUT.id === question.ID}">
-                                <input 
-                                    type="radio" 
-                                    v-bind:name="data[0].ID" 
-                                    v-bind:id="question.ID" 
-                                    v-bind:value="question.ID" 
-                                    class="section_bl__radio" 
-                                    @change="setSelectedData('STONE_CUT', question.ID, question.NAME, 0, index)"
-                                    v-bind:checked="selected.STONE_CUT.id === question.ID"
-                                >
-                                <div class="section_bl__img">
-                                    <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
-                                </div>
-                                <span>{{ question.NAME }}</span>
-                                <div v-if="question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE" class="section_bl__prc">+ {{ question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE }}$</div>
-                            </label>
-                        </form>
-                    </div>
-                    <div class="section_bl__r-side">
-                        <div class="tabs_block">
-                            <div class="review">
-                                <div class="review__tabs">
-                                    <div class="review__close"></div>
-                                    <ul>
-                                        <li class="review__btn isActive" id="review__block-1"><span>Интерактив</span></li>
-                                        <li class="review__btn" id="review__block-2"><span>Фото</span></li>
-                                        <li class="review__btn" id="review__block-3"><span>Видео</span></li>
-                                    </ul>
-                                </div>
-                                <div class="review__blocks">
-                                    <div class="review__block review__block-1 isActive">
-                                        <iframe :src="getMediaURL(0, 'html')" allowfullscreen frameborder="0" scrolling="no"></iframe>
-                                    </div>
-                                    <div class="review__block review__block-2">
-                                        <div class="sl">
-                                            <div class="sl__img"><img :src="getMediaURL(0, 'image')" alt=""></div>
-                                        </div>
-                                    </div>
-                                    <div class="review__block review__block-3">
-                                        <video controls="controls" poster="video/duel.jpg">
-                                            <source :src="getMediaURL(0, 'video')" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-                                        </video>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+  <div class="steps__in" v-bind:class="{visible: filter.modalIsOpen}">
+    <Transition name="slide-fade">
+      <div class="content__in step_1" v-if="screen == 'step_1'">
+        <div class="content__quiz">
+          <section class="section_bl">
+            <div class="section_bl__l-side">
+              <h1 class="section_bl__h1">Создай мечту</h1>
+              <div class="section_bl__step">
+                <div class="section_bl__numb"><span>01</span></div>
+                <div class="section_bl__title">Выбор огранки камня</div>
+              </div>
+              <form action="" class="section_bl__form" id="quiz1">
+                <label v-for="(question, index) in data[0].QUESTIONS" v-bind:key="question.ID" v-bind:for="question.ID"
+                  class="section_bl__label" v-bind:class="{isActive: selected.STONE_CUT.id === question.ID}">
+                  <input type="radio" v-bind:name="data[0].ID" v-bind:id="question.ID" v-bind:value="question.ID"
+                    class="section_bl__radio"
+                    @change="setSelectedData('STONE_CUT', question.ID, question.NAME, getPrice(question.PROPERIES), 0, index)"
+                    v-bind:checked="selected.STONE_CUT.id === question.ID">
+                  <div class="section_bl__img">
+                    <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
+                  </div>
+                  <span>{{ question.NAME }}</span>
+                  <div v-if="question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE" class="section_bl__prc">+ {{
+                    getPrice(question.PROPERIES) }}$</div>
+                </label>
+              </form>
             </div>
-            <div class="content__button">
-                <div class="navig">
-                    <div class="navig__back">Назад</div>
-                    <div class="navig__dots">
-                        <div class="navig__dot isActive"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
+            <div class="section_bl__r-side">
+              <div class="tabs_block">
+                <div class="review">
+                  <div class="review__tabs">
+                    <div class="review__close"></div>
+                    <ul>
+                      <li class="review__btn isActive" id="review__block-1"><span>Интерактив</span></li>
+                      <li class="review__btn" id="review__block-2"><span>Фото</span></li>
+                      <li class="review__btn" id="review__block-3"><span>Видео</span></li>
+                    </ul>
+                  </div>
+                  <div class="review__blocks">
+                    <div class="review__block review__block-1 isActive">
+                      <iframe :src="getMediaURL(0, 'html')" allowfullscreen frameborder="0" scrolling="no"></iframe>
                     </div>
-                    <div class="navig__next" data-target="step_2" @click="mainContent.chooseScreen('step_2')">Далее</div>
-                </div>
-                <button class="section_bl__btn" @click="feedbackIsOpen = true">Связаться с нами</button>
-            </div>
-        </div>
-        <div class="content__in center_block step_2" data-screen="step_2">
-            <div class="content__quiz">
-                <section class="section_bl">
-                    <div class="section_bl__l-side">
-                        <h1 class="section_bl__h1">Создай мечту</h1>
-                        <div class="section_bl__step">
-                            <div class="section_bl__numb"><span>02</span></div>
-                            <div class="section_bl__title">Выбор Стиля</div>
-                        </div>
-                        <form action="" class="section_bl__form" id="quiz2">
-                            <template>
-                              
-                            </template>
-                            <label 
-                                v-for="(question, index) in data[1].QUESTIONS" 
-                                v-bind:key="question.ID" 
-                                v-if="!question.PROPERIES.OWN_CHOSE"
-                                v-bind:for="question.ID" 
-                                class="section_bl__label" 
-                                v-bind:class="{isActive: selected.STONE_STYLE.id === question.ID}">
-                                <input 
-                                    type="radio" 
-                                    v-bind:name="data[1].ID" 
-                                    v-bind:id="question.ID" 
-                                    v-bind:value="question.ID" 
-                                    class="section_bl__radio" 
-                                    @change="setSelectedData('STONE_STYLE', question.ID, question.NAME, 1, index)"
-                                    v-bind:checked="selected.STONE_STYLE.id === question.ID"
-                                >
-                                <div class="section_bl__img">
-                                    <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
-                                </div>
-                                <span>{{ question.NAME }}</span>
-                                <div v-if="question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE" class="section_bl__prc">+ {{ question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE }}$</div>
-                            </label>
-                            <label v-if="!selected.OWN_STONE_STYLE.name" for="step2_4" class="section_bl__label">
-                                <input 
-                                    type="file" 
-                                    name="step2_4" 
-                                    id="step2_4" 
-                                    class="section_bl__radio"
-                                    @change="setOwnStyle"
-                                >
-                                <div class="section_bl__img">
-                                    <img src="./img/krist7.svg" alt="ОТправить Свой дизайн">
-                                </div>
-                                <span>Отправить Свой дизайн</span>
-                            </label>
-                            <div v-else class="section_bl__label">
-                              <span>Загружен файл: {{ selected.OWN_STONE_STYLE.name.name }}</span>
-                              <br><br>
-                              <span @click="setOwnStyle(null)">Удалить?</span>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="section_bl__r-side">
-                        <div class="tabs_block">
-                            <div class="review">
-                                <div class="review__tabs">
-                                    <div class="review__close"></div>
-                                    <ul>
-                                        <li class="review__btn isActive" id="review__block-1"><span>Интерактив</span></li>
-                                        <li class="review__btn" id="review__block-2"><span>Фото</span></li>
-                                        <li class="review__btn" id="review__block-3"><span>Видео</span></li>
-                                    </ul>
-                                </div>
-                                <div class="review__blocks">
-                                  <div class="review__block review__block-1 isActive">
-                                      <iframe :src="getMediaURL(1, 'html')" allowfullscreen frameborder="0" scrolling="no"></iframe>
-                                  </div>
-                                  <div class="review__block review__block-2">
-                                      <div class="sl">
-                                          <div class="sl__img"><img :src="getMediaURL(1, 'image')" alt=""></div>
-                                      </div>
-                                  </div>
-                                  <div class="review__block review__block-3">
-                                      <video controls="controls" poster="video/duel.jpg">
-                                          <source :src="getMediaURL(1, 'video')" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-                                      </video>
-                                  </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-            <div class="content__button">
-                <div class="navig">
-                    <div class="navig__back" data-target="step_1" data-back="true" @click="mainContent.chooseScreen('step_1')">Назад</div>
-                    <div class="navig__dots">
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot isActive"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                    </div>
-                    <div class="navig__next" data-target="step_3" @click="mainContent.chooseScreen('step_3')">Далее</div>
-                </div>
-                <button class="section_bl__btn" @click="feedbackIsOpen = true">Связаться с нами</button>
-            </div>
-        </div>
-        <div class="content__in center_block step_3" data-screen="step_3">
-            <div class="content__quiz">
-                <section class="section_bl">
-                    <div class="section_bl__l-side">
-                        <h1 class="section_bl__h1">Создай мечту</h1>
-                        <div class="section_bl__step">
-                            <div class="section_bl__numb"><span>03</span></div>
-                            <div class="section_bl__title">Наличие подножки</div>
-                        </div>
-                        <form action="" class="section_bl__form" id="quiz3">
-                            <label 
-                                v-for="(question, index) in data[2].QUESTIONS" 
-                                v-bind:key="question.ID" 
-                                v-bind:for="question.ID" 
-                                class="section_bl__label" 
-                                v-bind:class="{isActive: selected.STONE_FOOTBOARD.id === question.ID}">
-                                <input 
-                                    type="radio" 
-                                    v-bind:name="data[2].ID" 
-                                    v-bind:id="question.ID" 
-                                    v-bind:value="question.ID" 
-                                    class="section_bl__radio" 
-                                    @change="setSelectedData('STONE_FOOTBOARD', question.ID, question.NAME, 2, index)"
-                                    v-bind:checked="selected.STONE_FOOTBOARD.id === question.ID"
-                                >
-                                <div class="section_bl__img">
-                                    <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
-                                </div>
-                                <span>{{ question.NAME }}</span>
-                                <div v-if="question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE" class="section_bl__prc">+ {{ question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE }}$</div>
-                            </label>
-                        </form>
-                    </div>
-                    <div class="section_bl__r-side">
-                        <div class="tabs_block">
-                            <div class="review">
-                                <div class="review__tabs">
-                                    <div class="review__close"></div>
-                                    <ul>
-                                        <li class="review__btn isActive" id="review__block-1"><span>Интерактив</span></li>
-                                        <li class="review__btn" id="review__block-2"><span>Фото</span></li>
-                                        <li class="review__btn" id="review__block-3"><span>Видео</span></li>
-                                    </ul>
-                                </div>
-                                <div class="review__blocks">
-                                  <div class="review__block review__block-1 isActive">
-                                      <iframe :src="getMediaURL(2, 'html')" allowfullscreen frameborder="0" scrolling="no"></iframe>
-                                  </div>
-                                  <div class="review__block review__block-2">
-                                      <div class="sl">
-                                          <div class="sl__img"><img :src="getMediaURL(2, 'image')" alt=""></div>
-                                      </div>
-                                  </div>
-                                  <div class="review__block review__block-3">
-                                      <video controls="controls" poster="video/duel.jpg">
-                                          <source :src="getMediaURL(2, 'video')" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-                                      </video>
-                                  </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-            <div class="content__button">
-                <div class="navig">
-                    <div class="navig__back" data-target="step_2" data-back="true" @click="mainContent.chooseScreen('step_2')">Назад</div>
-                    <div class="navig__dots">
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot isActive"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                    </div>
-                    <div class="navig__next" data-target="step_4" @click="mainContent.chooseScreen('step_4')">Далее</div>
-                </div>
-                <button class="section_bl__btn" @click="feedbackIsOpen = true">Связаться с нами</button>
-            </div>
-        </div>
-        <div class="content__in center_block step_4" data-screen="step_4">
-            <div class="content__quiz">
-                <section class="section_bl">
-                    <div class="section_bl__l-side">
-                        <h1 class="section_bl__h1">Создай мечту</h1>
-                        <div class="section_bl__step">
-                            <div class="section_bl__numb"><span>04</span></div>
-                            <div class="section_bl__title">Наличие бриллиантов на шинке</div>
-                        </div>
-                        <form action="" class="section_bl__form" id="quiz4">
-                            <label 
-                                v-for="(question, index) in data[3].QUESTIONS" 
-                                v-bind:key="question.ID" 
-                                v-bind:for="question.ID" 
-                                class="section_bl__label" 
-                                v-bind:class="{isActive: selected.DIAMONDS_ON_SHINKO.id === question.ID}">
-                                <input 
-                                    type="radio" 
-                                    v-bind:name="data[3].ID" 
-                                    v-bind:id="question.ID" 
-                                    v-bind:value="question.ID" 
-                                    class="section_bl__radio" 
-                                    @change="setSelectedData('DIAMONDS_ON_SHINKO', question.ID, question.NAME, 3, index)"
-                                    v-bind:checked="selected.DIAMONDS_ON_SHINKO.id === question.ID"
-                                >
-                                <div class="section_bl__img">
-                                    <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
-                                </div>
-                                <span>{{ question.NAME }}</span>
-                                <div v-if="question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE" class="section_bl__prc">+ {{ question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE }}$</div>
-                            </label>
-                        </form>
-                    </div>
-                    <div class="section_bl__r-side">
-                        <div class="tabs_block">
-                            <div class="review">
-                                <div class="review__tabs">
-                                    <div class="review__close"></div>
-                                    <ul>
-                                        <li class="review__btn isActive" id="review__block-1"><span>Интерактив</span></li>
-                                        <li class="review__btn" id="review__block-2"><span>Фото</span></li>
-                                        <li class="review__btn" id="review__block-3"><span>Видео</span></li>
-                                    </ul>
-                                </div>
-                                <div class="review__blocks">
-                                  <div class="review__block review__block-1 isActive">
-                                      <iframe :src="getMediaURL(3, 'html')" allowfullscreen frameborder="0" scrolling="no"></iframe>
-                                  </div>
-                                  <div class="review__block review__block-2">
-                                      <div class="sl">
-                                          <div class="sl__img"><img :src="getMediaURL(3, 'image')" alt=""></div>
-                                      </div>
-                                  </div>
-                                  <div class="review__block review__block-3">
-                                      <video controls="controls" poster="video/duel.jpg">
-                                          <source :src="getMediaURL(3, 'video')" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-                                      </video>
-                                  </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-            <div class="content__button">
-                <div class="navig">
-                    <div class="navig__back" data-target="step_3" data-back="true" @click="mainContent.chooseScreen('step_3')">Назад</div>
-                    <div class="navig__dots">
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot isActive"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                    </div>
-                    <div class="navig__next" data-target="step_5" @click="mainContent.chooseScreen('step_5')">Далее</div>
-                </div>
-                <button class="section_bl__btn" @click="feedbackIsOpen = true">Связаться с нами</button>
-            </div>
-        </div>
-        <div class="content__in center_block step_5" data-screen="step_5">
-            <div class="content__quiz">
-                <section class="section_bl">
-                    <div class="section_bl__l-side">
-                        <h1 class="section_bl__h1">Создай мечту</h1>
-                        <div class="section_bl__step">
-                            <div class="section_bl__numb"><span>05</span></div>
-                            <div class="section_bl__title">Выберите материал</div>
-                        </div>
-                        <form action="" class="section_bl__form" id="quiz5">
-                            <label 
-                                v-for="(question, index) in data[4].QUESTIONS" 
-                                v-bind:key="question.ID" 
-                                v-bind:for="question.ID" 
-                                class="section_bl__label" 
-                                v-bind:class="{isActive: selected.MATERIAL.id === question.ID}">
-                                <input 
-                                    type="radio" 
-                                    v-bind:name="data[4].ID" 
-                                    v-bind:id="question.ID" 
-                                    v-bind:value="question.ID" 
-                                    class="section_bl__radio" 
-                                    @change="setSelectedData('MATERIAL', question.ID, question.NAME, 4, index)"
-                                    v-bind:checked="selected.MATERIAL.id === question.ID"
-                                >
-                                <div class="section_bl__img">
-                                    <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
-                                </div>
-                                <span>{{ question.NAME }}</span>
-                                <div v-if="question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE" class="section_bl__prc">+ {{ question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE }}$</div>
-                            </label>
-                        </form>
-                    </div>
-                    <div class="section_bl__r-side">
-                        <div class="tabs_block">
-                            <div class="review">
-                                <div class="review__tabs">
-                                    <div class="review__close"></div>
-                                    <ul>
-                                        <li class="review__btn isActive" id="review__block-1"><span>Интерактив</span></li>
-                                        <li class="review__btn" id="review__block-2"><span>Фото</span></li>
-                                        <li class="review__btn" id="review__block-3"><span>Видео</span></li>
-                                    </ul>
-                                </div>
-                                <div class="review__blocks">
-                                  <div class="review__block review__block-1 isActive">
-                                      <iframe :src="getMediaURL(4, 'html')" allowfullscreen frameborder="0" scrolling="no"></iframe>
-                                  </div>
-                                  <div class="review__block review__block-2">
-                                      <div class="sl">
-                                          <div class="sl__img"><img :src="getMediaURL(4, 'image')" alt=""></div>
-                                      </div>
-                                  </div>
-                                  <div class="review__block review__block-3">
-                                      <video controls="controls" poster="video/duel.jpg">
-                                          <source :src="getMediaURL(4, 'video')" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-                                      </video>
-                                  </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-            <div class="content__button">
-                <div class="navig">
-                    <div class="navig__back" data-target="step_4" data-back="true" @click="mainContent.chooseScreen('step_4')">Назад</div>
-                    <div class="navig__dots">
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot isActive"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                    </div>
-                    <div class="navig__next" data-target="step_6" @click="mainContent.chooseScreen('step_6')">Далее</div>
-                </div>
-                <button class="section_bl__btn" @click="feedbackIsOpen = true">Связаться с нами</button>
-            </div>
-        </div>
-        <div class="content__in center_block step_6" data-screen="step_6">
-            <div class="content__quiz">
-                <section class="section_bl">
-                    <div class="section_bl__l-side">
-                        <h1 class="section_bl__h1">Создай мечту</h1>
-                        <div class="section_bl__step">
-                            <div class="section_bl__numb"><span>06</span></div>
-                            <div class="section_bl__title">Цвет лапок на камне</div>
-                        </div>
-                        <form action="" class="section_bl__form" id="quiz6">
-                            <label 
-                                v-for="(question, index) in data[5].QUESTIONS" 
-                                v-bind:key="question.ID" 
-                                v-bind:for="question.ID" 
-                                class="section_bl__label" 
-                                v-bind:class="{isActive: selected.COLOR_OF_PAWS.id === question.ID}">
-                                <input 
-                                    type="radio" 
-                                    v-bind:name="data[5].ID" 
-                                    v-bind:id="question.ID" 
-                                    v-bind:value="question.ID" 
-                                    class="section_bl__radio" 
-                                    @change="setSelectedData('COLOR_OF_PAWS', question.ID, question.NAME, 5, index)"
-                                    v-bind:checked="selected.COLOR_OF_PAWS.id === question.ID"
-                                >
-                                <div class="section_bl__img">
-                                    <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
-                                </div>
-                                <span>{{ question.NAME }}</span>
-                                <div v-if="question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE" class="section_bl__prc">+ {{ question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE }}$</div>
-                            </label>
-                        </form>
-                    </div>
-                    <div class="section_bl__r-side">
-                        <div class="tabs_block">
-                            <div class="review">
-                                <div class="review__tabs">
-                                    <div class="review__close"></div>
-                                    <ul>
-                                        <li class="review__btn isActive" id="review__block-1"><span>Интерактив</span></li>
-                                        <li class="review__btn" id="review__block-2"><span>Фото</span></li>
-                                        <li class="review__btn" id="review__block-3"><span>Видео</span></li>
-                                    </ul>
-                                </div>
-                                <div class="review__blocks">
-                                  <div class="review__block review__block-1 isActive">
-                                      <iframe :src="getMediaURL(5, 'html')" allowfullscreen frameborder="0" scrolling="no"></iframe>
-                                  </div>
-                                  <div class="review__block review__block-2">
-                                      <div class="sl">
-                                          <div class="sl__img"><img :src="getMediaURL(5, 'image')" alt=""></div>
-                                      </div>
-                                  </div>
-                                  <div class="review__block review__block-3">
-                                      <video controls="controls" poster="video/duel.jpg">
-                                          <source :src="getMediaURL(5, 'video')" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-                                      </video>
-                                  </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-            <div class="content__button">
-                <div class="navig">
-                    <div class="navig__back" data-target="step_5" data-back="true" @click="mainContent.chooseScreen('step_5')">Назад</div>
-                    <div class="navig__dots">
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot isActive"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                    </div>
-                    <div class="navig__next" data-target="step_7" @click="mainContent.chooseScreen('step_7')">Далее</div>
-                </div>
-                <button class="section_bl__btn" @click="feedbackIsOpen = true">Связаться с нами</button>
-            </div>
-        </div>
-        <div class="content__in center_block step_7" data-screen="step_7">
-            <div class="content__quiz">
-                <section class="section_bl">
-                    <div class="section_bl__l-side">
-                        <h1 class="section_bl__h1">Создай мечту</h1>
-                        <div class="section_bl__step">
-                            <div class="section_bl__numb"><span>07</span></div>
-                            <div class="section_bl__title">Надпись на кольце</div>
-                        </div>
-                        <form action="" class="section_bl__form" id="quiz6">
-                            <textarea v-model="selected.TEXT.name" placeholder="Напишите что будет на кольце"></textarea>
-                        </form>
-                    </div>
-                    <div class="section_bl__r-side">
-                        <div class="tabs_block">
-                            <div class="review">
-                                <div class="review__tabs">
-                                    <div class="review__close"></div>
-                                    <ul>
-                                        <li class="review__btn isActive" id="review__block-1"><span>Интерактив</span></li>
-                                        <li class="review__btn" id="review__block-2"><span>Фото</span></li>
-                                        <li class="review__btn" id="review__block-3"><span>Видео</span></li>
-                                    </ul>
-                                </div>
-                                <div class="review__blocks">
-                                  <div class="review__block review__block-1 isActive">
-                                      <iframe :src="getMediaURL(5, 'html')" allowfullscreen frameborder="0" scrolling="no"></iframe>
-                                  </div>
-                                  <div class="review__block review__block-2">
-                                      <div class="sl">
-                                          <div class="sl__img"><img :src="getMediaURL(5, 'image')" alt=""></div>
-                                      </div>
-                                  </div>
-                                  <div class="review__block review__block-3">
-                                      <video controls="controls" poster="video/duel.jpg">
-                                          <source :src="getMediaURL(5, 'video')" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-                                      </video>
-                                  </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-            <div class="content__button">
-                <div class="navig">
-                    <div class="navig__back" data-target="step_6" data-back="true" @click="mainContent.chooseScreen('step_6')">Назад</div>
-                    <div class="navig__dots">
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot isActive"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                    </div>
-                    <div class="navig__next" data-target="step_8" @click="mainContent.chooseScreen('step_8')">Далее</div>
-                </div>
-                <button class="section_bl__btn" @click="feedbackIsOpen = true">Связаться с нами</button>
-            </div>
-        </div>
-        <div class="content__in center_block step_8" data-screen="step_8">
-            <div class="content__quiz">
-                <section class="section_bl">
-                    <div class="section_bl__l-side">
-                        <h1 class="section_bl__h1">Создай мечту</h1>
-                        <div class="section_bl__step">
-                            <div class="section_bl__numb"><span>08</span></div>
-                            <div class="section_bl__title">Размер кольца</div>
-                        </div>
-                        <form action="" class="section_bl__form" id="quiz1">
-                            <div 
-                                v-for="(question, index) in data[7].QUESTIONS" 
-                                v-bind:key="question.ID" 
-                                class="radio"
-                            >
-                                <input 
-                                    type="radio" 
-                                    v-bind:name="data[7].ID" 
-                                    v-bind:id="question.ID" 
-                                    v-bind:value="question.ID" 
-                                    class="custom-radio" 
-                                    @change="setSelectedData('SIZE', question.ID, question.NAME, 6, index)"
-                                    v-bind:checked="selected.SIZE.id === question.ID"
-                                >
-                                <label 
-                                    v-bind:for="question.ID" 
-                                >{{ question.NAME }}</label>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="section_bl__r-side">
-                        <div class="tabs_block">
-                            <div class="review">
-                                <div class="review__tabs">
-                                    <div class="review__close"></div>
-                                    <ul>
-                                        <li class="review__btn isActive" id="review__block-1"><span>Интерактив</span></li>
-                                        <li class="review__btn" id="review__block-2"><span>Фото</span></li>
-                                        <li class="review__btn" id="review__block-3"><span>Видео</span></li>
-                                    </ul>
-                                </div>
-                                <div class="review__blocks">
-                                  <div class="review__block review__block-1 isActive">
-                                      <iframe :src="getMediaURL(5, 'html')" allowfullscreen frameborder="0" scrolling="no"></iframe>
-                                  </div>
-                                  <div class="review__block review__block-2">
-                                      <div class="sl">
-                                          <div class="sl__img"><img :src="getMediaURL(5, 'image')" alt=""></div>
-                                      </div>
-                                  </div>
-                                  <div class="review__block review__block-3">
-                                      <video controls="controls" poster="video/duel.jpg">
-                                          <source :src="getMediaURL(5, 'video')" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-                                      </video>
-                                  </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-            <div class="content__button">
-                <div class="navig">
-                    <div class="navig__back" data-target="step_7" data-back="true" @click="mainContent.chooseScreen('step_7')">Назад</div>
-                    <div class="navig__dots">
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot isActive"></div>
-                        <div class="navig__dot"></div>
-                        <div class="navig__dot"></div>
-                    </div>
-                    <div class="navig__next" data-target="step_9" 
-                      @click="sendSelected"
-                    >Далее</div>
-                </div>
-                <button class="section_bl__btn" @click="feedbackIsOpen = true">Связаться с нами</button>
-            </div>
-        </div>
-        <div class="content__in center_block step_9" data-screen="step_9">
-            <div class="content__quiz">
-                <section class="section_bl">
-                    <div class="section_bl__top">
-                      <h1 class="section_bl__h1">Создай мечту</h1>
-                      <div class="section_bl__step">
-                          <div class="section_bl__numb"><span>09</span></div>
+                    <div class="review__block review__block-2">
+                      <div class="sl">
+                        <div class="sl__img"><img :src="getMediaURL(0, 'image')" alt=""></div>
                       </div>
                     </div>
-                    <div class="stones">
-                      <div class="stones__filter">
-                        <div class="filter">
-                          <div class="filter__mtitle" @click="filter.modalIsOpen = true">фильтр <img src="./img/arrow-filter.svg" alt=""></div>
-                          <div class="filter__modal" v-bind:class="{isActive: filter.modalIsOpen}">
-                            <div class="filter__inner">
-                              <div class="filter__head">
-                                <div class="filter__mtitle filter__mtitle--inmodal" @click="filter.modalIsOpen = false">фильтр <img src="./img/arrow-filter.svg" alt=""></div>
-                                <div class="filter__reset" @click="resetFilter">
-                                  <img src="./img/reset.svg" alt=""> сбросить
-                                </div>
-                              </div>
-                              <div class="filter__acc">
-                                <div class="filter__acc-item">
-                                  <div class="filter__acc-head">
-                                    <div class="filter__acc-title">Цена</div>
-                                    <button class="filter__acc-arrow" v-bind:class="{isActive: filter.acc.price}" type="button" @click="filter.acc.price = !filter.acc.price">
-                                      <img src="./img/arrow-filter.svg" alt="">
-                                    </button>
-                                  </div>
-                                  <div class="filter__acc-body" v-show="filter.acc.price">
-                                    <div class="filter__range">
-                                      <input type="text" class="js-range-slider" id="rangePrice" name="my_range" value="" />
-                                      <div class="filter__range-values">
-                                        <div class="filter__range-value filter__range-value--from">{{ getSelectedFilter.price1 }}</div>
-                                        <div class="filter__range-value filter__range-value--to">{{ getSelectedFilter.price2 }} USD</div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="filter__acc-item">
-                                  <div class="filter__acc-head">
-                                    <div class="filter__acc-title">Карат</div>
-                                    <button class="filter__acc-arrow" v-bind:class="{isActive: filter.acc.karat}" type="button" @click="filter.acc.karat = !filter.acc.karat">
-                                      <img src="./img/arrow-filter.svg" alt="">
-                                    </button>
-                                  </div>
-                                  <div class="filter__acc-body" v-show="filter.acc.karat">
-                                    <div class="filter__range">
-                                      <input type="text" class="js-range-slider" id="rangeKarat" name="my_range" value="" />
-                                      <div class="filter__range-values">
-                                        <div class="filter__range-value filter__range-value--from">{{ getSelectedFilter.karat1 }}</div>
-                                        <div class="filter__range-value filter__range-value--to">{{ getSelectedFilter.karat2 }}</div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="filter__acc-item">
-                                  <div class="filter__acc-head">
-                                    <div class="filter__acc-title">Цвет</div>
-                                    <button class="filter__acc-arrow" v-bind:class="{isActive: filter.acc.color}" type="button" @click="filter.acc.color = !filter.acc.color">
-                                      <img src="./img/arrow-filter.svg" alt="">
-                                    </button>
-                                  </div>
-                                  <div class="filter__acc-body" v-show="filter.acc.color">
-                                    <div class="filter__checkboxes">
-                                      <label 
-                                        v-for="(color, index) in filter.colors"
-                                        v-bind:key="color"
-                                        class="filter__checkbox">
-                                        {{color}}
-                                        <input type="radio" hidden name="color" 
-                                        v-bind:value="color" 
-                                        @change="selectedFilter.color = color" 
-                                        v-bind:checked="selectedFilter.color === color">
-                                        <span></span>
-                                      </label>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="filter__show-wrap">
-                                <button class="button filter__show" type="button" @click="filterHandler">Применить</button>
+                    <div class="review__block review__block-3">
+                      <video controls="controls" poster="">
+                        <source :src="getMediaURL(0, 'video')" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                      </video>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="content__button">
+          <div class="content__btn-inner">
+            <div class="navig">
+              <div class="navig__back">Назад</div>
+              <div class="navig__dots">
+                <div class="navig__dot isActive"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+              </div>
+              <div class="navig__next" data-target="step_2" @click="chooseScreen('step_2')">Далее</div>
+            </div>
+            <button class="section_bl__btn" @click="feedbackIsOpen = true">Связаться с нами</button>
+          </div>
+          <div class="content__medium-price">
+            <p class="text">Цена:</p>
+            <p class="price"><span class="value">{{ getMediumPrice }} </span><span class="cur">$</span></p>
+          </div>
+        </div>
+      </div>
+    </Transition>
+    <Transition name="slide-fade">
+      <div class="content__in center_block step_2" v-if="screen == 'step_2'">
+        <div class="content__quiz">
+          <section class="section_bl">
+            <div class="section_bl__l-side">
+              <h1 class="section_bl__h1">Создай мечту</h1>
+              <div class="section_bl__step">
+                <div class="section_bl__numb"><span>02</span></div>
+                <div class="section_bl__title">Выбор Стиля</div>
+              </div>
+              <form action="" class="section_bl__form" id="quiz2">
+                <template>
+                </template>
+                <label v-for="(question, index) in data[1].QUESTIONS" v-bind:key="question.ID"
+                  v-if="!question.PROPERIES.OWN_CHOSE" v-bind:for="question.ID" class="section_bl__label"
+                  v-bind:class="{isActive: selected.STONE_STYLE.id === question.ID}">
+                  <input type="radio" v-bind:name="data[1].ID" v-bind:id="question.ID" v-bind:value="question.ID"
+                    class="section_bl__radio"
+                    @change="setSelectedData('STONE_STYLE', question.ID, question.NAME, getPrice(question.PROPERIES), 1, index)"
+                    v-bind:checked="selected.STONE_STYLE.id === question.ID">
+                  <div class="section_bl__img">
+                    <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
+                  </div>
+                  <span>{{ question.NAME }}</span>
+                  <div v-if="question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE" class="section_bl__prc">+ {{
+                    getPrice(question.PROPERIES) }}$</div>
+                </label>
+                <label v-if="!selected.OWN_STONE_STYLE.name" for="step2_4" class="section_bl__label">
+                  <input type="file" name="step2_4" id="step2_4" class="section_bl__radio" @change="setOwnStyle">
+                  <div class="section_bl__img">
+                    <img src="./img/krist7.svg" alt="ОТправить Свой дизайн">
+                  </div>
+                  <span>Отправить Свой дизайн</span>
+                </label>
+                <div v-else class="section_bl__label">
+                  <span>Загружен файл: {{ selected.OWN_STONE_STYLE.name.name }}</span>
+                  <br><br>
+                  <span @click="setOwnStyle(null)">Удалить?</span>
+                </div>
+              </form>
+            </div>
+            <div class="section_bl__r-side">
+              <div class="tabs_block">
+                <div class="review">
+                  <div class="review__tabs">
+                    <div class="review__close"></div>
+                    <ul>
+                      <li class="review__btn isActive" id="review__block-1"><span>Интерактив</span></li>
+                      <li class="review__btn" id="review__block-2"><span>Фото</span></li>
+                      <li class="review__btn" id="review__block-3"><span>Видео</span></li>
+                    </ul>
+                  </div>
+                  <div class="review__blocks">
+                    <div class="review__block review__block-1 isActive">
+                      <iframe :src="getMediaURL(1, 'html')" allowfullscreen frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="review__block review__block-2">
+                      <div class="sl">
+                        <div class="sl__img"><img :src="getMediaURL(1, 'image')" alt=""></div>
+                      </div>
+                    </div>
+                    <div class="review__block review__block-3">
+                      <video controls="controls" poster="">
+                        <source :src="getMediaURL(1, 'video')" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                      </video>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="content__button">
+          <div class="content__btn-inner">
+            <div class="navig">
+              <div class="navig__back" data-target="step_1" data-back="true" @click="chooseScreen('step_1')">Назад</div>
+              <div class="navig__dots">
+                <div class="navig__dot"></div>
+                <div class="navig__dot isActive"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+              </div>
+              <div class="navig__next" data-target="step_3" @click="chooseScreen('step_3')">Далее</div>
+            </div>
+            <button class="section_bl__btn" @click="feedbackIsOpen = true">Связаться с нами</button>
+          </div>
+          <div class="content__medium-price">
+            <p class="text">Цена:</p>
+            <p class="price"><span class="value">{{ getMediumPrice }} </span><span class="cur">$</span></p>
+          </div>
+        </div>
+      </div>
+    </Transition>
+    <Transition name="slide-fade">
+      <div class="content__in center_block step_3" v-if="screen == 'step_3'">
+        <div class="content__quiz">
+          <section class="section_bl">
+            <div class="section_bl__l-side">
+              <h1 class="section_bl__h1">Создай мечту</h1>
+              <div class="section_bl__step">
+                <div class="section_bl__numb"><span>03</span></div>
+                <div class="section_bl__title">Наличие подножки</div>
+              </div>
+              <form action="" class="section_bl__form" id="quiz3">
+                <label v-for="(question, index) in data[2].QUESTIONS" v-bind:key="question.ID" v-bind:for="question.ID"
+                  class="section_bl__label" v-bind:class="{isActive: selected.STONE_FOOTBOARD.id === question.ID}">
+                  <input type="radio" v-bind:name="data[2].ID" v-bind:id="question.ID" v-bind:value="question.ID"
+                    class="section_bl__radio"
+                    @change="setSelectedData('STONE_FOOTBOARD', question.ID, question.NAME, getPrice(question.PROPERIES), 2, index)"
+                    v-bind:checked="selected.STONE_FOOTBOARD.id === question.ID">
+                  <div class="section_bl__img">
+                    <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
+                  </div>
+                  <span>{{ question.NAME }}</span>
+                  <div v-if="question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE" class="section_bl__prc">+ {{
+                    getPrice(question.PROPERIES) }}$</div>
+                </label>
+              </form>
+            </div>
+            <div class="section_bl__r-side">
+              <div class="tabs_block">
+                <div class="review">
+                  <div class="review__tabs">
+                    <div class="review__close"></div>
+                    <ul>
+                      <li class="review__btn isActive" id="review__block-1"><span>Интерактив</span></li>
+                      <li class="review__btn" id="review__block-2"><span>Фото</span></li>
+                      <li class="review__btn" id="review__block-3"><span>Видео</span></li>
+                    </ul>
+                  </div>
+                  <div class="review__blocks">
+                    <div class="review__block review__block-1 isActive">
+                      <iframe :src="getMediaURL(2, 'html')" allowfullscreen frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="review__block review__block-2">
+                      <div class="sl">
+                        <div class="sl__img"><img :src="getMediaURL(2, 'image')" alt=""></div>
+                      </div>
+                    </div>
+                    <div class="review__block review__block-3">
+                      <video controls="controls" poster="">
+                        <source :src="getMediaURL(2, 'video')" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                      </video>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="content__button">
+          <div class="content__btn-inner">
+            <div class="navig">
+              <div class="navig__back" data-target="step_2" data-back="true" @click="chooseScreen('step_2')">Назад</div>
+              <div class="navig__dots">
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot isActive"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+              </div>
+              <div class="navig__next" data-target="step_4" @click="chooseScreen('step_4')">Далее</div>
+            </div>
+            <button class="section_bl__btn" @click="feedbackIsOpen = true">Связаться с нами</button>
+          </div>
+          <div class="content__medium-price">
+            <p class="text">Цена:</p>
+            <p class="price"><span class="value">{{ getMediumPrice }} </span><span class="cur">$</span></p>
+          </div>
+        </div>
+      </div>
+    </Transition>
+    <Transition name="slide-fade">
+      <div class="content__in center_block step_4" v-if="screen == 'step_4'">
+        <div class="content__quiz">
+          <section class="section_bl">
+            <div class="section_bl__l-side">
+              <h1 class="section_bl__h1">Создай мечту</h1>
+              <div class="section_bl__step">
+                <div class="section_bl__numb"><span>04</span></div>
+                <div class="section_bl__title">Наличие бриллиантов на шинке</div>
+              </div>
+              <form action="" class="section_bl__form" id="quiz4">
+                <label v-for="(question, index) in data[3].QUESTIONS" v-bind:key="question.ID" v-bind:for="question.ID"
+                  class="section_bl__label" v-bind:class="{isActive: selected.DIAMONDS_ON_SHINKO.id === question.ID}">
+                  <input type="radio" v-bind:name="data[3].ID" v-bind:id="question.ID" v-bind:value="question.ID"
+                    class="section_bl__radio"
+                    @change="setSelectedData('DIAMONDS_ON_SHINKO', question.ID, question.NAME, getPrice(question.PROPERIES), 3, index)"
+                    v-bind:checked="selected.DIAMONDS_ON_SHINKO.id === question.ID">
+                  <div class="section_bl__img">
+                    <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
+                  </div>
+                  <span>{{ question.NAME }}</span>
+                  <div v-if="question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE" class="section_bl__prc">+ {{
+                    getPrice(question.PROPERIES) }}$</div>
+                </label>
+              </form>
+            </div>
+            <div class="section_bl__r-side">
+              <div class="tabs_block">
+                <div class="review">
+                  <div class="review__tabs">
+                    <div class="review__close"></div>
+                    <ul>
+                      <li class="review__btn isActive" id="review__block-1"><span>Интерактив</span></li>
+                      <li class="review__btn" id="review__block-2"><span>Фото</span></li>
+                      <li class="review__btn" id="review__block-3"><span>Видео</span></li>
+                    </ul>
+                  </div>
+                  <div class="review__blocks">
+                    <div class="review__block review__block-1 isActive">
+                      <iframe :src="getMediaURL(3, 'html')" allowfullscreen frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="review__block review__block-2">
+                      <div class="sl">
+                        <div class="sl__img"><img :src="getMediaURL(3, 'image')" alt=""></div>
+                      </div>
+                    </div>
+                    <div class="review__block review__block-3">
+                      <video controls="controls" poster="">
+                        <source :src="getMediaURL(3, 'video')" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                      </video>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="content__button">
+          <div class="content__btn-inner">
+            <div class="navig">
+              <div class="navig__back" data-target="step_3" data-back="true" @click="chooseScreen('step_3')">Назад</div>
+              <div class="navig__dots">
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot isActive"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+              </div>
+              <div class="navig__next" data-target="step_5" @click="chooseScreen('step_5')">Далее</div>
+            </div>
+            <button class="section_bl__btn" @click="feedbackIsOpen = true">Связаться с нами</button>
+          </div>
+          <div class="content__medium-price">
+            <p class="text">Цена:</p>
+            <p class="price"><span class="value">{{ getMediumPrice }} </span><span class="cur">$</span></p>
+          </div>
+        </div>
+      </div>
+    </Transition>
+    <Transition name="slide-fade">
+      <div class="content__in center_block step_5" v-if="screen == 'step_5'">
+        <div class="content__quiz">
+          <section class="section_bl">
+            <div class="section_bl__l-side">
+              <h1 class="section_bl__h1">Создай мечту</h1>
+              <div class="section_bl__step">
+                <div class="section_bl__numb"><span>05</span></div>
+                <div class="section_bl__title">Выберите материал</div>
+              </div>
+              <form action="" class="section_bl__form" id="quiz5">
+                <label v-for="(question, index) in data[4].QUESTIONS" v-bind:key="question.ID" v-bind:for="question.ID"
+                  class="section_bl__label" v-bind:class="{isActive: selected.MATERIAL.id === question.ID}">
+                  <input type="radio" v-bind:name="data[4].ID" v-bind:id="question.ID" v-bind:value="question.ID"
+                    class="section_bl__radio"
+                    @change="setSelectedData('MATERIAL', question.ID, question.NAME, getPrice(question.PROPERIES), 4, index)"
+                    v-bind:checked="selected.MATERIAL.id === question.ID">
+                  <div class="section_bl__img">
+                    <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
+                  </div>
+                  <span>{{ question.NAME }}</span>
+                  <div v-if="question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE" class="section_bl__prc">+ {{
+                    getPrice(question.PROPERIES) }}$</div>
+                </label>
+              </form>
+            </div>
+            <div class="section_bl__r-side">
+              <div class="tabs_block">
+                <div class="review">
+                  <div class="review__tabs">
+                    <div class="review__close"></div>
+                    <ul>
+                      <li class="review__btn isActive" id="review__block-1"><span>Интерактив</span></li>
+                      <li class="review__btn" id="review__block-2"><span>Фото</span></li>
+                      <li class="review__btn" id="review__block-3"><span>Видео</span></li>
+                    </ul>
+                  </div>
+                  <div class="review__blocks">
+                    <div class="review__block review__block-1 isActive">
+                      <iframe :src="getMediaURL(4, 'html')" allowfullscreen frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="review__block review__block-2">
+                      <div class="sl">
+                        <div class="sl__img"><img :src="getMediaURL(4, 'image')" alt=""></div>
+                      </div>
+                    </div>
+                    <div class="review__block review__block-3">
+                      <video controls="controls" poster="">
+                        <source :src="getMediaURL(4, 'video')" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                      </video>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="content__button">
+          <div class="content__btn-inner">
+            <div class="navig">
+              <div class="navig__back" data-target="step_4" data-back="true" @click="chooseScreen('step_4')">Назад</div>
+              <div class="navig__dots">
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot isActive"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+              </div>
+              <div class="navig__next" data-target="step_6" @click="chooseScreen('step_6')">Далее</div>
+            </div>
+            <button class="section_bl__btn" @click="feedbackIsOpen = true">Связаться с нами</button>
+          </div>
+          <div class="content__medium-price">
+            <p class="text">Цена:</p>
+            <p class="price"><span class="value">{{ getMediumPrice }} </span><span class="cur">$</span></p>
+          </div>
+        </div>
+      </div>
+    </Transition>
+    <Transition name="slide-fade">
+      <div class="content__in center_block step_6" v-if="screen == 'step_6'">
+        <div class="content__quiz">
+          <section class="section_bl">
+            <div class="section_bl__l-side">
+              <h1 class="section_bl__h1">Создай мечту</h1>
+              <div class="section_bl__step">
+                <div class="section_bl__numb"><span>06</span></div>
+                <div class="section_bl__title">Цвет лапок на камне</div>
+              </div>
+              <form action="" class="section_bl__form" id="quiz6">
+                <label v-for="(question, index) in data[5].QUESTIONS" v-bind:key="question.ID" v-bind:for="question.ID"
+                  class="section_bl__label" v-bind:class="{isActive: selected.COLOR_OF_PAWS.id === question.ID}">
+                  <input type="radio" v-bind:name="data[5].ID" v-bind:id="question.ID" v-bind:value="question.ID"
+                    class="section_bl__radio"
+                    @change="setSelectedData('COLOR_OF_PAWS', question.ID, question.NAME, getPrice(question.PROPERIES), 5, index)"
+                    v-bind:checked="selected.COLOR_OF_PAWS.id === question.ID">
+                  <div class="section_bl__img">
+                    <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
+                  </div>
+                  <span>{{ question.NAME }}</span>
+                  <div v-if="question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE" class="section_bl__prc">+ {{
+                    getPrice(question.PROPERIES) }}$</div>
+                </label>
+              </form>
+            </div>
+            <div class="section_bl__r-side">
+              <div class="tabs_block">
+                <div class="review">
+                  <div class="review__tabs">
+                    <div class="review__close"></div>
+                    <ul>
+                      <li class="review__btn isActive" id="review__block-1"><span>Интерактив</span></li>
+                      <li class="review__btn" id="review__block-2"><span>Фото</span></li>
+                      <li class="review__btn" id="review__block-3"><span>Видео</span></li>
+                    </ul>
+                  </div>
+                  <div class="review__blocks">
+                    <div class="review__block review__block-1 isActive">
+                      <iframe :src="getMediaURL(5, 'html')" allowfullscreen frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="review__block review__block-2">
+                      <div class="sl">
+                        <div class="sl__img"><img :src="getMediaURL(5, 'image')" alt=""></div>
+                      </div>
+                    </div>
+                    <div class="review__block review__block-3">
+                      <video controls="controls" poster="">
+                        <source :src="getMediaURL(5, 'video')" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                      </video>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="content__button">
+          <div class="content__btn-inner">
+            <div class="navig">
+              <div class="navig__back" data-target="step_5" data-back="true" @click="chooseScreen('step_5')">Назад</div>
+              <div class="navig__dots">
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot isActive"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+              </div>
+              <div class="navig__next" data-target="step_7" @click="chooseScreen('step_7')">Далее</div>
+            </div>
+            <button class="section_bl__btn" @click="feedbackIsOpen = true">Связаться с нами</button>
+          </div>
+          <div class="content__medium-price">
+            <p class="text">Цена:</p>
+            <p class="price"><span class="value">{{ getMediumPrice }} </span><span class="cur">$</span></p>
+          </div>
+        </div>
+      </div>
+    </Transition>
+    <Transition name="slide-fade">
+      <div class="content__in center_block step_7" v-if="screen == 'step_7'">
+        <div class="content__quiz">
+          <section class="section_bl">
+            <div class="section_bl__l-side">
+              <h1 class="section_bl__h1">Создай мечту</h1>
+              <div class="section_bl__step">
+                <div class="section_bl__numb"><span>07</span></div>
+                <div class="section_bl__title">Надпись на кольце</div>
+              </div>
+              <form action="" class="section_bl__form" id="quiz6">
+                <textarea v-model="selected.TEXT.name" placeholder="Напишите что будет на кольце"></textarea>
+              </form>
+            </div>
+            <div class="section_bl__r-side">
+              <div class="tabs_block">
+                <div class="review">
+                  <div class="review__tabs">
+                    <div class="review__close"></div>
+                    <ul>
+                      <li class="review__btn isActive" id="review__block-1"><span>Интерактив</span></li>
+                      <li class="review__btn" id="review__block-2"><span>Фото</span></li>
+                      <li class="review__btn" id="review__block-3"><span>Видео</span></li>
+                    </ul>
+                  </div>
+                  <div class="review__blocks">
+                    <div class="review__block review__block-1 isActive">
+                      <iframe :src="getMediaURL(5, 'html')" allowfullscreen frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="review__block review__block-2">
+                      <div class="sl">
+                        <div class="sl__img"><img :src="getMediaURL(5, 'image')" alt=""></div>
+                      </div>
+                    </div>
+                    <div class="review__block review__block-3">
+                      <video controls="controls" poster="">
+                        <source :src="getMediaURL(5, 'video')" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                      </video>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="content__button">
+          <div class="content__btn-inner">
+            <div class="navig">
+              <div class="navig__back" data-target="step_6" data-back="true" @click="chooseScreen('step_6')">Назад</div>
+              <div class="navig__dots">
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot isActive"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+              </div>
+              <div class="navig__next" data-target="step_8" @click="chooseScreen('step_8')">Далее</div>
+            </div>
+            <button class="section_bl__btn" @click="feedbackIsOpen = true">Связаться с нами</button>
+          </div>
+          <div class="content__medium-price">
+            <p class="text">Цена:</p>
+            <p class="price"><span class="value">{{ getMediumPrice }} </span><span class="cur">$</span></p>
+          </div>
+        </div>
+      </div>
+    </Transition>
+    <Transition name="slide-fade">
+      <div class="content__in center_block step_8" v-if="screen == 'step_8'">
+        <div class="content__quiz">
+          <section class="section_bl">
+            <div class="section_bl__l-side">
+              <h1 class="section_bl__h1">Создай мечту</h1>
+              <div class="section_bl__step">
+                <div class="section_bl__numb"><span>08</span></div>
+                <div class="section_bl__title">Размер кольца</div>
+              </div>
+              <form action="" class="section_bl__form" id="quiz1">
+                <div v-for="(question, index) in data[7].QUESTIONS" v-bind:key="question.ID" class="radio">
+                  <input type="radio" v-bind:name="data[7].ID" v-bind:id="question.ID" v-bind:value="question.ID"
+                    class="custom-radio"
+                    @change="setSelectedData('SIZE', question.ID, question.NAME, getPrice(question.PROPERIES), 6, index)"
+                    v-bind:checked="selected.SIZE.id === question.ID">
+                  <label v-bind:for="question.ID">{{ question.NAME }}</label>
+                </div>
+              </form>
+            </div>
+            <div class="section_bl__r-side">
+              <div class="tabs_block">
+                <div class="review">
+                  <div class="review__tabs">
+                    <div class="review__close"></div>
+                    <ul>
+                      <li class="review__btn isActive" id="review__block-1"><span>Интерактив</span></li>
+                      <li class="review__btn" id="review__block-2"><span>Фото</span></li>
+                      <li class="review__btn" id="review__block-3"><span>Видео</span></li>
+                    </ul>
+                  </div>
+                  <div class="review__blocks">
+                    <div class="review__block review__block-1 isActive">
+                      <iframe :src="getMediaURL(5, 'html')" allowfullscreen frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="review__block review__block-2">
+                      <div class="sl">
+                        <div class="sl__img"><img :src="getMediaURL(5, 'image')" alt=""></div>
+                      </div>
+                    </div>
+                    <div class="review__block review__block-3">
+                      <video controls="controls" poster="">
+                        <source :src="getMediaURL(5, 'video')" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                      </video>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="content__button">
+          <div class="content__btn-inner">
+            <div class="navig">
+              <div class="navig__back" data-target="step_7" data-back="true" @click="chooseScreen('step_7')">Назад</div>
+              <div class="navig__dots">
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot isActive"></div>
+                <div class="navig__dot"></div>
+                <div class="navig__dot"></div>
+              </div>
+              <div class="navig__next" data-target="step_9" @click="sendSelected">Далее</div>
+            </div>
+            <button class="section_bl__btn" @click="feedbackIsOpen = true">Связаться с нами</button>
+          </div>
+          <div class="content__medium-price">
+            <p class="text">Цена:</p>
+            <p class="price"><span class="value">{{ getMediumPrice }} </span><span class="cur">$</span></p>
+          </div>
+        </div>
+      </div>
+    </Transition>
+    <Transition name="slide-fade">
+      <div class="content__in center_block step_9" v-if="screen == 'step_9'">
+        <div class="content__quiz">
+          <section class="section_bl">
+            <div class="section_bl__top">
+              <h1 class="section_bl__h1">Создай мечту</h1>
+              <div class="section_bl__step">
+                <div class="section_bl__numb"><span>09</span></div>
+              </div>
+            </div>
+            <div class="stones">
+              <div class="stones__filter">
+                <div class="filter">
+                  <div class="filter__mtitle" @click="filter.modalIsOpen = true">фильтр <img
+                      src="./img/arrow-filter.svg" alt=""></div>
+                  <div class="filter__modal" v-bind:class="{isActive: filter.modalIsOpen}">
+                    <div class="filter__inner">
+                      <div class="filter__head">
+                        <div class="filter__mtitle filter__mtitle--inmodal" @click="filter.modalIsOpen = false">фильтр
+                          <img src="./img/arrow-filter.svg" alt=""></div>
+                        <div class="filter__reset" @click="resetFilter">
+                          <img src="./img/reset.svg" alt=""> сбросить
+                        </div>
+                      </div>
+                      <div class="filter__acc">
+                        <div class="filter__acc-item">
+                          <div class="filter__acc-head">
+                            <div class="filter__acc-title">Цена</div>
+                            <button class="filter__acc-arrow" v-bind:class="{isActive: filter.acc.price}" type="button"
+                              @click="filter.acc.price = !filter.acc.price">
+                              <img src="./img/arrow-filter.svg" alt="">
+                            </button>
+                          </div>
+                          <div class="filter__acc-body" v-show="filter.acc.price">
+                            <div class="filter__range">
+                              <input type="text" class="js-range-slider" id="rangePrice" name="my_range" value="" />
+                              <div class="filter__range-values">
+                                <div class="filter__range-value filter__range-value--from">{{ getSelectedFilter.price1
+                                  }}</div>
+                                <div class="filter__range-value filter__range-value--to">{{ getSelectedFilter.price2 }}
+                                  USD</div>
                               </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                      <div class="stones__content">
-                        <div class="stones__list">
-                          <div v-for="item in response" v-bind:key="item.ID" class="stones__item">
-                            <div class="stones__item-inner" v-bind:class="{isActive: selectedStone.id == item.ID}">
-                              <div class="stones__img-wrap">
-                                <picture class="stones__img">
-                                  <img v-bind:src="url + item.PREVIEW_PICTURE" alt="">
-                                </picture>
-                              </div>
-                              <div class="stones__item-info">
-                                <div class="stones__clarity">{{ getPropFromProps(item.PROPERIES, 'Clarity').VALUE }} Clarity</div>
-                                <div class="stones__name">{{ item.NAME }}</div>
-                                <div class="stones__karat-color">
-                                  <div class="stones__karat">Карат: <span>{{ getPropFromProps(item.PROPERIES, 'HighSize').VALUE }}</span></div>
-                                  <div class="stones__color">Цвет: <span>{{ getPropFromProps(item.PROPERIES, 'color').VALUE }}</span></div>
-                                </div>
-                                <div class="stones__item-footer">
-                                  <div class="stones__price"><p>Цена:</p> <span class="value">{{ item.PRICE && item.PRICE.PRICE }}</span> <span class="currency">{{ item.PRICE && item.PRICE.CURRENCY }}</span></div>
-                                  <button v-if="selectedStone.id == item.ID" class="stones__add-plus" type="button" v-if="selectedStone.id != item.ID" @click="selectStone(null)"><img src="./img/cancel-stone.svg" alt=""></button>
-                                  <button v-else class="stones__add-plus" type="button" v-if="selectedStone.id != item.ID" @click="selectStone(item)"><img src="./img/circle-plus.svg" alt=""></button>
-                                </div>
-                                <div class="stones__add-wrap">
-                                  <button v-if="selectedStone.id == item.ID" class="button stones__add" type="button" @click="selectStone(null)">Отменить</button>
-                                  <button v-else class="button stones__add" type="button" @click="selectStone(item)">Выбрать</button>
+                        <div class="filter__acc-item">
+                          <div class="filter__acc-head">
+                            <div class="filter__acc-title">Карат</div>
+                            <button class="filter__acc-arrow" v-bind:class="{isActive: filter.acc.karat}" type="button"
+                              @click="filter.acc.karat = !filter.acc.karat">
+                              <img src="./img/arrow-filter.svg" alt="">
+                            </button>
+                          </div>
+                          <div class="filter__acc-body" v-show="filter.acc.karat">
+                            <div class="filter__range">
+                              <input type="text" class="js-range-slider" id="rangeKarat" name="my_range" value="" />
+                              <div class="filter__range-values">
+                                <div class="filter__range-value filter__range-value--from">{{ getSelectedFilter.karat1
+                                  }}</div>
+                                <div class="filter__range-value filter__range-value--to">{{ getSelectedFilter.karat2 }}
                                 </div>
                               </div>
                             </div>
                           </div>
                         </div>
-                        <div class="stones__empty" v-if="response.length === 0">Не найдено</div>
-                        <div class="stones__more" v-if="response.length && limit.limit">
-                          <button class="stones__more-btn" type="button" @click="dowloadMore">Показать еще <img src="./img/more.svg" alt=""></button>
-                        </div>
-                        <div class="content__button">
-                            <div class="navig">
-                                <div class="navig__back" data-target="step_8" data-back="true" @click="mainContent.chooseScreen('step_8')">Назад</div>
-                                <div class="navig__dots">
-                                    <div class="navig__dot"></div>
-                                    <div class="navig__dot"></div>
-                                    <div class="navig__dot"></div>
-                                    <div class="navig__dot"></div>
-                                    <div class="navig__dot"></div>
-                                    <div class="navig__dot"></div>
-                                    <div class="navig__dot"></div>
-                                    <div class="navig__dot"></div>
-                                    <div class="navig__dot isActive"></div>
-                                    <div class="navig__dot"></div>
-                                </div>
-                                <div class="navig__next" data-target="step_10" @click="stoneSelected">Далее</div>
+                        <div class="filter__acc-item">
+                          <div class="filter__acc-head">
+                            <div class="filter__acc-title">Цвет</div>
+                            <button class="filter__acc-arrow" v-bind:class="{isActive: filter.acc.color}" type="button"
+                              @click="filter.acc.color = !filter.acc.color">
+                              <img src="./img/arrow-filter.svg" alt="">
+                            </button>
+                          </div>
+                          <div class="filter__acc-body" v-show="filter.acc.color">
+                            <div class="filter__checkboxes">
+                              <label v-for="(color, index) in filter.colors" v-bind:key="color"
+                                class="filter__checkbox"> {{color}} <input type="radio" hidden name="color"
+                                  v-bind:value="color" @change="selectedFilter.color = color"
+                                  v-bind:checked="selectedFilter.color === color">
+                                <span></span>
+                              </label>
                             </div>
-                            <button class="section_bl__btn" @click="feedbackIsOpen = true">Связаться с нами</button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="filter__show-wrap">
+                        <button class="button filter__show" type="button" @click="filterHandler">Применить</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="stones__content">
+                <div class="stones__list">
+                  <div v-for="item in response" v-bind:key="item.ID" class="stones__item">
+                    <div class="stones__item-inner" v-bind:class="{isActive: selectedStone.id == item.ID}">
+                      <div class="stones__img-wrap">
+                        <picture class="stones__img">
+                          <img v-bind:src="url + item.PREVIEW_PICTURE" alt="">
+                        </picture>
+                      </div>
+                      <div class="stones__item-info">
+                        <div class="stones__clarity">{{ getPropFromProps(item.PROPERIES, 'Clarity').VALUE }} Clarity
+                        </div>
+                        <div class="stones__name">{{ item.NAME }}</div>
+                        <div class="stones__karat-color">
+                          <div class="stones__karat">Карат: <span>{{ getPropFromProps(item.PROPERIES, 'HighSize').VALUE
+                              }}</span></div>
+                          <div class="stones__color">Цвет: <span>{{ getPropFromProps(item.PROPERIES, 'color').VALUE
+                              }}</span></div>
+                        </div>
+                        <div class="stones__item-footer">
+                          <div class="stones__price">
+                            <p>Цена:</p> <span class="value">{{ item.PRICE && item.PRICE.PRICE }}</span> <span
+                              class="currency">{{ item.PRICE && item.PRICE.CURRENCY }}</span>
+                          </div>
+                          <button v-if="selectedStone.id == item.ID" class="stones__add-plus" type="button"
+                            v-if="selectedStone.id != item.ID" @click="selectStone(null)"><img
+                              src="./img/cancel-stone.svg" alt=""></button>
+                          <button v-else class="stones__add-plus" type="button" v-if="selectedStone.id != item.ID"
+                            @click="selectStone(item)"><img src="./img/circle-plus.svg" alt=""></button>
+                        </div>
+                        <div class="stones__add-wrap">
+                          <button v-if="selectedStone.id == item.ID" class="button stones__add" type="button"
+                            @click="selectStone(null)">Отменить</button>
+                          <button v-else class="button stones__add" type="button"
+                            @click="selectStone(item)">Выбрать</button>
                         </div>
                       </div>
                     </div>
-                </section>
-            </div>
-        </div>
-        <div class="content__in center_block step_10" data-screen="step_10">
-            <div class="content__quiz">
-                <section class="section_bl">
-                    <div class="section_bl__l-side">
-                        <h1 class="section_bl__h1">Создай мечту</h1>
-                        <div class="section_bl__step">
-                            <div class="section_bl__numb"><span>10</span></div>
-                            <div class="section_bl__title">Ваше изделие</div>
-                        </div>
-                        <div class="section_bl__list">
-                            <div class="section_bl__opt">
-                                <div class="section_bl__t">огранка камня</div>
-                                <div class="section_bl__b">{{ selected.STONE_CUT.name }}</div>
-                            </div>
-                            <div class="section_bl__opt">
-                                <div class="section_bl__t">Стиль</div>
-                                <div class="section_bl__b">{{ selected.OWN_STONE_STYLE.name ? 'Свой стиль' : selected.STONE_STYLE.name }}</div>
-                            </div>
-                            <div class="section_bl__opt">
-                                <div class="section_bl__t">Наличие подножки</div>
-                                <div class="section_bl__b">{{ selected.STONE_FOOTBOARD.name }}</div>
-                            </div>
-                            <div class="section_bl__opt">
-                                <div class="section_bl__t">бриллианты на шинке</div>
-                                <div class="section_bl__b">{{ selected.DIAMONDS_ON_SHINKO.name }}</div>
-                            </div>
-                            <div class="section_bl__opt">
-                                <div class="section_bl__t">золото</div>
-                                <div class="section_bl__b">{{ selected.MATERIAL.name }}</div>
-                            </div>
-                            <div class="section_bl__opt">
-                                <div class="section_bl__t">Цвет лапок</div>
-                                <div class="section_bl__b">{{ selected.COLOR_OF_PAWS.name }}</div>
-                            </div>
-                            <div class="section_bl__opt">
-                                <div class="section_bl__t">Надпись на кольце</div>
-                                <div class="section_bl__b">{{ selected.TEXT.name ? selected.TEXT.name : '-' }}</div>
-                            </div>
-                            <div class="section_bl__opt">
-                                <div class="section_bl__t">Размер</div>
-                                <div class="section_bl__b">{{ selected.SIZE.name }}</div>
-                            </div>
-                            <div class="section_bl__opt">
-                                <div class="section_bl__t">Камень</div>
-                                <div class="section_bl__b">{{ selectedStone.name }}</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="section_bl__r-side">
-                        <div class="tabs_block">
-                            <div class="review">
-                              <div class="review__block review__block-2">
-                                  <div class="sl">
-                                      <div class="sl__img"><img :src="getMediaURL(9, 'final')" alt=""></div>
-                                  </div>
-                              </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-            <div class="content__button">
-                <div class="navig">
-                    <div class="navig__item">
-                        <div class="navig__l">Цена:</div>
-                        <div class="navig__r">{{ selectedStone.PRICE && selectedStone.PRICE.PRICE }} <span>{{ selectedStone.PRICE && selectedStone.PRICE.CURRENCY }}</span></div>
-                    </div>
+                  </div>
                 </div>
-                <a href="#" class="section_bl__link" @click="feedbackIsOpen = true">Оформить заказ</a>
+                <div class="stones__empty" v-if="response.length === 0">Не найдено</div>
+                <div class="stones__more" v-if="response.length && limit.limit">
+                  <button class="stones__more-btn" type="button" @click="dowloadMore">Показать еще <img
+                      src="./img/more.svg" alt=""></button>
+                </div>
+                <div class="content__btn-inner">
+                  <div class="navig">
+                    <div class="navig__back" data-target="step_8" data-back="true" @click="chooseScreen('step_8')">Назад
+                    </div>
+                    <div class="navig__dots">
+                      <div class="navig__dot"></div>
+                      <div class="navig__dot"></div>
+                      <div class="navig__dot"></div>
+                      <div class="navig__dot"></div>
+                      <div class="navig__dot"></div>
+                      <div class="navig__dot"></div>
+                      <div class="navig__dot"></div>
+                      <div class="navig__dot"></div>
+                      <div class="navig__dot isActive"></div>
+                      <div class="navig__dot"></div>
+                    </div>
+                    <div class="navig__next" data-target="step_10" @click="stoneSelected">Далее</div>
+                  </div>
+                  <button class="section_bl__btn" @click="feedbackIsOpen = true">Связаться с нами</button>
+                </div>
+              </div>
             </div>
+          </section>
         </div>
-    </div>
-    <div class="modal" v-show="feedbackIsOpen" v-bind:class="{isActive: feedbackIsOpen}">
-      <form @submit.prevent="sendFinalFormData" class="modal__inner">
-        <div class="modal__close" @click="feedbackIsOpen = false">
-          <img src="./img/modal-close.svg" alt="">
+      </div>
+    </Transition>
+    <Transition name="slide-fade">
+      <div class="content__in center_block step_10" v-if="screen == 'step_10'">
+        <div class="content__quiz">
+          <section class="section_bl">
+            <div class="section_bl__l-side">
+              <h1 class="section_bl__h1">Создай мечту</h1>
+              <div class="section_bl__step">
+                <div class="section_bl__numb"><span>10</span></div>
+                <div class="section_bl__title">Ваше изделие</div>
+              </div>
+              <div class="section_bl__list">
+                <div class="section_bl__opt">
+                  <div class="section_bl__t">огранка камня</div>
+                  <div class="section_bl__b">{{ selected.STONE_CUT.name }}</div>
+                </div>
+                <div class="section_bl__opt">
+                  <div class="section_bl__t">Стиль</div>
+                  <div class="section_bl__b">{{ selected.OWN_STONE_STYLE.name ? 'Свой стиль' : selected.STONE_STYLE.name
+                    }}</div>
+                </div>
+                <div class="section_bl__opt">
+                  <div class="section_bl__t">Наличие подножки</div>
+                  <div class="section_bl__b">{{ selected.STONE_FOOTBOARD.name }}</div>
+                </div>
+                <div class="section_bl__opt">
+                  <div class="section_bl__t">бриллианты на шинке</div>
+                  <div class="section_bl__b">{{ selected.DIAMONDS_ON_SHINKO.name }}</div>
+                </div>
+                <div class="section_bl__opt">
+                  <div class="section_bl__t">золото</div>
+                  <div class="section_bl__b">{{ selected.MATERIAL.name }}</div>
+                </div>
+                <div class="section_bl__opt">
+                  <div class="section_bl__t">Цвет лапок</div>
+                  <div class="section_bl__b">{{ selected.COLOR_OF_PAWS.name }}</div>
+                </div>
+                <div class="section_bl__opt">
+                  <div class="section_bl__t">Надпись на кольце</div>
+                  <div class="section_bl__b">{{ selected.TEXT.name ? selected.TEXT.name : '-' }}</div>
+                </div>
+                <div class="section_bl__opt">
+                  <div class="section_bl__t">Размер</div>
+                  <div class="section_bl__b">{{ selected.SIZE.name }}</div>
+                </div>
+                <div class="section_bl__opt">
+                  <div class="section_bl__t">Камень</div>
+                  <div class="section_bl__b">{{ selectedStone.name }}</div>
+                </div>
+              </div>
+              <div class="content__medium-price">
+                <p class="text">Цена:</p>
+                <p class="price"><span class="value">{{ getMediumPrice }} </span><span class="cur">$</span></p>
+              </div>
+              <div class="content__final-buttons--mobile">
+                <div class="section_bl__link" @click="feedbackIsOpen = true">Оформить заказ</div>
+              </div>
+            </div>
+            <div class="section_bl__r-side">
+              <div class="tabs_block">
+                <div class="review">
+                  <div class="review__block review__block-2">
+                    <div class="sl">
+                      <div class="sl__img"><img :src="getMediaURL(9, 'final')" alt=""></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
-        <div class="modal__title">Feedback</div>
-        <div class="modal__subtitle">Оформите онлайн резерв в подходящем магазине. Заберите заказ в удобное для вас время или воспользуйтесь доставкой на дом.</div>
-        <label class="modal__item modal__item--required">
-          <input type="text" class="modal__input" name="name" required placeholder="Имя">
+        <div class="content__final-buttons">
+          <div class="section_bl__link" @click="feedbackIsOpen = true">Оформить заказ</div>
+        </div>
+      </div>
+    </Transition>
+  </div>
+  <div class="modal" v-show="feedbackIsOpen" v-bind:class="{isActive: feedbackIsOpen}">
+    <form @submit.prevent="sendFinalFormData" class="modal__inner">
+      <div class="modal__close" @click="feedbackIsOpen = false">
+        <img src="./img/modal-close.svg" alt="">
+      </div>
+      <div class="modal__title">Feedback</div>
+      <div class="modal__subtitle">Оформите онлайн резерв в подходящем магазине. Заберите заказ в удобное для вас время
+        или воспользуйтесь доставкой на дом.</div>
+      <label class="modal__item modal__item--required">
+        <input type="text" class="modal__input" name="name" required placeholder="Имя">
+      </label>
+      <div class="modal__item modal__item--required">
+        <input type="email" class="modal__input" name="email" required placeholder="E-mail">
+      </div>
+      <label class="modal__item modal__item--required">
+        <input type="tel" class="modal__input" name="tel" required placeholder="+7(___)___-__-__">
+      </label>
+      <div class="modal__item modal__item--required">
+        <textarea name="question" class="modal__textarea" id="" cols="30" rows="10" required
+          placeholder="Краткий вопрос"></textarea>
+      </div>
+      <div class="" v-if="!selectedStone.name">
+        <label class="modal__item modal__item--file" @drop.prevent="dropHandler">
+          <span class="drop"><img src="./img/Download.svg" alt=""> Перетащите файл сюда</span>
+          <span class="file">Выберите файл</span>
+          <input type="file" class="modal__input" name="file" @change="setModalFile" hidden>
         </label>
-        <div class="modal__item modal__item--required">
-          <input type="email" class="modal__input" name="email" required placeholder="E-mail">
+        <div v-if="modalFileName" class="modal__item">
+          <div class="">{{ modalFileName }}</div>
         </div>
-        <label class="modal__item modal__item--required">
-          <input type="tel" class="modal__input" name="tel" required placeholder="+7(___)___-__-__">
-        </label>
-        <div class="modal__item modal__item--required">
-          <textarea name="question" class="modal__textarea" id="" cols="30" rows="10" required placeholder="Краткий вопрос"></textarea>
+        <div class="modal__item">
+          <textarea name="description" class="modal__textarea modal__textarea--description" id="" cols="30" rows="10"
+            placeholder="Опишите детали будущего изделия, стиль, вид и цвет металла, размер"></textarea>
         </div>
-        <div class="" v-if="!selectedStone.name">
-          <label class="modal__item modal__item--file" @drop.prevent="dropHandler">
-            <span class="drop"><img src="./img/Download.svg" alt=""> Перетащите файл сюда</span>
-            <span class="file">Выберите файл</span>
-            <input type="file" class="modal__input" name="file" @change="setModalFile" hidden>
-          </label>
-          <div v-if="modalFileName" class="modal__item">
-            <div class="">{{ modalFileName }}</div>
-          </div>
-          <div class="modal__item">
-            <textarea name="description" class="modal__textarea modal__textarea--description" id="" cols="30" rows="10" placeholder="Опишите детали будущего изделия, стиль, вид и цвет металла, размер"></textarea>
-          </div>
-        </div>
-        <div class="modal__btn-wrap">
-          <button class="modal__send" type="submit">Отправить</button>
-        </div>
-      </form>
-    </div>
-    <div class="modal" v-show="finalDataResponse.hasError !== null" v-bind:class="{isActive: finalDataResponse.hasError !== null}">
-      <div class="modal__inner">
-        <div class="modal__close" @click="finalDataResponse.hasError = null">
-          <img src="./img/modal-close.svg" alt="" @click="finalDataResponse.hasError = null">
-        </div>
-        <div class="modal__title"  v-if="finalDataResponse.hasError === false">Спасибо!</div>
-        <div class="modal__sms modal__sms--success" v-if="finalDataResponse.hasError === false">Благодарим Вас за информацию о вашей мечте!<br>
-          Мы изучим Ваши пожелания и свяжемся с Вами для согласования следующих действий.</div>
-          <div class="modal__title"  v-if="finalDataResponse.hasError === true">Упc...</div>
-        <div class="modal__sms modal__sms--error" v-if="finalDataResponse.hasError === true">Ошибка, попробуйте позже!</div>
+      </div>
+      <div class="modal__btn-wrap">
+        <button class="modal__send" type="submit">Отправить</button>
+      </div>
+    </form>
+  </div>
+  <div class="modal" v-show="finalDataResponse.hasError !== null"
+    v-bind:class="{isActive: finalDataResponse.hasError !== null}">
+    <div class="modal__inner">
+      <div class="modal__close" @click="finalDataResponse.hasError = null">
+        <img src="./img/modal-close.svg" alt="" @click="finalDataResponse.hasError = null">
+      </div>
+      <div class="modal__title" v-if="finalDataResponse.hasError === false">Спасибо!</div>
+      <div class="modal__sms modal__sms--success" v-if="finalDataResponse.hasError === false">Благодарим Вас за
+        информацию о вашей мечте!<br> Мы изучим Ваши пожелания и свяжемся с Вами для согласования следующих действий.
+      </div>
+      <div class="modal__title" v-if="finalDataResponse.hasError === true">Упc...</div>
+      <div class="modal__sms modal__sms--error" v-if="finalDataResponse.hasError === true">Ошибка, попробуйте позже!
       </div>
     </div>
+  </div>
 </main>
     </div>
-    <script src="js/app.min.js?_v=20220914211419"></script>
+    <script src="js/app.min.js?_v=20220915213437"></script>
 </body>
 </html>

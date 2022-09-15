@@ -3,18 +3,6 @@ const MainContent = class MainContent {
       this.currentStep = null
       this.api = api
     }
-    chooseScreen(target) {
-        if (!document.querySelector(`.content__in.isActive [data-target="${target}"]`).dataset.back) {
-            console.log(`вперед к ${target}`);
-            document.querySelector('.content__in.isActive').classList.add('isSlided');
-        } else {
-            console.log(`назад к ${target}`);
-        }
-        this.currentStep = target
-        document.querySelector('.content__in.isActive').classList.remove('isActive');
-        document.querySelector(`[data-screen="${target}"]`).classList.add('isActive')
-        document.querySelector(`[data-screen="${target}"]`).classList.remove('isSlided')
-    }
     init() {}
     getData() {
       return fetch(this.api + '/json.php')
