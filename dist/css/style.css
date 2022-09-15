@@ -1440,20 +1440,6 @@ template {
 @font-face {
   font-family: "TTNorms";
   font-display: swap;
-  src: url("../fonts/TTNorms-Bold.woff2") format("woff2"), url("../fonts/TTNorms-Bold.woff") format("woff"), url("../fonts/TTNorms-Bold.ttf") format("ttf");
-  font-weight: 700;
-}
-
-@font-face {
-  font-family: "TTNorms";
-  font-display: swap;
-  src: url("../fonts/TTNorms-ExtraBold.woff2") format("woff2"), url("../fonts/TTNorms-ExtraBold.woff") format("woff"), url("../fonts/TTNorms-ExtraBold.ttf") format("ttf");
-  font-weight: 800;
-}
-
-@font-face {
-  font-family: "TTNorms";
-  font-display: swap;
   src: url("../fonts/TTNorms-ExtraLight.woff2") format("woff2"), url("../fonts/TTNorms-ExtraLight.woff") format("woff"), url("../fonts/TTNorms-ExtraLight.ttf") format("ttf");
   font-weight: 200;
 }
@@ -1468,8 +1454,8 @@ template {
 @font-face {
   font-family: "TTNorms";
   font-display: swap;
-  src: url("../fonts/TTNorms-Italic.woff2") format("woff2"), url("../fonts/TTNorms-Italic.woff") format("woff"), url("../fonts/TTNorms-Italic.ttf") format("ttf");
-  font-weight: 400;
+  src: url("../fonts/TTNorms-ExtraBold.woff2") format("woff2"), url("../fonts/TTNorms-ExtraBold.woff") format("woff"), url("../fonts/TTNorms-ExtraBold.ttf") format("ttf");
+  font-weight: 800;
 }
 
 @font-face {
@@ -1482,8 +1468,22 @@ template {
 @font-face {
   font-family: "TTNorms";
   font-display: swap;
+  src: url("../fonts/TTNorms-Bold.woff2") format("woff2"), url("../fonts/TTNorms-Bold.woff") format("woff"), url("../fonts/TTNorms-Bold.ttf") format("ttf");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "TTNorms";
+  font-display: swap;
   src: url("../fonts/TTNorms-Medium.woff2") format("woff2"), url("../fonts/TTNorms-Medium.woff") format("woff"), url("../fonts/TTNorms-Medium.ttf") format("ttf");
   font-weight: 500;
+}
+
+@font-face {
+  font-family: "TTNorms";
+  font-display: swap;
+  src: url("../fonts/TTNorms-Italic.woff2") format("woff2"), url("../fonts/TTNorms-Italic.woff") format("woff"), url("../fonts/TTNorms-Italic.ttf") format("ttf");
+  font-weight: 400;
 }
 
 @font-face {
@@ -1519,6 +1519,10 @@ body {
   flex-direction: column;
 }
 
+.wrapper#app {
+  height: auto;
+}
+
 .steps {
   flex: 1 0 auto;
 }
@@ -1548,6 +1552,7 @@ img {
 .steps__in {
   overflow: hidden;
   position: relative;
+  display: flex;
 }
 
 .steps__in.visible {
@@ -1555,11 +1560,9 @@ img {
 }
 
 .steps .content__in {
-  transition: all 1s ease-out;
-  position: absolute;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateX(150%);
+  flex-shrink: 0;
+  width: 100%;
+  position: relative;
 }
 
 .steps .content__in.isActive {
@@ -1738,7 +1741,15 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   min-height: 800px;
+}
+
+.section_bl__medium-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .section_bl .tabs_block {
@@ -1780,10 +1791,52 @@ img {
 }
 
 .content__button {
-  width: 50%;
-  text-align: center;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
   margin-top: 20px;
+}
+
+.content__btn-inner {
+  text-align: center;
+  width: 50%;
   padding-right: 60px;
+}
+
+.content__medium-price {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content__medium-price .text {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  color: #606060;
+  margin: 0;
+}
+
+.content__medium-price .price {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  font-family: "Forum";
+  font-style: normal;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.content__medium-price .value {
+  font-size: 40px;
+  margin-right: 5px;
+}
+
+.content__medium-price .cur {
+  font-size: 20px;
 }
 
 .review {
@@ -1983,8 +2036,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 48px;
-  margin-top: -67px;
+  padding: 40px 0;
 }
 
 .navig__back {
@@ -2102,6 +2154,18 @@ img {
   padding-right: 0;
 }
 
+.step_4 .section_bl__label {
+  width: 50%;
+}
+
+.step_5 .section_bl__label {
+  width: 50%;
+}
+
+.step_6 .section_bl__label {
+  width: 50%;
+}
+
 .step_7 .section_bl__form {
   padding-left: 30px;
   padding-right: 30px;
@@ -2136,6 +2200,10 @@ img {
   font-size: 18px;
   line-height: 140%;
   color: #C4C4C4;
+}
+
+.step_7 .section_bl__label {
+  width: 50%;
 }
 
 .step_8 .section_bl .custom-radio {
@@ -2200,9 +2268,8 @@ img {
   margin-bottom: 80px;
 }
 
-.step_9 .content__button {
+.step_9 .content__btn-inner {
   width: 100%;
-  margin-top: 120px;
 }
 
 .step_9 .button {
@@ -2663,8 +2730,18 @@ img {
   color: #FFFFFF;
 }
 
-.step_10 .content__button {
+.step_10 .content__final-buttons {
   text-align: left;
+  padding: 10px 20px;
+}
+
+.step_10 .content__final-buttons--mobile {
+  display: none;
+}
+
+.step_10 .content__medium-price {
+  width: 100%;
+  padding: 10px 20px;
 }
 
 .step_10 .navig__item {
@@ -2857,6 +2934,33 @@ img {
 
 .modal__sms--error {
   color: tomato;
+}
+
+.slide-fade-enter-active {
+  opacity: 1;
+  transition: transform 0.8s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: transform 0.8s ease-out;
+}
+
+.steps__in .slide-fade-enter-to:first-child {
+  left: -100%;
+  transform: translateX(100%);
+}
+
+.steps__in .slide-fade-enter-to:last-child {
+  transform: translateX(-100%);
+}
+
+.steps__in .slide-fade-leave-to:first-child {
+  transform: translateX(-100%);
+}
+
+.steps__in .slide-fade-leave-to:last-child {
+  left: -100%;
+  transform: translateX(100%);
 }
 
 .open {
@@ -3151,6 +3255,50 @@ img {
   .step_9 .filter__show {
     width: auto;
     padding: 0 40px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .content__button {
+    flex-direction: column-reverse;
+  }
+
+  .content__btn-inner {
+    width: 100%;
+    padding-right: 0;
+  }
+
+  .content__medium-price {
+    width: 100%;
+  }
+
+  .content__medium-price .text {
+    font-weight: 400;
+  }
+
+  .content__medium-price .value {
+    font-size: 25px;
+    margin-right: 3px;
+  }
+
+  .content__medium-price .cur {
+    font-size: 14px;
+  }
+
+  .step_10 .content__final-buttons {
+    display: none;
+  }
+
+  .step_10 .content__final-buttons--mobile {
+    display: block;
+  }
+
+  .step_10 .content__final-buttons--mobile .section_bl__link {
+    max-width: none;
+  }
+
+  .step_10 .content__medium-price {
+    margin-bottom: 20px;
   }
 }
 
