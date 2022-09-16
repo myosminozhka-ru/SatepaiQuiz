@@ -18,7 +18,7 @@
                     @change="setSelectedData('STONE_CUT', question.ID, question.NAME, getPrice(question.PROPERIES), 0, index)"
                     v-bind:checked="selected.STONE_CUT.id === question.ID">
                   <div class="section_bl__img">
-                    <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
+                    <img v-bind:src="(question.PROPERIES.FOTO && question.PROPERIES.FOTO.SRC) && (url + question.PROPERIES.FOTO.SRC)" v-bind:alt="question.NAME">
                   </div>
                   <span>{{ question.NAME }}</span>
                   <div v-if="question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE" class="section_bl__prc">+ {{
@@ -105,7 +105,7 @@
                     @change="setSelectedData('STONE_STYLE', question.ID, question.NAME, getPrice(question.PROPERIES), 1, index)"
                     v-bind:checked="selected.STONE_STYLE.id === question.ID">
                   <div class="section_bl__img">
-                    <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
+                    <img v-bind:src="(question.PROPERIES.FOTO && question.PROPERIES.FOTO.SRC) && (url + question.PROPERIES.FOTO.SRC)" v-bind:alt="question.NAME">
                   </div>
                   <span>{{ question.NAME }}</span>
                   <div v-if="question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE" class="section_bl__prc">+ {{
@@ -201,7 +201,7 @@
                     @change="setSelectedData('STONE_FOOTBOARD', question.ID, question.NAME, getPrice(question.PROPERIES), 2, index)"
                     v-bind:checked="selected.STONE_FOOTBOARD.id === question.ID">
                   <div class="section_bl__img">
-                    <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
+                    <img v-bind:src="(question.PROPERIES.FOTO && question.PROPERIES.FOTO.SRC) && (url + question.PROPERIES.FOTO.SRC)" v-bind:alt="question.NAME">
                   </div>
                   <span>{{ question.NAME }}</span>
                   <div v-if="question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE" class="section_bl__prc">+ {{
@@ -285,7 +285,7 @@
                     @change="setSelectedData('DIAMONDS_ON_SHINKO', question.ID, question.NAME, getPrice(question.PROPERIES), 3, index)"
                     v-bind:checked="selected.DIAMONDS_ON_SHINKO.id === question.ID">
                   <div class="section_bl__img">
-                    <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
+                    <img v-bind:src="(question.PROPERIES.FOTO && question.PROPERIES.FOTO.SRC) && (url + question.PROPERIES.FOTO.SRC)" v-bind:alt="question.NAME">
                   </div>
                   <span>{{ question.NAME }}</span>
                   <div v-if="question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE" class="section_bl__prc">+ {{
@@ -369,7 +369,7 @@
                     @change="setSelectedData('MATERIAL', question.ID, question.NAME, getPrice(question.PROPERIES), 4, index)"
                     v-bind:checked="selected.MATERIAL.id === question.ID">
                   <div class="section_bl__img">
-                    <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
+                    <img v-bind:src="(question.PROPERIES.FOTO && question.PROPERIES.FOTO.SRC) && (url + question.PROPERIES.FOTO.SRC)" v-bind:alt="question.NAME">
                   </div>
                   <span>{{ question.NAME }}</span>
                   <div v-if="question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE" class="section_bl__prc">+ {{
@@ -453,7 +453,7 @@
                     @change="setSelectedData('COLOR_OF_PAWS', question.ID, question.NAME, getPrice(question.PROPERIES), 5, index)"
                     v-bind:checked="selected.COLOR_OF_PAWS.id === question.ID">
                   <div class="section_bl__img">
-                    <img v-bind:src="url + question.PROPERIES.FOTO.SRC" v-bind:alt="question.NAME">
+                    <img v-bind:src="(question.PROPERIES.FOTO && question.PROPERIES.FOTO.SRC) && (url + question.PROPERIES.FOTO.SRC)" v-bind:alt="question.NAME">
                   </div>
                   <span>{{ question.NAME }}</span>
                   <div v-if="question.PROPERIES.PRICE && question.PROPERIES.PRICE.VALUE" class="section_bl__prc">+ {{
