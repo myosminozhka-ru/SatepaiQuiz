@@ -8,8 +8,8 @@
     <title>Satepai Quiz</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap&_v=20220916204912" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?_v=20220916204912">
+    <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap&_v=20220919112259" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css?_v=20220919112259">
 </head>
 <body>
     <div class="wrapper" id="app">
@@ -545,7 +545,7 @@
                 <div class="section_bl__title">Надпись на кольце</div>
               </div>
               <form action="" class="section_bl__form" id="quiz6">
-                <textarea v-model="selected.TEXT.name" placeholder="Напишите что будет на кольце"></textarea>
+                <textarea :value="selected.TEXT.name" @change="setText" placeholder="Напишите что будет на кольце"></textarea>
               </form>
             </div>
             <div class="section_bl__r-side">
@@ -980,6 +980,6 @@
   </div>
 </main>
     </div>
-    <script src="js/app.min.js?_v=20220916204912"></script>
+    <script src="js/app.min.js?_v=20220919112259"></script>
 </body>
 </html>

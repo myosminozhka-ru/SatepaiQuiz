@@ -168,7 +168,10 @@ window.app = new Vue({
           for(var [key, value] of Object.entries(this.selected)) {
             res += +value.price
           }
-          return res
+          const stonePrice = (this.selectedStone.PRICE && this.selectedStone.PRICE.PRICE)
+          console.log("stonePrice")
+          res = res + (typeof parseInt(stonePrice, 10) === 'number' ? parseInt(stonePrice, 10) : 0)
+          return res;
         }
     },
     methods: {
@@ -201,6 +204,11 @@ window.app = new Vue({
 
           $(".modal__input[name='tel']").mask("+7(999)999-99-99",{placeholder:"+7(___)___-__-__"});
         }
+      },
+      setText(e) {
+        const textPrice = (e.target.value != '' && this.data[6].QUESTIONS[0] && this.data[6].QUESTIONS[0].PROPERIES.PRICE && this.data[6].QUESTIONS[0].PROPERIES.PRICE.VALUE)
+        this.selected.TEXT.price = typeof +textPrice === 'number' ? +textPrice : 0;
+        this.selected.TEXT.name = e.target.value
       },
       async getData() {
         this.data = await this.mainContent.getData();

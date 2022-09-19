@@ -530,7 +530,7 @@
                 <div class="section_bl__title">Надпись на кольце</div>
               </div>
               <form action="" class="section_bl__form" id="quiz6">
-                <textarea v-model="selected.TEXT.name" placeholder="Напишите что будет на кольце"></textarea>
+                <textarea :value="selected.TEXT.name" @change="setText" placeholder="Напишите что будет на кольце"></textarea>
               </form>
             </div>
             <div class="section_bl__r-side">
