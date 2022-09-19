@@ -1466,6 +1466,14 @@ img {
   &.isActive {
     display: flex;
   }
+  &__overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+  }
   &__inner {
     padding: 50px;
     margin: auto;
@@ -1473,6 +1481,7 @@ img {
     width: 100%;
     max-width: 600px;
     position: relative;
+    z-index: 2;
   }
   &__close {
     position: absolute;
