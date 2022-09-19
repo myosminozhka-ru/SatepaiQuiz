@@ -169,8 +169,9 @@ window.app = new Vue({
             res += +value.price
           }
           const stonePrice = (this.selectedStone.PRICE && this.selectedStone.PRICE.PRICE)
+          const stonePriceNum = (typeof +stonePrice === 'number' ? +stonePrice : 0)
           console.log("stonePrice")
-          res = res + (typeof parseInt(stonePrice, 10) === 'number' ? parseInt(stonePrice, 10) : 0)
+          res += stonePriceNum
           return res;
         }
     },
