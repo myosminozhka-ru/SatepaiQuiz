@@ -21,28 +21,6 @@ import MainContent from '../blocks/modules/content/content.js';
 //     };
 // });
 $(document).ready(function () {
-
-    let slideEl = $('.review').find('.review__block');
-    let slideBt = $('.review').find('.review__btn');
-    slideBt.click(function () {
-        $(this).parent().find('.review__btn').removeClass('isActive');
-        $(this).addClass('isActive');
-        $(this).parents('.review').find('.review__block').hide();
-        $(this).parents('.review').find('.review__block').removeClass('isActive');
-        $(this).parents('.review').find($('.' + this.id)).show();
-        $(this).parents('.review').find($('.' + this.id)).addClass('isActive');
-    });
-    $('.review__tabs ul li:nth-child(2)').one('click', function () {
-        setTimeout(function() {
-            $('.sl_js').slick({
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                arrows: true,
-                dots: true,
-                infinite: false
-              });
-        }, 100);
-    });
 });
 $(function () {
     $('.review__close').on('click', function () {
@@ -144,6 +122,7 @@ window.app = new Vue({
         this.mainContent.init();
         this.selectedFilter.color = this.filter.default.color
         this.initRange()
+        this.initTab()
     },
     beforeCreate() {        
         window.addEventListener('resize', () => {
@@ -206,6 +185,17 @@ window.app = new Vue({
           $(".modal__input[name='tel']").mask("+7(999)999-99-99",{placeholder:"+7(___)___-__-__"});
         }
       },
+      initTab() {
+        let slideBt = $('.review').find('.review__btn');
+        slideBt.click(function () {
+            $(this).parent().find('.review__btn').removeClass('isActive');
+            $(this).addClass('isActive');
+            $(this).parents('.review').find('.review__block').hide();
+            $(this).parents('.review').find('.review__block').removeClass('isActive');
+            $(this).parents('.review').find($('.' + this.id)).show();
+            $(this).parents('.review').find($('.' + this.id)).addClass('isActive');
+        });
+      },
       setText(e) {
         const textPrice = (e.target.value != '' && this.data[6].QUESTIONS[0] && this.data[6].QUESTIONS[0].PROPERIES.PRICE && this.data[6].QUESTIONS[0].PROPERIES.PRICE.VALUE)
         this.selected.TEXT.price = typeof +textPrice === 'number' ? +textPrice : 0;
@@ -231,7 +221,7 @@ window.app = new Vue({
           if (type === 'image') {
             return this.url + '/upload/config/imgs/0.jpg'
           } else if (type === 'video') {
-            return this.url + '/upload/config/video/0.mp4'
+            return this.url + '/upload/config/video/IMG_1909.mov'
           } else if (type === 'html') {
             return this.url + '/local/quiz/soliter.html'
           }
@@ -239,6 +229,13 @@ window.app = new Vue({
         if (type === 'image') {
           return this.url + '/upload/config/imgs/' + this.mediaURLs.slice(0, step + 1).join('_') + '.jpg'
         } else if (type === 'video') {
+          // временный код начало
+          function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+          }
+          const videoCode = getRandomInt(2) === 1 ? 'IMG_1909.mov' : 'IMG_1465.mov'
+          return this.url + '/upload/config/video/' + videoCode // временно IMG_1465
+          // временный код конец
           return this.url + '/upload/config/video/' + this.mediaURLs.slice(0, step + 1).join('_') + '.mp4'
         } else if (type === 'html') {
           return this.url + '/local/quiz/soliter.html' // временно
@@ -415,9 +412,22 @@ window.app = new Vue({
       chooseScreen(step) {
         if (!step) return;
         this.screen = step
+      },
+      closeFeedbackModal(e, ) {
+        e.preventDefault()
+        if (e.target.classList.contains('modal')) {
+          this.feedbackIsOpen = false
+        }
+      },
+      closeMsgModal(e) {
+        e.preventDefault()
+        if (e.target.classList.contains('modal')) {
+          this.finalDataResponse.hasError = null
+        }
       }
     },
     updated() {
       this.initRange()
+      this.initTab()
     },
 });
