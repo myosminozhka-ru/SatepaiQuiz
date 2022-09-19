@@ -394,6 +394,7 @@ window.app = new Vue({
         for(let pair of modalFormData.entries()) {
           this.configuratorFormData.append(pair[0], pair[1]);
         }
+        this.configuratorFormData.set('price', this.getMediumPrice);
         this.configuratorFormData.set('selectedStone', JSON.stringify(this.selectedStone));
         this.finalDataResponse = await this.mainContent.sendStone(this.configuratorFormData)
         this.feedbackIsOpen = false
