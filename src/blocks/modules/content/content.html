@@ -908,7 +908,8 @@
       </div>
     </Transition>
   </div>
-  <div class="modal" v-show="feedbackIsOpen" v-bind:class="{isActive: feedbackIsOpen}" @click.prevent="closeFeedbackModal">
+  <div class="modal" v-show="feedbackIsOpen" v-bind:class="{isActive: feedbackIsOpen}">
+    <div class="modal__overlay" @click="feedbackIsOpen = false"></div>
     <form @submit.prevent="sendFinalFormData" class="modal__inner">
       <div class="modal__close" @click="feedbackIsOpen = false">
         <img src="./img/modal-close.svg" alt="">
@@ -950,8 +951,8 @@
   </div>
   <div class="modal" v-show="finalDataResponse.hasError !== null"
     v-bind:class="{isActive: finalDataResponse.hasError !== null}"
-    @click.prevent="closeMsgModal"
   >
+  <div class="modal__overlay" @click="finalDataResponse.hasError = null"></div>
     <div class="modal__inner">
       <div class="modal__close" @click="finalDataResponse.hasError = null">
         <img src="./img/modal-close.svg" alt="" @click="finalDataResponse.hasError = null">
